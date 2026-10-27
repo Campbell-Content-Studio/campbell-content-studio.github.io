@@ -37,14 +37,14 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bl
 .idx::after{content:"";order:2;flex:1;height:1px;background:var(--hairline)}
 .idx span:last-child{order:3}
 .frame{position:relative;margin-top:clamp(20px,3vw,36px);aspect-ratio:2.39/1;overflow:hidden;background:var(--gate);outline:1px solid #1a1a1a;outline-offset:-1px;display:grid;place-items:center}
-.frame::after{content:"";position:absolute;inset:-50%;background-image:var(--noise);background-size:200px;opacity:.13;animation:grain 1s steps(6) infinite;pointer-events:none}
+.frame::after{content:"";position:absolute;inset:-50%;background-image:var(--noise);background-size:200px;opacity:.13;animation:grain 1s steps(6) 4;pointer-events:none}
 @keyframes grain{0%{transform:translate(0,0)}17%{transform:translate(-5%,3%)}33%{transform:translate(4%,-6%)}50%{transform:translate(-2%,7%)}67%{transform:translate(6%,2%)}83%{transform:translate(-7%,-3%)}100%{transform:translate(1%,5%)}}
 .leader{position:relative;width:min(46%,340px);aspect-ratio:1;border:1px solid #3a3a3a;border-radius:50%}
 .leader::before,.leader::after{content:"";position:absolute;background:#2a2a2a}
 .leader::before{left:50%;top:-30%;bottom:-30%;width:1px}
 .leader::after{top:50%;left:-60%;right:-60%;height:1px}
 .ring{position:absolute;inset:12%;border:1px solid #2f2f2f;border-radius:50%}
-.sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(243,239,231,.10),rgba(243,239,231,0) 30%);animation:sweep 4s linear infinite}
+.sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(243,239,231,.10),rgba(243,239,231,0) 30%);animation:sweep 4s linear 1}
 @keyframes sweep{to{transform:rotate(1turn)}}
 .leader b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-weight:400;font-optical-sizing:auto;font-size:clamp(4rem,9vw,8rem);line-height:1;color:var(--screen)}
 .tc{position:absolute;right:14px;bottom:10px;color:var(--ash)}
@@ -55,10 +55,13 @@ p.lede{color:var(--silver);max-width:32em;margin-top:20px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 24px;text-decoration:none;border:1px solid var(--screen);font-stretch:72%;font-weight:600;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;transition:background .5s,color .5s}
 .btn--solid{background:var(--screen);color:#000}.btn--solid:hover{background:transparent;color:var(--screen)}
 .btn--line:hover{background:var(--screen);color:#000}
-footer{padding-block:20px 28px;border-top:1px solid var(--hairline);color:var(--ash)}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 28px;padding-block:20px 28px;border-top:1px solid var(--hairline);color:var(--ash)}
+footer nav{display:flex;gap:22px}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--silver);text-decoration:none;font-size:.9375rem}
+footer nav a:hover{color:var(--screen);text-decoration:underline;text-underline-offset:4px}
 @media (max-width:899px){.wordmark{flex-direction:column;align-items:flex-start;gap:5px}.wm-rule{display:none}.frame{aspect-ratio:4/3;margin-inline:calc(var(--gutter)*-1)}h1{font-variation-settings:"opsz" 40;font-weight:450}}
 @media (max-width:599px){.frame::after{animation:none}.tc{display:none}}
-@media (max-width:359px){.ctas .btn{flex:1 1 100%}}
+@media (max-width:599px){.ctas .btn{flex:1 1 100%}}
 @media (prefers-reduced-motion:reduce){.frame::after,.sweep{animation:none}.btn{transition:none}}
 </style>
 </head>
@@ -79,6 +82,9 @@ footer{padding-block:20px 28px;border-top:1px solid var(--hairline);color:var(--
     <a class="btn btn--line" href="/#films">Watch the films</a>
   </div>
 </main>
-<footer class="wrap"><p class="billing">© 2026 Campbell Content Studio · Ontario, Canada</p></footer>
+<footer class="wrap">
+  <p class="billing">© 2026 Campbell Content Studio · <span style="white-space:nowrap">Ontario, Canada</span></p>
+  <nav aria-label="Legal"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+</footer>
 </body>
 </html>

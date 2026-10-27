@@ -40,6 +40,7 @@
     /* the hero never waits */
     showAll($$('.hero .reveal,.hero .gate'));
   }
+  win.addEventListener('beforeprint', function () { showAll(els); });
   /* jumping to an anchor never lands on blank space: reveal everything above and around it */
   function revealUpTo(target) {
     if (!target || !io) return;
@@ -64,7 +65,8 @@
     var tcEl = $('.tcb .tc'), nowEl = $('.tcb .now b'), lbl = toggle.querySelector('.lbl');
     /* contract timing (crossfade midpoints): neon [0,3.5) duel [3.5,7.5) candles [7.5,11.5) seven [11.5,15.5) neon [15.5,16) */
     var EDGES = [3.5, 7.5, 11.5, 15.5];
-    var loaded = false, want = false, onScreen = true, raf = 0, active = -1, failed = false;
+    var loaded = false, want = false, onScreen = true, raf = 0, active = -1, failed = false, lastK = '', lastTC = '';
+    var vfc = typeof video.requestVideoFrameCallback === 'function';
 
     function pad(n) { return (n < 10 ? '0' : '') + n; }
     function shotAt(t) {
@@ -82,15 +84,19 @@
       });
       if (nowEl) nowEl.textContent = names[i];
     }
+    /* writes only what changed: the TC moves at 24 fps, the bar in 0.25% steps */
     function render() {
-      var t = video.currentTime || 0, s = shotAt(t);
-      setActive(s[0]);
-      tracks[s[0]].style.transform = 'scaleX(' + Math.max(0, Math.min(1, s[1])).toFixed(4) + ')';
-      if (tcEl) { var sec = Math.floor(t); tcEl.textContent = 'TC 00:00:' + pad(sec) + ':' + pad(Math.min(23, Math.floor((t - sec) * 24))); }
+      var t = video.currentTime || 0, s = shotAt(t), k = Math.max(0, Math.min(1, s[1])).toFixed(3), sec = Math.floor(t), tc;
+      if (s[0] !== active) { setActive(s[0]); lastK = ''; }
+      if (k !== lastK) { lastK = k; tracks[s[0]].style.transform = 'scaleX(' + k + ')'; }
+      tc = 'TC 00:00:' + pad(sec) + ':' + pad(Math.min(23, Math.floor((t - sec) * 24)));
+      if (tcEl && tc !== lastTC) { lastTC = tc; tcEl.textContent = tc; }
     }
-    function loop() { render(); raf = win.requestAnimationFrame(loop); }
-    function startLoop() { if (!raf) raf = win.requestAnimationFrame(loop); }
-    function stopLoop() { if (raf) win.cancelAnimationFrame(raf); raf = 0; }
+    /* one update per decoded frame (24/s) where supported, not one per screen refresh */
+    function next() { raf = vfc ? video.requestVideoFrameCallback(loop) : win.requestAnimationFrame(loop); }
+    function loop() { render(); next(); }
+    function startLoop() { if (!raf) next(); }
+    function stopLoop() { if (raf) { if (vfc) video.cancelVideoFrameCallback(raf); else win.cancelAnimationFrame(raf); } raf = 0; }
     function setState(playing) {
       toggle.setAttribute('data-state', playing ? 'playing' : 'paused');
       lbl.textContent = playing ? 'Pause reel' : 'Play reel';
@@ -99,9 +105,12 @@
     function load() {
       if (loaded) return;
       loaded = true;
+      /* AV1 files are pre-cropped to the frame they fill (4:3 on phones, 2.39:1 from 900px) */
       [
+        ['assets/video/reel-720-av1.webm', 'video/webm; codecs="av01.0.05M.08"', '(max-width: 899px)'],
         ['assets/video/reel-720.webm', 'video/webm; codecs=vp9', '(max-width: 899px)'],
         ['assets/video/reel-720.mp4', 'video/mp4', '(max-width: 899px)'],
+        ['assets/video/reel-1080-av1.webm', 'video/webm; codecs="av01.0.08M.08"'],
         ['assets/video/reel-1080.webm', 'video/webm; codecs=vp9'],
         ['assets/video/reel-1080.mp4', 'video/mp4']
       ].forEach(function (s, i, all) {
@@ -145,29 +154,44 @@
       /* poster frame only: shot 1, its track full; the visitor can start the reel */
       tracks[0].style.transform = 'scaleX(1)';
     } else {
-      want = true;
-      syncReel();
+      var start = function () { want = true; syncReel(); };
+      if (doc.readyState === 'complete') start(); else win.addEventListener('load', start);
     }
   })();
 
-  /* ---------- 3. burned-in subtitle: slow cycle, only while on screen ---------- */
+  /* ---------- 3. burned-in subtitle: one slow pass while on screen, then rests on EN.
+     Each row is a button that shows its language and stops the cycle; hover or focus pauses it. ---------- */
   var subs = $$('.subbox span'), rows = $$('.subs li'), burn = $('.burn');
-  if (!reduce && hasIO && burn && subs.length && subs.length === rows.length) {
-    var si = 0, timer = 0;
-    var step = function () {
-      if (doc.hidden) return;
-      subs[si].classList.remove('on'); rows[si].classList.remove('on');
-      si = (si + 1) % subs.length;
-      subs[si].classList.add('on'); rows[si].classList.add('on');
-    };
-    new IntersectionObserver(function (en) {
-      if (en[0].isIntersecting && !timer) timer = win.setInterval(step, 3600);
+  if (burn && subs.length && subs.length === rows.length) (function () {
+    var si = 0, timer = 0, done = false, media = burn.parentNode;
+    var btns = rows.map(function (li, k) {
+      var b = doc.createElement('button');
+      b.type = 'button'; b.className = 'sub-pick';
+      b.setAttribute('aria-pressed', String(k === 0));
+      while (li.firstChild) b.appendChild(li.firstChild);
+      li.appendChild(b);
+      b.addEventListener('click', function () { stop(); show(k); });
+      return b;
+    });
+    function show(k) {
+      subs[si].classList.remove('on'); rows[si].classList.remove('on'); btns[si].setAttribute('aria-pressed', 'false');
+      si = k;
+      subs[si].classList.add('on'); rows[si].classList.add('on'); btns[si].setAttribute('aria-pressed', 'true');
+    }
+    function stop() { done = true; if (timer) win.clearInterval(timer); timer = 0; }
+    function step() {
+      if (doc.hidden || media.matches(':hover,:focus-within')) return;
+      show((si + 1) % subs.length);
+      if (si === 0) stop();
+    }
+    if (!reduce && hasIO) new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting && !timer && !done) timer = win.setInterval(step, 3600);
       else if (!en[0].isIntersecting && timer) { win.clearInterval(timer); timer = 0; }
     }).observe(burn);
-  }
+  })();
 
   /* ---------- 4. screening room: the YouTube player loads only after a click ---------- */
-  var room = null, roomFrame, roomTitle, roomLink, opener = null;
+  var room = null, roomFrame, roomTitle, roomLink, roomSr, opener = null;
   function buildRoom() {
     room = doc.createElement('dialog');
     room.className = 'room';
@@ -177,13 +201,14 @@
         '<div class="room-bar"><p class="room-title billing" id="room-title">Now playing · <b></b></p>' +
         '<button class="room-close billing" type="button">Close <span aria-hidden="true">✕</span></button></div>' +
         '<div class="room-frame"></div>' +
-        '<p class="room-foot"><span>Playing through YouTube’s privacy-enhanced player. Press Esc to close.</span>' +
-        '<a class="room-yt" href="https://www.youtube.com/">Watch on YouTube <span aria-hidden="true">↗</span></a></p>' +
+        '<p class="room-foot"><span>Playing through YouTube’s privacy-enhanced player.<span class="kbd"> Press Esc or Close to return to the site.</span></span>' +
+        '<a class="room-yt" href="https://www.youtube.com/">Watch on YouTube<span class="sr"></span> <span aria-hidden="true">↗</span></a></p>' +
       '</div>';
     doc.body.appendChild(room);
     roomFrame = $('.room-frame', room);
     roomTitle = $('.room-title b', room);
     roomLink = $('.room-yt', room);
+    roomSr = $('.sr', roomLink);
     $('.room-close', room).addEventListener('click', function () { room.close(); });
     room.addEventListener('click', function (e) { if (e.target === room) room.close(); });
     room.addEventListener('close', function () {
@@ -202,6 +227,7 @@
     opener = a;
     roomTitle.textContent = title;
     roomLink.href = 'https://www.youtube.com/watch?v=' + id;
+    roomSr.textContent = ': ' + title;
     roomOpen = true;
     syncReel();
     room.showModal();
@@ -247,7 +273,7 @@
     menu.addEventListener('close', function () {
       btn.setAttribute('aria-expanded', 'false');
       unlock();
-      if (!jumping) btn.focus({ preventScroll: true });
+      if (!jumping) (btn.offsetParent ? btn : $('.nav-links a') || $('.wordmark')).focus({ preventScroll: true });
       jumping = false;
     });
     menu.addEventListener('keydown', function (e) {
