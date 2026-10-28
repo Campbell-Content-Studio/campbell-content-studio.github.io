@@ -1,0 +1,56 @@
+name: Update latest videos
+
+# Once a day, refresh the "Behind the craft" (Inside ACC) row and the
+# "Latest from The Grim Script" strip from the channels' public YouTube RSS
+# feeds. No API key, no quota. It commits only when something changed.
+# Rules (counts, exclusions, labels) live in .github/latest-videos.config.json.
+
+on:
+  schedule:
+    - cron: "37 10 * * *" # 10:37 UTC, about 6:37 a.m. in Ontario
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-latest-videos
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Refresh video rows from YouTube RSS
+        run: python3 .github/scripts/update_latest_videos.py
+
+      - name: Commit and push if anything changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Update latest videos from YouTube RSS"
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git pull --rebase
+          done
+          exit 1
+
+      - name: Ask GitHub Pages to rebuild
+        if: steps.commit.outputs.pushed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds" --silent

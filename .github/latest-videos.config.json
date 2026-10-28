@@ -1,0 +1,39 @@
+{
+  "pages": ["index.html", "preview/index.html"],
+  "rows": {
+    "inside-acc": {
+      "channelId": "UCZ3jf4rt3h2uroB2F4KXs4w",
+      "count": 4,
+      "heading": "h3",
+      "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
+      "excludeIds": ["mVTY4UQzy6A", "56ZdNRdmfQ0", "dN3Yv4xqxrA", "DEQ6ROYbeFA"],
+      "excludeTitlePatterns": ["official music video", "\\|[^|]*short film\\s*$", "\\|\\s*(official )?(trailer|teaser)\\b"],
+      "labelRules": [
+        ["keyframe", "Keyframes"],
+        ["voice|elevenlabs|lip.?sync|dubb", "Voice"],
+        ["\\bedit", "Editing"],
+        ["music|suno|udio|song", "Music"],
+        ["image|midjourney|flux|nano banana|photo", "Images"],
+        ["kling|seedance|veo|runway|sora|hailuo|minimax|luma|pika|video model", "Video models"]
+      ],
+      "fallbackLabel": "Inside ACC",
+      "labels": {}
+    },
+    "grim-latest": {
+      "channelId": "UCuyHEHBB1qu1DJb-NOC5ENw",
+      "count": 4,
+      "heading": "h4",
+      "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
+      "excludeIds": ["yHS3pX8CG3Y"],
+      "excludeTitlePatterns": ["\\|\\s*(official )?(trailer|teaser)\\b"],
+      "labelRules": [
+        ["legend|myth|folklore|fairy tale", "Legend"],
+        ["monster|mothman|bigfoot|sasquatch|cryptid|wendigo|chupacabra", "Cryptid"],
+        ["exorcis|possess|demon|haunt|ghost|poltergeist|curse", "Paranormal"],
+        ["murder|killer|crime|vanish|disappear|missing", "Unsolved"]
+      ],
+      "fallbackLabel": "Dark history",
+      "labels": {}
+    }
+  }
+}
