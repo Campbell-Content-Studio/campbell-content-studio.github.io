@@ -10,8 +10,8 @@ and uses no quota:
    when a channel posts many Shorts, so the state file remembers the long-form
    uploads seen so far.
 3. Pick the newest videos for each row (rules in .github/latest-videos.config.json),
-   leaving out anything already shown elsewhere on the page (the hand-picked films
-   and featured episode), confirm each one is public and embeddable through YouTube
+   leaving out anything already shown elsewhere on the page (the hand-picked films),
+   confirm each one is public and embeddable through YouTube
    oEmbed, and rewrite the HTML between <!-- auto:NAME --> and <!-- /auto:NAME -->.
 
 Files are written only when their content changes, so the workflow commits only
@@ -306,7 +306,7 @@ def main():
             merge(state.setdefault(channel_id, []), fresh)
     set_output("feeds_failed", feeds_failed)
 
-    # Videos already on a page outside the auto rows (featured films and episodes) are pinned.
+    # Videos already shown elsewhere on the page (the hand-picked films) are pinned.
     pinned = set()
     for text, _ in texts.values():
         pinned |= set(DATA_YT.findall(AUTO_REGION.sub("", text)))

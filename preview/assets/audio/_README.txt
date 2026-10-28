@@ -1,9 +1,13 @@
 Reel score cue (placeholder)
 
-Put the 15–20 second score cue for the hero reel in this folder as:
+Put the score cue for the hero reel in this folder as:
 
   reel-score.mp3   (MP3, 44.1 or 48 kHz stereo, 192–256 kbps, peaks no higher than -1 dBTP,
-                    with a short fade at the end so the loop point never clicks)
+                    ideally exactly 16.0 seconds, the reel's length, with a short fade at the
+                    end so it never clicks when it stops)
+
+A cue of exactly 16.0 s ends as the reel loops. A longer one plays out over the start of the
+next loop; a shorter one ends before the reel does. Either way the button resets when it ends.
 
 Then, in index.html, find the button with class "sound-toggle" and set
   data-src="assets/audio/reel-score.mp3"

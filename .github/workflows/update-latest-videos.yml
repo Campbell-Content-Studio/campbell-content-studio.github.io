@@ -1,8 +1,8 @@
 name: Update latest videos
 
-# Once a day, refresh the "Behind the craft" (Inside ACC) row and the
-# "Latest from The Grim Script" strip from the channels' public YouTube RSS
-# feeds. No API key, no quota. It commits only when something changed.
+# Once a day, refresh the "Behind the craft" (Inside ACC) row from Adam
+# Campbell Cinema's public YouTube RSS feed. No API key, no quota. It commits
+# only when something changed.
 # Rules (counts, exclusions, labels) live in .github/latest-videos.config.json.
 
 on:
