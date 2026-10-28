@@ -4,10 +4,12 @@
     "inside-acc": {
       "channelId": "UCZ3jf4rt3h2uroB2F4KXs4w",
       "count": 4,
+      "minCount": 3,
       "heading": "h3",
       "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
       "excludeIds": ["mVTY4UQzy6A", "56ZdNRdmfQ0", "dN3Yv4xqxrA", "DEQ6ROYbeFA"],
-      "excludeTitlePatterns": ["official music video", "\\|[^|]*short film\\s*$", "\\|\\s*(official )?(trailer|teaser)\\b"],
+      "includeIds": [],
+      "excludeTitlePatterns": ["\\s\\|\\s", "\\bofficial (music |lyric )?video\\b", "\\((official )?(music|lyric) video\\)", "\\bofficial (visuali[sz]er|audio|trailer|teaser)\\b", "\\s[-–—]\\s[^-–—]*\\bshort film\\b", "\\(\\s*(full )?short film\\s*\\)", "\\s[-–—]\\s*(official )?(trailer|teaser)\\b"],
       "labelRules": [
         ["keyframe", "Keyframes"],
         ["voice|elevenlabs|lip.?sync|dubb", "Voice"],
@@ -22,10 +24,12 @@
     "grim-latest": {
       "channelId": "UCuyHEHBB1qu1DJb-NOC5ENw",
       "count": 4,
+      "minCount": 3,
       "heading": "h4",
       "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
-      "excludeIds": ["yHS3pX8CG3Y"],
-      "excludeTitlePatterns": ["\\|\\s*(official )?(trailer|teaser)\\b"],
+      "excludeIds": [],
+      "includeIds": [],
+      "excludeTitlePatterns": ["\\bofficial (trailer|teaser)\\b", "\\s[-–—|]\\s*(official )?(trailer|teaser)\\b"],
       "labelRules": [
         ["legend|myth|folklore|fairy tale", "Legend"],
         ["monster|mothman|bigfoot|sasquatch|cryptid|wendigo|chupacabra", "Cryptid"],

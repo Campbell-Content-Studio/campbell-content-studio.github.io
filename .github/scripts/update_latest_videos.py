@@ -7,18 +7,21 @@ and uses no quota:
 1. Read each channel's public RSS feed (its latest 15 uploads) and keep only
    long-form videos. The feed links Shorts as /shorts/<id>, so they are dropped.
 2. Merge them into .github/latest-videos.state.json. The feed alone is too short
-   when a channel posts many Shorts, so the state file remembers every long-form
-   upload seen so far.
+   when a channel posts many Shorts, so the state file remembers the long-form
+   uploads seen so far.
 3. Pick the newest videos for each row (rules in .github/latest-videos.config.json),
-   confirm each one is public and embeddable through YouTube oEmbed, and rewrite
-   the HTML between <!-- auto:NAME --> and <!-- /auto:NAME --> in each page.
+   leaving out anything already shown elsewhere on the page (the hand-picked films
+   and featured episode), confirm each one is public and embeddable through YouTube
+   oEmbed, and rewrite the HTML between <!-- auto:NAME --> and <!-- /auto:NAME -->.
 
 Files are written only when their content changes, so the workflow commits only
 real updates. If YouTube is unreachable, the existing rows are left as they are.
 """
 
 import html
+import http.client
 import json
+import os
 import re
 import sys
 import time
@@ -40,37 +43,51 @@ USER_AGENT = "campbellcontentstudio.ca latest-videos updater"
 
 NS = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015"}
 VIDEO_ID = re.compile(r"^[A-Za-z0-9_-]{11}$")
+DATA_YT = re.compile(r'data-yt="([A-Za-z0-9_-]{11})"')
+AUTO_REGION = re.compile(r"<!-- auto:([\w-]+) -->.*?<!-- /auto:\1 -->", re.S)
 SHORTS_TAG = re.compile(r"#shorts?\b", re.I)
 # mqdefault (320x180) and hqdefault (480x360) exist for every video; these two may not.
 OPTIONAL_THUMBS = (("sddefault", 640), ("maxresdefault", 1280))
 UNAVAILABLE = {400, 401, 403, 404}
+HEADINGS = {"h2", "h3", "h4"}
 MAX_STORED_PER_CHANNEL = 60
+# Stop making network checks after this long so the job stays well inside its timeout;
+# unchecked videos are treated as "unknown" and kept.
+DEADLINE = time.monotonic() + 360
+
+
+class ConfigError(Exception):
+    pass
 
 
 def warn(message):
     print(f"::warning::{message}")
 
 
-def fetch(url, method="GET", attempts=3):
+def fetch(url, method="GET", attempts=2, timeout=10, retry_on=(), backoff=(3, 6)):
     """Return (status, body). status is None when the server could not be reached."""
     for attempt in range(attempts):
+        if time.monotonic() > DEADLINE:
+            return None, b""
         request = urllib.request.Request(url, method=method, headers={"User-Agent": USER_AGENT})
         try:
-            with urllib.request.urlopen(request, timeout=20) as response:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
                 return response.status, response.read()
         except urllib.error.HTTPError as error:
-            if error.code < 500 and error.code != 429:
+            if error.code < 500 and error.code != 429 and error.code not in retry_on:
                 return error.code, b""
-        except (urllib.error.URLError, TimeoutError, OSError):
-            pass
+            status = error.code
+        except (urllib.error.URLError, http.client.HTTPException, TimeoutError, OSError):
+            status = None
         if attempt < attempts - 1:
-            time.sleep(3 * (attempt + 1))
-    return None, b""
+            time.sleep(backoff[min(attempt, len(backoff) - 1)])
+    return status, b""
 
 
 def read_feed(channel_id):
     """Long-form uploads from the channel feed, or None if the feed is unavailable."""
-    status, body = fetch(FEED_URL.format(channel_id))
+    # YouTube's feed server sometimes answers 404 for a while, so 404 is retried too.
+    status, body = fetch(FEED_URL.format(channel_id), attempts=4, timeout=20, retry_on=(404,), backoff=(5, 15, 30))
     if status != 200:
         warn(f"Feed for {channel_id} returned {status}; keeping the current rows.")
         return None
@@ -114,20 +131,30 @@ def merge(stored, fresh):
     del stored[MAX_STORED_PER_CHANNEL:]
 
 
-def check_oembed(video):
-    """True if public and embeddable, False if not, None if YouTube could not be reached."""
+def oembed_status(video):
+    """True if public and embeddable, False if not, None if unknown. Refreshes the title."""
     status, body = fetch(OEMBED_URL.format(video["id"]))
-    if status == 200:
-        try:
-            title = (json.loads(body).get("title") or "").strip()
-        except ValueError:
-            return None
-        if title:
-            video["title"] = title
-        return True
-    if status in UNAVAILABLE:
-        return False
-    return None
+    if status != 200:
+        return False if status in UNAVAILABLE else None
+    try:
+        data = json.loads(body)
+    except ValueError:
+        return None
+    if not isinstance(data, dict):
+        return None
+    title = data.get("title")
+    if isinstance(title, str) and title.strip():
+        video["title"] = title.strip()
+    return True
+
+
+def is_available(video):
+    """A 'not available' answer is only trusted if a second check, a little later, agrees."""
+    first = oembed_status(video)
+    if first is not False:
+        return first
+    time.sleep(10)
+    return oembed_status(video)
 
 
 def thumb_widths(video):
@@ -135,7 +162,7 @@ def thumb_widths(video):
     have = set(video.get("thumbs", []))
     for name, _ in OPTIONAL_THUMBS:
         if name not in have:
-            status, _ = fetch(THUMB_URL.format(video["id"], name), method="HEAD", attempts=2)
+            status, _ = fetch(THUMB_URL.format(video["id"], name), method="HEAD")
             if status == 200:
                 have.add(name)
     found = [name for name, _ in OPTIONAL_THUMBS if name in have]
@@ -144,26 +171,46 @@ def thumb_widths(video):
     return found
 
 
+def compile_row(name, row):
+    """Validate one row of the config and precompile its patterns."""
+    try:
+        count = int(row["count"])
+        compiled = {
+            "excludeTitlePatterns": [re.compile(p, re.I) for p in row.get("excludeTitlePatterns", [])],
+            "labelRules": [(re.compile(p, re.I), str(label)) for p, label in row.get("labelRules", [])],
+        }
+    except (KeyError, TypeError, ValueError, re.error) as error:
+        raise ConfigError(f"row '{name}': {error}") from error
+    heading = row.get("heading", "h3")
+    if heading not in HEADINGS:
+        raise ConfigError(f"row '{name}': heading must be one of {sorted(HEADINGS)}")
+    if not row.get("channelId") or not row.get("sizes"):
+        raise ConfigError(f"row '{name}': channelId and sizes are required")
+    return {**row, **compiled, "count": count, "minCount": int(row.get("minCount", count)), "heading": heading}
+
+
 def label_for(video, row):
     if video["id"] in row.get("labels", {}):
-        return row["labels"][video["id"]]
-    for pattern, label in row.get("labelRules", []):
-        if re.search(pattern, video["title"], re.I):
+        return str(row["labels"][video["id"]])
+    for pattern, label in row["labelRules"]:
+        if pattern.search(video["title"]):
             return label
-    return row.get("fallbackLabel", "")
+    return str(row.get("fallbackLabel", ""))
 
 
-def pick(stored, row):
-    excluded_ids = set(row.get("excludeIds", []))
-    excluded_titles = [re.compile(p, re.I) for p in row.get("excludeTitlePatterns", [])]
+def pick(stored, row, pinned):
+    """Newest eligible videos for a row. Pinned videos (shown elsewhere on the page) never repeat."""
+    excluded_ids = set(row.get("excludeIds", [])) | pinned
+    included_ids = set(row.get("includeIds", []))
     picked = []
     for video in stored:
         if len(picked) == row["count"]:
             break
-        if video["id"] in excluded_ids or any(p.search(video["title"]) for p in excluded_titles):
+        if video["id"] in excluded_ids:
             continue
-        available = check_oembed(video)
-        if available is False:
+        if video["id"] not in included_ids and any(p.search(video["title"]) for p in row["excludeTitlePatterns"]):
+            continue
+        if is_available(video) is False:
             warn(f"Skipping {video['id']} ({video['title']}): not public or not embeddable.")
             continue
         picked.append(video)
@@ -174,7 +221,8 @@ def render_item(video, index, row):
     vid = video["id"]
     title = html.escape(video["title"], quote=True)
     label = html.escape(label_for(video, row), quote=True)
-    heading = row.get("heading", "h3")
+    sizes = html.escape(row["sizes"], quote=True)
+    heading = row["heading"]
     srcset = [f"{THUMB_URL.format(vid, 'mqdefault')} 320w", f"{THUMB_URL.format(vid, 'hqdefault')} 480w"]
     widths = dict(OPTIONAL_THUMBS)
     srcset += [f"{THUMB_URL.format(vid, name)} {widths[name]}w" for name in thumb_widths(video)]
@@ -183,7 +231,7 @@ def render_item(video, index, row):
     return [
         f'<li class="ep reveal"{delay}>',
         f'  <a class="ep-card" href="{watch}" data-yt="{vid}" data-title="{title}">',
-        f'    <div class="thumb"><img src="{THUMB_URL.format(vid, "mqdefault")}" srcset="{", ".join(srcset)}" sizes="{row["sizes"]}" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>',
+        f'    <div class="thumb"><img src="{THUMB_URL.format(vid, "mqdefault")}" srcset="{", ".join(srcset)}" sizes="{sizes}" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>',
         '    <div class="ep-text">',
         f'      <p class="ep-cat billing">{label}</p>',
         f'      <{heading}>{title}</{heading}>',
@@ -195,64 +243,92 @@ def render_item(video, index, row):
     ]
 
 
+def region_pattern(name):
+    marker = re.escape(name)
+    return re.compile(r"^([ \t]*)<!-- auto:%s -->[ \t]*\n.*?^[ \t]*<!-- /auto:%s -->[ \t]*$" % (marker, marker), re.M | re.S)
+
+
 def replace_region(page, name, rendered):
-    """Swap the lines between the markers for rendered lines, indented like the opening marker."""
-    pattern = re.compile(r"^([ \t]*)<!-- auto:%s -->\n.*?^[ \t]*<!-- /auto:%s -->$" % (name, name), re.M | re.S)
-    match = pattern.search(page)
-    if not match:
-        return page, False
-    indent = match.group(1)
-    lines = [f"<!-- auto:{name} -->", *rendered, f"<!-- /auto:{name} -->"]
-    return page[: match.start()] + "\n".join(indent + line for line in lines) + page[match.end():], True
+    """Swap the lines between every pair of markers for rendered lines, indented like the opening marker."""
+
+    def swap(match):
+        indent = match.group(1)
+        lines = [f"<!-- auto:{name} -->", *rendered, f"<!-- /auto:{name} -->"]
+        return "\n".join(indent + line for line in lines)
+
+    return region_pattern(name).subn(swap, page)
 
 
-def write_if_changed(path, text):
-    old = path.read_text(encoding="utf-8") if path.exists() else None
-    if old == text:
+def read_page(path):
+    """Page text with \\n line endings, plus the file's own newline so it can be written back unchanged."""
+    raw = path.read_bytes().decode("utf-8")
+    newline = "\r\n" if "\r\n" in raw else "\n"
+    return raw.replace("\r\n", "\n"), newline
+
+
+def write_if_changed(path, text, newline="\n"):
+    data = text.replace("\n", newline).encode("utf-8")
+    if path.exists() and path.read_bytes() == data:
         return False
-    path.write_text(text, encoding="utf-8")
+    path.write_bytes(data)
     return True
 
 
-def main():
-    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    state = json.loads(STATE_PATH.read_text(encoding="utf-8")) if STATE_PATH.exists() else {}
-    rows = config["rows"]
+def set_output(name, value):
+    output = os.environ.get("GITHUB_OUTPUT")
+    if output:
+        with open(output, "a", encoding="utf-8") as handle:
+            handle.write(f"{name}={value}\n")
 
+
+def main():
+    try:
+        config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        rows = {name: compile_row(name, row) for name, row in config["rows"].items()}
+        pages = [ROOT / relative for relative in config["pages"]]
+    except (OSError, ValueError, KeyError, ConfigError) as error:
+        print(f"::error::Bad {CONFIG_PATH.name}: {error}")
+        return 1
+    state = json.loads(STATE_PATH.read_text(encoding="utf-8")) if STATE_PATH.exists() else {}
+
+    texts = {path: read_page(path) for path in pages if path.exists()}
+    missing = sorted(name for name in rows if not any(region_pattern(name).search(text) for text, _ in texts.values()))
+    if missing:
+        print(f"::error::No complete <!-- auto:NAME --> ... <!-- /auto:NAME --> markers found for: {', '.join(missing)}")
+        return 1
+
+    feeds_failed = 0
     for channel_id in sorted({row["channelId"] for row in rows.values()}):
         fresh = read_feed(channel_id)
-        if fresh is not None:
+        if fresh is None:
+            feeds_failed += 1
+        else:
             merge(state.setdefault(channel_id, []), fresh)
+    set_output("feeds_failed", feeds_failed)
+
+    # Videos already on a page outside the auto rows (featured films and episodes) are pinned.
+    pinned = set()
+    for text, _ in texts.values():
+        pinned |= set(DATA_YT.findall(AUTO_REGION.sub("", text)))
 
     rendered = {}
     for name, row in rows.items():
-        chosen = pick(state.get(row["channelId"], []), row)
-        if len(chosen) < row.get("minCount", row["count"]):
+        chosen = pick(state.get(row["channelId"], []), row, pinned)
+        if len(chosen) < row["minCount"]:
             warn(f"Only {len(chosen)} videos for '{name}'; keeping the current row.")
             continue
         rendered[name] = [line for index, video in enumerate(chosen) for line in render_item(video, index, row)]
 
-    pages_found = 0
     changed = []
-    for relative in config["pages"]:
-        path = ROOT / relative
-        if not path.exists():
-            continue
-        page = path.read_text(encoding="utf-8")
+    for path, (text, newline) in texts.items():
         for name, lines in rendered.items():
-            page, found = replace_region(page, name, lines)
-            pages_found += found
-        if write_if_changed(path, page):
-            changed.append(relative)
-
-    if pages_found == 0 and rendered:
-        print("::error::No <!-- auto:... --> markers found in any configured page.")
-        return 1
+            text, _ = replace_region(text, name, lines)
+        if write_if_changed(path, text, newline):
+            changed.append(str(path.relative_to(ROOT)))
 
     state_text = json.dumps(state, indent=2, ensure_ascii=False) + "\n"
     if write_if_changed(STATE_PATH, state_text):
         changed.append(str(STATE_PATH.relative_to(ROOT)))
-
     print("Updated: " + ", ".join(changed) if changed else "No changes.")
     return 0
 
