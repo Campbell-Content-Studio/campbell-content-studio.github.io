@@ -20,24 +20,6 @@
       ],
       "fallbackLabel": "Inside ACC",
       "labels": {}
-    },
-    "grim-latest": {
-      "channelId": "UCuyHEHBB1qu1DJb-NOC5ENw",
-      "count": 4,
-      "minCount": 3,
-      "heading": "h4",
-      "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
-      "excludeIds": [],
-      "includeIds": [],
-      "excludeTitlePatterns": ["\\bofficial (trailer|teaser)\\b", "\\s[-–—|]\\s*(official )?(trailer|teaser)\\b"],
-      "labelRules": [
-        ["legend|myth|folklore|fairy tale", "Legend"],
-        ["monster|mothman|bigfoot|sasquatch|cryptid|wendigo|chupacabra", "Cryptid"],
-        ["exorcis|possess|demon|haunt|ghost|poltergeist|curse", "Paranormal"],
-        ["murder|killer|crime|vanish|disappear|missing", "Unsolved"]
-      ],
-      "fallbackLabel": "Dark history",
-      "labels": {}
     }
   }
 }
