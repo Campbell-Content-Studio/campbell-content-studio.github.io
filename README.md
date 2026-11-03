@@ -2,7 +2,7 @@
 
 ## Automatic "Behind the craft" row
 
-Once a day, `.github/workflows/update-latest-videos.yml` refreshes the "Behind the craft" row from Adam Campbell Cinema's public YouTube RSS feed (no API key, no quota). The row shows the latest 4 long-form Inside ACC episodes. It currently lives in `/preview/` and will be on the homepage once the new design goes live.
+Once a day, `.github/workflows/update-latest-videos.yml` refreshes the "Behind the craft" row from Adam Campbell Cinema's public YouTube RSS feed (no API key, no quota). The row shows the latest 4 long-form Inside ACC episodes.
 
 Shorts are skipped. The four featured films are hand-picked and never change automatically. Anything already shown elsewhere on the page never appears in the row, so if you place a video by hand, the row adjusts on the next run.
 
@@ -20,4 +20,4 @@ How it works and how to adjust it:
 
 ## Reel sound
 
-The hero reel is always muted. A small "Sound on" button on the reel plays a separate score cue, only when a visitor presses it, never automatically. The button stays hidden until the cue exists: put the file in `preview/assets/audio/` (or `assets/audio/` once the site is at the root) as `reel-score.mp3`, then set `data-src="assets/audio/reel-score.mp3"` on the `sound-toggle` button in `index.html`. Details are in `assets/audio/_README.txt`.
+The hero reel is always muted. A small "Sound on" button on the reel plays a separate score cue, only when a visitor presses it, never automatically. The button stays hidden until the cue exists: put the file in `assets/audio/` as `reel-score.mp3`, then set `data-src="assets/audio/reel-score.mp3"` on the `sound-toggle` button in `index.html`. Details are in `assets/audio/_README.txt`.
