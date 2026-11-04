@@ -160,10 +160,10 @@
 
       <div style="margin-top:18px; padding:18px 22px; background:rgba(16, 185, 129, 0.07); border:1px solid rgba(16, 185, 129, 0.35); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px;">
         <div style="max-width:820px;">
-          <p class="billing" style="color:#34d399; margin:0 0 6px;">🤝 OUR FAIR-PRICING PROMISE · MONTHLY OR DISCOUNTED ANNUAL LOCK-IN · PLUS 50% OFF DEVELOPING REGIONS</p>
-          <p style="color:#e5e0d8; font-size:14.5px; line-height:1.55; margin:0;">We believe small business owners, freelancers, and online sellers should have access to the exact same Pro features as $30–$50 USD/month corporate software—for a fair monthly price, or an even bigger discount if you lock in for the year. 🌎 <b>Live in Brazil, Mexico, India, or Latin America?</b> Enter promo code <b style="color:#34d399;">FAIR50</b> at checkout for <b>50% off</b>! If our tools save you time and money, we truly appreciate an <b>honest review on the Chrome Web Store</b>.</p>
+          <p class="billing" id="fairPromiseHeading" style="color:#34d399; margin:0 0 6px;">🤝 OUR FAIR-PRICING PROMISE · MONTHLY OR DISCOUNTED ANNUAL LOCK-IN</p>
+          <p style="color:#e5e0d8; font-size:14.5px; line-height:1.55; margin:0;">We believe small business owners, freelancers, and online sellers should have access to the exact same Pro features as $30–$50 USD/month corporate software—for a fair monthly price, or an even bigger discount if you lock in for the year.<span id="regionalPppNote" style="display:none;"> 🌎 <b>Regional Purchasing Power Discount (Brazil, Mexico, India &amp; Latin America):</b> Enter promo code <b style="color:#34d399;">FAIR50</b> at checkout for <b>50% off</b>!</span> If our tools save you time and money, we truly appreciate an <b>honest review on the Chrome Web Store</b>.</p>
         </div>
-        <span class="billing" style="background:#050505; border:1px solid rgba(16, 185, 129, 0.45); color:#34d399; padding:10px 14px;">MONTHLY OR ANNUAL · CODE: FAIR50 · 15 FREE USES</span>
+        <span class="billing" id="fairPromiseBadge" style="background:#050505; border:1px solid rgba(16, 185, 129, 0.45); color:#34d399; padding:10px 14px;">SAVE UP TO 37% ON ANNUAL · 15 FREE USES</span>
       </div>
     </section>
 
@@ -519,6 +519,24 @@
   if (["es", "pt", "fr", "de"].includes(navLang)) {
     setLanguage(navLang);
   }
+
+  // Geo-Targeted Purchasing Power Parity (PPP) Detection:
+  // Hidden in North America, UK, Western Europe & Australia; revealed ONLY when visitor timezone is in Latin America, India, SE Asia, or Africa.
+  (function detectDevelopingRegion() {
+    try {
+      const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "").toLowerCase();
+      const isNorthAmerica = /^america\/(toronto|vancouver|montreal|edmonton|winnipeg|halifax|st_johns|regina|new_york|chicago|denver|los_angeles|phoenix|anchorage|honolulu|detroit|indianapolis|kentucky|indiana|north_dakota|boise|juneau|nome|sitka|menominee)/i.test(tz) || /^us\//i.test(tz) || /^canada\//i.test(tz);
+      const isDevelopingTz = (!isNorthAmerica && /^america\//i.test(tz)) || /^asia\/(kolkata|calcutta|mumbai|delhi|jakarta|manila|bangkok|ho_chi_minh|saigon|karachi|dhaka|colombo)/i.test(tz) || /^africa\//i.test(tz);
+      if (isDevelopingTz) {
+        const note = document.getElementById("regionalPppNote");
+        const heading = document.getElementById("fairPromiseHeading");
+        const badge = document.getElementById("fairPromiseBadge");
+        if (note) note.style.display = "inline";
+        if (heading) heading.textContent = "🤝 OUR FAIR-PRICING PROMISE · MONTHLY OR ANNUAL · PLUS 50% REGIONAL DISCOUNT";
+        if (badge) badge.textContent = "REGIONAL CODE: FAIR50 (50% OFF) · 15 FREE USES";
+      }
+    } catch (e) {}
+  })();
 </script>
 </body>
 </html>
