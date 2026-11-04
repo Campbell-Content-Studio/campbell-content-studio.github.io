@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chrome Extensions &amp; Time-Savers · Campbell Content Studio</title>
-<meta name="description" content="1-click Chrome browser extensions by Campbell Content Studio: export website tables to Excel, save all webpage photos as JPG/PNG, and turn map searches into lead lists.">
+<meta name="description" content="1-click Chrome browser extensions by Campbell Content Studio: export website tables to Excel, save webpage photos as JPG/PNG, extract Google Maps leads, send WhatsApp reminders, export Etsy/Amazon prices &amp; tags, and extract tax receipts to Excel.">
 <link rel="canonical" href="https://campbellcontentstudio.ca/tools.html">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark">
@@ -16,7 +16,35 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@72..100,400..600&amp;family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..500;1,6..96,400..500&amp;display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
 <style>
-  .tools-hero { padding: 56px 0 40px; border-bottom: 1px solid #2a2a2a; }
+  .tools-hero { padding: 48px 0 34px; border-bottom: 1px solid #2a2a2a; }
+  .lang-bar {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: #0b0b0b;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .lang-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lang-btn {
+    padding: 9px 15px;
+    border: 1px solid #2a2a2a;
+    background: #050505;
+    color: #b8b3aa;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lang-btn:hover { border-color: #f3efe7; color: #f3efe7; }
+  .lang-btn.active {
+    background: #f3efe7;
+    color: #000000;
+    border-color: #f3efe7;
+  }
   .tool-showcase {
     background: #0b0b0b;
     border: 1px solid #2a2a2a;
@@ -27,9 +55,9 @@
     gap: 36px;
     align-items: center;
   }
-  @media (max-width: 960px) { .tool-showcase { grid-template-columns: 1fr; } }
+  @media (max-width: 960px) { .tool-showcase { grid-template-columns: 1fr; padding: 24px; } }
   .tool-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
-  .tool-head img { width: 64px; height: 64px; border-radius: 14px; border: 1px solid #2a2a2a; }
+  .tool-head img { width: 64px; height: 64px; border-radius: 14px; border: 1px solid #2a2a2a; flex: none; }
   .plain-steps { list-style: none; padding: 0; margin: 18px 0; display: flex; flex-direction: column; gap: 10px; }
   .plain-steps li {
     background: #050505;
@@ -63,6 +91,26 @@
     overflow: hidden;
   }
   .video-box video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .vo-pill-bar {
+    padding: 10px 14px;
+    background: #070707;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    color: #b8b3aa;
+  }
+  .vo-play-btn {
+    background: rgba(243, 239, 231, 0.1);
+    border: 1px solid rgba(243, 239, 231, 0.25);
+    color: #f3efe7;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .vo-play-btn:hover { background: #f3efe7; color: #000; }
   .feedback-gate {
     background: #0b0b0b;
     border: 1px solid #2a2a2a;
@@ -85,16 +133,30 @@
     <nav aria-label="Primary" class="nav-links">
       <a class="billing" href="./">← Two-Door Cover</a>
       <a class="billing" href="cinema.html">01 · Cinema &amp; Series</a>
-      <a class="billing" href="tools.html" aria-current="page">02 · Chrome Extensions</a>
+      <a class="billing" href="tools.html" aria-current="page">02 · Chrome Extensions (6)</a>
       <a class="billing" href="#feedback">Suggest a Feature</a>
     </nav>
   </header>
 
   <main id="main" class="wrap">
     <section class="tools-hero">
-      <p class="billing" style="color:#4fe0ee; margin-bottom:10px;">CAMPBELL CONTENT STUDIO · CHROME WEB STORE EXTENSIONS</p>
-      <h1 class="display" style="font-size:clamp(2.4rem, 4.8vw, 4rem); line-height:1.04; margin:0 0 16px; color:#f3efe7;">Simple 1-Click Tools That Save Hours of Copy-Pasting.</h1>
-      <p style="color:#b8b3aa; font-size:1.15rem; max-width:760px; line-height:1.55;">No complicated setup, no cloud accounts, and no bloated $99/month subscriptions. Each tool runs 100% locally inside your Chrome browser and includes <b>15 free uses</b> so you can test it on your own workflow first.</p>
+      <p class="billing" style="color:#4fe0ee; margin-bottom:10px;">CAMPBELL CONTENT STUDIO · 6 CHROME WEB STORE EXTENSIONS · 12 LANGUAGES</p>
+      <h1 id="heroTitle" class="display" style="font-size:clamp(2.3rem, 4.6vw, 3.9rem); line-height:1.04; margin:0 0 16px; color:#f3efe7;">Simple 1-Click Tools That Save Hours of Copy-Pasting.</h1>
+      <p id="heroSub" style="color:#b8b3aa; font-size:1.15rem; max-width:780px; line-height:1.55;">No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>15 free uses</b> so you can test it on your own workflow first.</p>
+
+      <div class="lang-bar" aria-label="Language and Voiceover Selector">
+        <div>
+          <span class="billing" style="color:#f3efe7;">🌐 EXPLAINER VOICEOVER &amp; PAGE LANGUAGE:</span>
+          <span style="color:#b8b3aa; font-size:13.5px; margin-left:8px;">Switch language to hear Adam's voiceover &amp; descriptions in your language</span>
+        </div>
+        <div class="lang-pills">
+          <button type="button" class="lang-btn active" data-lang="en">🇬🇧 English</button>
+          <button type="button" class="lang-btn" data-lang="es">🇪🇸 Español</button>
+          <button type="button" class="lang-btn" data-lang="pt">🇧🇷 Português</button>
+          <button type="button" class="lang-btn" data-lang="fr">🇫🇷 Français</button>
+          <button type="button" class="lang-btn" data-lang="de">🇩🇪 Deutsch</button>
+        </div>
+      </div>
     </section>
 
     <!-- EXTENSION 01 -->
@@ -104,22 +166,28 @@
           <img src="assets/icons/ext01.png" alt="Smart Table to Excel Exporter Icon">
           <div>
             <p class="billing" style="color:#4fe0ee;">TOOL 01 · SPREADSHEETS &amp; OFFICE WORK</p>
-            <h2 class="display" style="font-size:2.1rem; margin:4px 0 0; color:#f3efe7;">Smart Table to Excel Exporter</h2>
+            <h2 class="display" data-i18n="ext01_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Smart Table to Excel Exporter</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.55;">Ever tried copying a table from a website into Excel, and all the columns turn into a broken mess? Click any list or table on your screen and download a clean Excel or Google Sheets file in one click.</p>
+        <p data-i18n="ext01_desc" style="color:#b8b3aa; line-height:1.6;">Tired of copying a table from a website into Excel and watching all the columns break? Click any table or list on your screen and download a clean Excel (<code>.csv</code>) or Google Sheets file in 1 second.</p>
         <ul class="plain-steps">
-          <li style="border-left:3px solid #4fe0ee;"><b>1. Click Any Table on Screen:</b> Works on modern dashboards, Shopify, Airtable, HubSpot, and bank portals.</li>
-          <li style="border-left:3px solid #4fe0ee;"><b>2. Automatic Cleanup:</b> Filter rows by keyword and strip currency symbols so numbers add up in Excel.</li>
-          <li style="border-left:3px solid #4fe0ee;"><b>3. 1-Click Export:</b> Save as Excel (.CSV / .TSV) or copy straight to your clipboard for Google Sheets.</li>
+          <li data-i18n="ext01_s1">✓ <b>1. Click Any Table:</b> Works on websites, dashboards, and multi-page lists.</li>
+          <li data-i18n="ext01_s2">✓ <b>2. Automatic Cleanup:</b> Keeps prices, dates, and columns neatly aligned.</li>
+          <li data-i18n="ext01_s3">✓ <b>3. Instant Excel File:</b> Opens straight in Microsoft Excel or Google Sheets.</li>
         </ul>
         <div class="price-bar">
-          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/jmcnpmpigonlbnpdefgahjmgjpdcooaj" target="_blank" rel="noopener"><span>Add to Chrome (15 Free Exports)</span><span>→</span></a>
-          <span class="billing" style="color:#f3efe7;">$4.99/MO · OR $29.99 LIFETIME BUYOUT</span>
+          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/jmcnpmpigonlbnpdefgahjmgjpdcooaj" target="_blank" rel="noopener"><span>Add to Chrome — Try 15 Free</span><span>→</span></a>
+          <span class="billing" style="color:#b8b3aa;">$4.99 USD/MO · OR $29.99 LIFETIME</span>
         </div>
       </div>
       <div class="video-box">
-        <video controls preload="none" poster="assets/video/poster_ext01.png" src="assets/video/Ext01_Smart_Grid_Promo_1080p.mp4"></video>
+        <video id="vid-ext01" controls preload="metadata" poster="assets/video/poster_ext01.png" data-ext="ext01">
+          <source src="assets/video/Ext01_Smart_Grid_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext01">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext01">🔊 Play Voiceover in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -127,25 +195,31 @@
     <article class="tool-showcase" id="ext02">
       <div>
         <div class="tool-head">
-          <img src="assets/icons/ext02.png" alt="Bulk Image & WebP Saver Icon">
+          <img src="assets/icons/ext02.png" alt="Bulk Image &amp; WebP to JPG Downloader Icon">
           <div>
-            <p class="billing" style="color:#f0a02c;">TOOL 02 · E-COMMERCE &amp; DESIGN</p>
-            <h2 class="display" style="font-size:2.1rem; margin:4px 0 0; color:#f3efe7;">Bulk Image &amp; WebP Saver</h2>
+            <p class="billing" style="color:#f0a02c;">TOOL 02 · ONLINE SELLERS &amp; DESIGNERS</p>
+            <h2 class="display" data-i18n="ext02_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Bulk Image &amp; WebP-to-JPG Downloader</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.55;">Stop right-clicking product photos one by one — and stop getting stuck with annoying WebP files that won't open in your editor. Grab every full-size photo on a page in one click.</p>
+        <p data-i18n="ext02_desc" style="color:#b8b3aa; line-height:1.6;">Ever try to save product photos from a website and end up with annoying <code>.webp</code> files that won't open? Grab every high-resolution photo on a webpage, automatically convert them to regular <b>JPG</b> or <b>PNG</b> files, and download them in one tidy <b>ZIP folder</b>.</p>
         <ul class="plain-steps">
-          <li style="border-left:3px solid #f0a02c;"><b>1. Finds Full-Size Photos Automatically:</b> Skips tiny icons and grabs the highest-resolution photos on the page.</li>
-          <li style="border-left:3px solid #f0a02c;"><b>2. Converts WebP to Normal JPG or PNG:</b> Ready to drop straight into Photoshop, Canva, CapCut, or Shopify.</li>
-          <li style="border-left:3px solid #f0a02c;"><b>3. One Organized .ZIP Download:</b> Automatically names files in order and bundles them into a single ZIP file.</li>
+          <li data-i18n="ext02_s1">✓ <b>1. Finds Full-Size Photos:</b> Skips tiny icons and grabs the crispest version.</li>
+          <li data-i18n="ext02_s2">✓ <b>2. Fixes .WebP Files:</b> Converts everything to standard JPG or PNG automatically.</li>
+          <li data-i18n="ext02_s3">✓ <b>3. 1-Click ZIP Download:</b> Saves all photos cleanly numbered in one folder.</li>
         </ul>
         <div class="price-bar">
-          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/hlphcppjepmjpcphjhajfkdejpfiomlp" target="_blank" rel="noopener"><span>Add to Chrome (15 Free Batches)</span><span>→</span></a>
-          <span class="billing" style="color:#f3efe7;">$4.99/MO · OR $29.99 LIFETIME BUYOUT</span>
+          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/hlphcppjepmjpcphjhajfkdejpfiomlp" target="_blank" rel="noopener"><span>Add to Chrome — Try 15 Free</span><span>→</span></a>
+          <span class="billing" style="color:#b8b3aa;">$4.99 USD/MO · OR $29.99 LIFETIME</span>
         </div>
       </div>
       <div class="video-box">
-        <video controls preload="none" poster="assets/video/poster_ext02.png" src="assets/video/Ext02_Bulk_Image_Promo_1080p.mp4"></video>
+        <video id="vid-ext02" controls preload="metadata" poster="assets/video/poster_ext02.png" data-ext="ext02">
+          <source src="assets/video/Ext02_Bulk_Image_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext02">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext02">🔊 Play Voiceover in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -153,50 +227,316 @@
     <article class="tool-showcase" id="ext03">
       <div>
         <div class="tool-head">
-          <img src="assets/icons/ext03.png" alt="Local Business Lead Finder Icon">
+          <img src="assets/icons/ext03.png" alt="Local Business Lead Extractor Icon">
           <div>
-            <p class="billing" style="color:#a6c1ee;">TOOL 03 · SALES &amp; LOCAL PROSPECTING</p>
-            <h2 class="display" style="font-size:2.1rem; margin:4px 0 0; color:#f3efe7;">Local Business Lead Finder</h2>
+            <p class="billing" style="color:#34d399;">TOOL 03 · AGENCIES, SALES &amp; LOCAL BUSINESS</p>
+            <h2 class="display" data-i18n="ext03_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Local Business Lead &amp; Contact Extractor</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.55;">Why pay $50 to $99 a month just to build a list of local businesses to call? Search any city and industry on a map or directory and export a clean spreadsheet in one click.</p>
+        <p data-i18n="ext03_desc" style="color:#b8b3aa; line-height:1.6;">Looking for local clients on Google Maps or online directories and spending hours copying business names and phone numbers one by one? Export every business on the page—including phone numbers, websites, emails, and star ratings—straight to Excel in 1 click.</p>
         <ul class="plain-steps">
-          <li style="border-left:3px solid #a6c1ee;"><b>1. Auto-Scroll &amp; Capture:</b> Scrolls through directory results and collects listings automatically.</li>
-          <li style="border-left:3px solid #a6c1ee;"><b>2. Complete Contact Columns:</b> Grabs Business Name, Phone Number, Website, Email, Social Links &amp; Star Rating.</li>
-          <li style="border-left:3px solid #a6c1ee;"><b>3. Ready-to-Call Spreadsheet:</b> Removes duplicates and downloads a clean Excel (.CSV) file for your CRM.</li>
+          <li data-i18n="ext03_s1">✓ <b>1. Search Any Map or Directory:</b> Look up plumbers, realtors, clinics, or shops in any city.</li>
+          <li data-i18n="ext03_s2">✓ <b>2. Grabs Contact Details:</b> Pulls business name, phone, website, and rating.</li>
+          <li data-i18n="ext03_s3">✓ <b>3. Ready-to-Call Lead List:</b> Exports a clean spreadsheet with duplicates removed.</li>
         </ul>
         <div class="price-bar">
-          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/cihbdjjoboigmpfakcgcehdoffkencnh" target="_blank" rel="noopener"><span>Add to Chrome (15 Free Exports)</span><span>→</span></a>
-          <span class="billing" style="color:#f3efe7;">$19.99/MO · OR $149/YR PRO PASS (SAVE 38%)</span>
+          <a class="cta-white billing" href="https://chromewebstore.google.com/detail/cihbdjjoboigmpfakcgcehdoffkencnh" target="_blank" rel="noopener"><span>Add to Chrome — Try 15 Free</span><span>→</span></a>
+          <span class="billing" style="color:#b8b3aa;">$19.99 USD/MO · OR $149/YR PRO PASS</span>
         </div>
       </div>
       <div class="video-box">
-        <video controls preload="none" poster="assets/video/poster_ext03.png" src="assets/video/Ext03_Local_Lead_Promo_1080p.mp4"></video>
+        <video id="vid-ext03" controls preload="metadata" poster="assets/video/poster_ext03.png" data-ext="ext03">
+          <source src="assets/video/Ext03_Local_Lead_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext03">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext03">🔊 Play Voiceover in Selected Language</button>
+        </div>
       </div>
     </article>
 
-    <!-- PRIVATE FEATURE SUGGESTION & WEBSITE REPORT GATE -->
+    <!-- EXTENSION 04 -->
+    <article class="tool-showcase" id="ext04">
+      <div>
+        <div class="tool-head">
+          <img src="assets/icons/ext04.png" alt="WhatsApp Web Customer Follow-Up &amp; Reminder Sender Icon">
+          <div>
+            <p class="billing" style="color:#10b981;">TOOL 04 · CUSTOMER REMINDERS &amp; WHATSAPP WEB</p>
+            <h2 class="display" data-i18n="ext04_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">WhatsApp Web Follow-Up &amp; Reminder Sender</h2>
+          </div>
+        </div>
+        <p data-i18n="ext04_desc" style="color:#b8b3aa; line-height:1.6;">Running a local clinic, salon, or service business and tired of saving every customer's number to your phone just to send a WhatsApp appointment reminder? Paste customer names and phone numbers from Excel, pick a reminder template, and launch personalized WhatsApp Web chats in 1 click.</p>
+        <ul class="plain-steps">
+          <li data-i18n="ext04_s1">✓ <b>1. Paste from Excel:</b> Drop in customer names, phone numbers, and appointment times.</li>
+          <li data-i18n="ext04_s2">✓ <b>2. Personalized Templates:</b> Automatically fills in each customer's name and note.</li>
+          <li data-i18n="ext04_s3">✓ <b>3. Zero Contacts Clutter:</b> Opens the chat directly in WhatsApp Web without saving numbers.</li>
+        </ul>
+        <div class="price-bar">
+          <a class="cta-white billing" href="#feedback"><span>Try 15 Free Sends (Chrome Store Queue)</span><span>→</span></a>
+          <span class="billing" style="color:#10b981;">ONLY $3.99 USD/MO · OR $24.99 LIFETIME</span>
+        </div>
+      </div>
+      <div class="video-box">
+        <video id="vid-ext04" controls preload="metadata" poster="assets/video/poster_ext04.png" data-ext="ext04">
+          <source src="assets/video/Ext04_WhatsApp_Sender_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext04">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext04">🔊 Play Voiceover in Selected Language</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- EXTENSION 05 -->
+    <article class="tool-showcase" id="ext05">
+      <div>
+        <div class="tool-head">
+          <img src="assets/icons/ext05.png" alt="Etsy, Amazon &amp; eBay Price &amp; Tag Exporter Icon">
+          <div>
+            <p class="billing" style="color:#38bdf8;">TOOL 05 · ETSY, AMAZON &amp; EBAY SELLERS</p>
+            <h2 class="display" data-i18n="ext05_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Etsy, Amazon &amp; eBay Price, Review &amp; Tag Exporter</h2>
+          </div>
+        </div>
+        <p data-i18n="ext05_desc" style="color:#b8b3aa; line-height:1.6;">Selling online and want to see what top-selling shops charge and which keywords they put in their titles—without paying $30/month for bloated seller software? Click 1 button on any search page to export every product's price, rating, review count, and top keywords to Excel.</p>
+        <ul class="plain-steps">
+          <li data-i18n="ext05_s1">✓ <b>1. Open Any Search Page:</b> Works on Etsy, Amazon, eBay, and Shopify stores.</li>
+          <li data-i18n="ext05_s2">✓ <b>2. Instant Market Math:</b> Calculates average price, review counts, and top 20 keywords.</li>
+          <li data-i18n="ext05_s3">✓ <b>3. 1-Click Excel Export:</b> Downloads all listings and tags into a clean spreadsheet.</li>
+        </ul>
+        <div class="price-bar">
+          <a class="cta-white billing" href="#feedback"><span>Try 15 Free Exports (Chrome Store Queue)</span><span>→</span></a>
+          <span class="billing" style="color:#38bdf8;">ONLY $3.99 USD/MO · OR $24.99 LIFETIME</span>
+        </div>
+      </div>
+      <div class="video-box">
+        <video id="vid-ext05" controls preload="metadata" poster="assets/video/poster_ext05.png" data-ext="ext05">
+          <source src="assets/video/Ext05_Price_Tag_Exporter_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext05">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext05">🔊 Play Voiceover in Selected Language</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- EXTENSION 06 -->
+    <article class="tool-showcase" id="ext06">
+      <div>
+        <div class="tool-head">
+          <img src="assets/icons/ext06.png" alt="Receipt, Order &amp; Invoice Extractor to Excel Icon">
+          <div>
+            <p class="billing" style="color:#e6b94c;">TOOL 06 · BOOKKEEPING, TAXES &amp; EXPENSE TRACKING</p>
+            <h2 class="display" data-i18n="ext06_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Receipt, Order &amp; Invoice Extractor to Excel</h2>
+          </div>
+        </div>
+        <p data-i18n="ext06_desc" style="color:#b8b3aa; line-height:1.6;">Dreading tax season because your Amazon orders, eBay purchases, and online receipts are scattered across dozens of pages? Scan your order page in 1 click and download an accountant-ready Excel expense sheet with every date, vendor, order number, and total paid.</p>
+        <ul class="plain-steps">
+          <li data-i18n="ext06_s1">✓ <b>1. Open Your Order History:</b> Works on Amazon Orders, eBay, and online receipt pages.</li>
+          <li data-i18n="ext06_s2">✓ <b>2. Captures Every Detail:</b> Pulls order date, store name, invoice ID, tax, and total.</li>
+          <li data-i18n="ext06_s3">✓ <b>3. Ready for Your Accountant:</b> Downloads a clean tax spreadsheet in 1 click.</li>
+        </ul>
+        <div class="price-bar">
+          <a class="cta-white billing" href="#feedback"><span>Try 15 Free Exports (Chrome Store Queue)</span><span>→</span></a>
+          <span class="billing" style="color:#e6b94c;">ONLY $3.99 USD/MO · OR $24.99 LIFETIME</span>
+        </div>
+      </div>
+      <div class="video-box">
+        <video id="vid-ext06" controls preload="metadata" poster="assets/video/poster_ext06.png" data-ext="ext06">
+          <source src="assets/video/Ext06_Receipt_Extractor_Promo_1080p.mp4" type="video/mp4">
+        </video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext06">🎙️ Voiceover: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext06">🔊 Play Voiceover in Selected Language</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- SUGGEST A FEATURE / UPDATE SECTION -->
     <section class="feedback-gate" id="feedback">
       <div style="max-width:640px;">
-        <p class="billing" style="color:#34d399; margin-bottom:8px;">💡 DIRECT STUDIO FEEDBACK · UPDATES &amp; SITE SUPPORT</p>
-        <h2 class="display" style="font-size:2rem; margin:0 0 10px; color:#f3efe7;">Have a Feature Idea or a Website You Want Supported?</h2>
-        <p style="color:#b8b3aa; line-height:1.55; margin:0;">If a tricky website layout ever gives you trouble, or if there's a feature you want added in the next update, send me a direct note with the link. I read every email personally and ship compatibility updates fast.</p>
+        <p class="billing" style="color:#f0a02c; margin-bottom:8px;">DIRECT FOUNDER SUPPORT &amp; FEATURE REQUESTS</p>
+        <h2 class="display" style="font-size:2rem; color:#f3efe7; margin-bottom:10px;">💡 Have a Feature Idea or a Website You Want Supported?</h2>
+        <p style="color:#b8b3aa; line-height:1.55;">We update our extensions every week based on real user requests. If a specific website layout, directory, or table format isn't exporting the way you want—or if you have an idea for a new feature—send us a quick note and we'll build it into the next update.</p>
       </div>
       <div>
-        <a class="cta-white billing" href="mailto:adam@campbellcontentstudio.ca?subject=Chrome%20Extension%20Feature%20Suggestion%20%2F%20Website%20Request">
-          <span>✉️ Send a Feature Idea or Site Report</span>
-          <span>→</span>
-        </a>
+        <a class="cta-white billing" href="mailto:adam@campbellcontentstudio.ca?subject=Chrome%20Extension%20Feature%20Suggestion"><span>Send Feature Suggestion</span><span>✉</span></a>
       </div>
     </section>
   </main>
 
-  <footer class="foot wrap" id="site-footer">
-    <div class="foot-base">
-      <p class="billing">© 2026 Campbell Content Studio · Ontario, Canada</p>
-      <p class="foot-note"><a href="./">Home</a> · <a href="cinema.html">Cinema</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
+  <footer id="site-footer" class="wrap" style="padding:32px 0 48px; border-top:1px solid #2a2a2a; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+    <p class="billing" style="color:#9a948b;">© 2026 CAMPBELL CONTENT STUDIO · ONTARIO, CANADA · <a href="mailto:adam@campbellcontentstudio.ca" style="color:#f3efe7;">adam@campbellcontentstudio.ca</a></p>
+    <div style="display:flex; gap:20px;">
+      <a class="billing" href="./">Two-Door Cover</a>
+      <a class="billing" href="cinema.html">Cinema &amp; Series</a>
+      <a class="billing" href="privacy.html">Privacy Policy</a>
+      <a class="billing" href="terms.html">Terms of Service</a>
     </div>
   </footer>
 </div>
+
+<script>
+  const I18N = {
+    en: {
+      label: "English (Original)",
+      heroTitle: "Simple 1-Click Tools That Save Hours of Copy-Pasting.",
+      heroSub: "No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>15 free uses</b> so you can test it on your own workflow first.",
+      ext01_title: "Smart Table to Excel Exporter",
+      ext01_desc: "Tired of copying a table from a website into Excel and watching all the columns break? Click any table or list on your screen and download a clean Excel (.csv) or Google Sheets file in 1 second.",
+      ext02_title: "Bulk Image & WebP-to-JPG Downloader",
+      ext02_desc: "Ever try to save product photos from a website and end up with annoying .webp files that won't open? Grab every high-resolution photo on a webpage, automatically convert them to regular JPG or PNG files, and download them in one tidy ZIP folder.",
+      ext03_title: "Local Business Lead & Contact Extractor",
+      ext03_desc: "Looking for local clients on Google Maps or online directories and spending hours copying business names and phone numbers one by one? Export every business on the page—including phone numbers, websites, emails, and star ratings—straight to Excel in 1 click.",
+      ext04_title: "WhatsApp Web Follow-Up & Reminder Sender",
+      ext04_desc: "Running a local business and tired of saving every customer's number just to send a WhatsApp appointment reminder? Paste customer names and phone numbers from Excel and launch personalized WhatsApp Web chats in 1 click for just $3.99/mo.",
+      ext05_title: "Etsy, Amazon & eBay Price, Review & Tag Exporter",
+      ext05_desc: "Want to see what top-selling shops charge and which keywords they use without paying $30/month? Click 1 button on any search page to export every product's price, rating, review count, and top keywords to Excel for just $3.99/mo.",
+      ext06_title: "Receipt, Order & Invoice Extractor to Excel",
+      ext06_desc: "Dreading tax season because your Amazon orders and online receipts are scattered across dozens of pages? Scan your order history in 1 click and download an accountant-ready Excel expense sheet with every date, vendor, and total paid."
+    },
+    es: {
+      label: "Español (Voz de Adam)",
+      heroTitle: "Herramientas de 1 Clic que Ahorran Horas de Trabajo.",
+      heroSub: "Sin configuraciones complicadas ni suscripciones caras de $30 al mes. Cada extensión funciona 100% localmente en tu navegador Chrome e incluye <b>15 usos gratis</b>.",
+      ext01_title: "Exportador de Tablas Web a Excel Pro",
+      ext01_desc: "¿Cansado de copiar tablas de sitios web a Excel y que todo el formato se rompa? Haz clic en cualquier tabla en pantalla y descárgala como un archivo limpio de Excel o CSV en 1 segundo.",
+      ext02_title: "Descargador Masivo de Imágenes y WebP a JPG/PNG",
+      ext02_desc: "Encuentra todas las fotos en alta resolución de cualquier página, convierte archivos .webp a JPG o PNG automáticamente y descárgalas en una carpeta ZIP ordenada con 1 clic.",
+      ext03_title: "Extractor de Empresas y Contactos Locales a Excel",
+      ext03_desc: "¿Buscas clientes locales en Google Maps? Exporta nombres de negocios, teléfonos, sitios web, correos y reseñas directamente a una hoja de Excel en 1 solo clic.",
+      ext04_title: "Enviador de Recordatorios y Seguimiento en WhatsApp Web",
+      ext04_desc: "Pega los nombres y teléfonos de tus clientes desde Excel, elige una plantilla de cita o seguimiento y abre chats personalizados en WhatsApp Web en 1 clic sin guardar números. Solo $3.99/mes.",
+      ext05_title: "Exportador de Precios, Reseñas y Etiquetas (Etsy, Amazon, eBay)",
+      ext05_desc: "Mira qué precios y palabras clave usan las tiendas más vendidas sin pagar $30 al mes. Exporta precios, calificaciones, reseñas y etiquetas a Excel en 1 clic por solo $3.99/mes.",
+      ext06_title: "Extractor de Pedidos, Recibos y Facturas a Excel para Impuestos",
+      ext06_desc: "Convierte tu historial de pedidos de Amazon, eBay y recibos web en una hoja de gastos de Excel lista para tu contador (Fecha, Tienda, Número de Pedido y Total) en 1 clic."
+    },
+    pt: {
+      label: "Português (Voz do Adam)",
+      heroTitle: "Ferramentas de 1 Clique que Economizam Horas de Trabalho.",
+      heroSub: "Sem configurações complicadas e sem mensalidades caras de US$ 30. Cada ferramenta roda 100% localmente no seu navegador Chrome e inclui <b>15 usos grátis</b>.",
+      ext01_title: "Exportador de Tabelas da Web para Excel Pro",
+      ext01_desc: "Cansado de copiar tabelas de sites para o Excel e ver a formatação quebrar? Clique em qualquer tabela na tela e baixe uma planilha limpa de Excel ou CSV em 1 segundo.",
+      ext02_title: "Baixador de Imagens em Massa e Conversor WebP para JPG",
+      ext02_desc: "Encontre todas as fotos em alta resolução da página, converta arquivos .webp para JPG ou PNG automaticamente e baixe tudo em um arquivo ZIP organizado com 1 clique.",
+      ext03_title: "Extrator de Leads e Empresas Locais para Excel",
+      ext03_desc: "Procurando clientes locais no Google Maps? Exporte nomes de empresas, telefones, sites, e-mails e avaliações direto para o Excel em apenas 1 clique.",
+      ext04_title: "Disparador de Lembretes e Follow-Up para WhatsApp Web",
+      ext04_desc: "Cole nomes e telefones de clientes do Excel, escolha um modelo de lembrete e abra conversas personalizadas no WhatsApp Web em 1 clique sem salvar contatos. Apenas US$ 3,99/mês.",
+      ext05_title: "Exportador de Preços, Avaliações e Tags (Amazon, Etsy, eBay)",
+      ext05_desc: "Descubra quais preços e palavras-chave os líderes usam sem pagar US$ 30/mês. Exporte preços, avaliações e tags de qualquer busca direto para o Excel por apenas US$ 3,99/mês.",
+      ext06_title: "Extrator de Recibos, Pedidos e Faturas para Excel (Impostos)",
+      ext06_desc: "Transforme seus pedidos da Amazon e recibos online em uma planilha de despesas do Excel pronta para a contabilidade (Data, Loja, Pedido e Total) em 1 clique."
+    },
+    fr: {
+      label: "Français (Voix d'Adam)",
+      heroTitle: "Des Outils en 1 Clic Qui Économisent des Heures de Copier-Coller.",
+      heroSub: "Aucune configuration complexe ni abonnement à 30 $/mois. Chaque outil fonctionne 100 % localement dans Chrome et inclut <b>15 utilisations gratuites</b>.",
+      ext01_title: "Exportateur de Tableaux Web vers Excel Pro",
+      ext01_desc: "Fatigué de copier des tableaux web dans Excel et de voir les colonnes se casser ? Cliquez sur n'importe quel tableau et téléchargez un fichier Excel (.csv) propre en 1 seconde.",
+      ext02_title: "Téléchargeur d'Images en Masse & Convertisseur WebP en JPG",
+      ext02_desc: "Récupérez toutes les photos HD d'une page, convertissez automatiquement les fichiers .webp en JPG ou PNG et téléchargez-les dans un dossier ZIP en 1 clic.",
+      ext03_title: "Extracteur de Contacts & Entreprises Locales vers Excel",
+      ext03_desc: "Exportez instantanément les noms d'entreprises, numéros de téléphone, sites web, e-mails et avis depuis Google Maps directement vers Excel en 1 clic.",
+      ext04_title: "Envoi de Rappels Clients & Suivi sur WhatsApp Web",
+      ext04_desc: "Collez vos noms et numéros clients depuis Excel et lancez des rappels de rendez-vous personnalisés sur WhatsApp Web en 1 clic sans enregistrer les contacts. Seulement 3,99 $/mois.",
+      ext05_title: "Exportateur de Prix, Avis & Mots-Clés (Etsy, Amazon, eBay)",
+      ext05_desc: "Découvrez les prix et mots-clés des meilleures boutiques sans payer 30 $/mois. Exportez prix, notes, avis et tags vers Excel en 1 clic pour seulement 3,99 $/mois.",
+      ext06_title: "Extracteur de Reçus, Commandes & Factures vers Excel",
+      ext06_desc: "Transformez vos commandes Amazon et reçus en ligne en un tableau de dépenses Excel propre pour votre comptable (Date, Vendeur, N° de Commande, Total) en 1 clic."
+    },
+    de: {
+      label: "Deutsch (Adams Stimme)",
+      heroTitle: "1-Klick-Tools, die Stunden an Copy-Paste sparen.",
+      heroSub: "Keine komplizierte Einrichtung, keine teuren 30-$/Monat-Abos. Jedes Tool läuft zu 100 % lokal in Ihrem Chrome-Browser und enthält <b>15 kostenlose Nutzungen</b>.",
+      ext01_title: "Smart Tabellen & Listen nach Excel Exporter Pro",
+      ext01_desc: "Klicken Sie auf eine beliebige Tabelle auf Ihrem Bildschirm und laden Sie sie in 1 Sekunde als saubere Excel- (.csv) oder Google-Sheets-Datei herunter.",
+      ext02_title: "Massen-Bilddownloader & WebP-zu-JPG/PNG-Konverter",
+      ext02_desc: "Finden Sie alle hochauflösenden Produktfotos einer Seite, wandeln Sie .webp automatisch in JPG oder PNG um und laden Sie alles als ZIP-Archiv herunter.",
+      ext03_title: "Lokale Unternehmens-Kontakte & Leads nach Excel Exportieren",
+      ext03_desc: "Exportieren Sie Firmennamen, Telefonnummern, Websites, E-Mails und Bewertungen aus Google Maps mit nur 1 Klick direkt in eine saubere Excel-Liste.",
+      ext04_title: "WhatsApp Web Termin-Erinnerung & Kunden-Follow-Up Sender",
+      ext04_desc: "Fügen Sie Kundennamen und Telefonnummern aus Excel ein und starten Sie personalisierte WhatsApp-Web-Erinnerungen mit 1 Klick ohne Kontakte zu speichern. Nur 3,99 $/Monat.",
+      ext05_title: "Etsy, Amazon & eBay Preis-, Bewertungs- & Keyword-Exporter",
+      ext05_desc: "Sehen Sie sofort, welche Preise und Keywords erfolgreiche Shops nutzen—ohne ein 30-$/Monat-Abo. Exportieren Sie alle Daten mit 1 Klick nach Excel für nur 3,99 $/Monat.",
+      ext06_title: "Rechnungs-, Bestell- & Beleg-Exporter nach Excel für Steuern",
+      ext06_desc: "Wandeln Sie Ihre Amazon-Bestellungen und Online-Belege mit 1 Klick in eine fertige Excel-Ausgabentabelle (Datum, Händler, Bestellnummer, Summe) für Ihre Steuer um."
+    }
+  };
+
+  let currentLang = "en";
+  let activeAudio = null;
+
+  function setLanguage(lang) {
+    if (!I18N[lang]) lang = "en";
+    currentLang = lang;
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+    const dict = I18N[lang];
+    document.getElementById("heroTitle").innerHTML = dict.heroTitle;
+    document.getElementById("heroSub").innerHTML = dict.heroSub;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const k = el.getAttribute("data-i18n");
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+    for (let i = 1; i <= 6; i++) {
+      const lbl = document.getElementById(`vo-lbl-ext0${i}`);
+      if (lbl) lbl.textContent = `🎙️ Voiceover: ${dict.label}`;
+    }
+  }
+
+  function playLocalizedVO(extId, syncVideo) {
+    if (activeAudio) {
+      activeAudio.pause();
+      activeAudio = null;
+    }
+    const audioUrl = `assets/audio/${extId}_vo_${currentLang}.mp3`;
+    const aud = new Audio(audioUrl);
+    activeAudio = aud;
+    if (syncVideo) {
+      syncVideo.muted = true;
+      aud.currentTime = 0;
+    }
+    aud.play().catch(() => {});
+  }
+
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => setLanguage(btn.getAttribute("data-lang")));
+  });
+
+  document.querySelectorAll("[data-play-vo]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const extId = btn.getAttribute("data-play-vo");
+      const vid = document.getElementById(`vid-${extId}`);
+      if (vid) {
+        vid.currentTime = 0;
+        vid.play().catch(() => {});
+      }
+      playLocalizedVO(extId, vid);
+    });
+  });
+
+  document.querySelectorAll("video[data-ext]").forEach(vid => {
+    vid.addEventListener("play", () => {
+      const extId = vid.getAttribute("data-ext");
+      if (currentLang === "en") {
+        vid.muted = false;
+        if (activeAudio) { activeAudio.pause(); activeAudio = null; }
+      } else {
+        playLocalizedVO(extId, vid);
+      }
+    });
+    vid.addEventListener("pause", () => {
+      if (activeAudio) activeAudio.pause();
+    });
+  });
+
+  // Auto-detect visitor browser language (es, pt, fr, de)
+  const navLang = (navigator.language || "en").slice(0, 2).toLowerCase();
+  if (["es", "pt", "fr", "de"].includes(navLang)) {
+    setLanguage(navLang);
+  }
+</script>
 </body>
 </html>
