@@ -142,7 +142,7 @@
     <section class="tools-hero">
       <p class="billing" style="color:#4fe0ee; margin-bottom:10px;">CAMPBELL CONTENT STUDIO · 10 CHROME WEB STORE EXTENSIONS · 32 GLOBAL LANGUAGES</p>
       <h1 id="heroTitle" class="display" style="font-size:clamp(2.3rem, 4.6vw, 3.9rem); line-height:1.04; margin:0 0 16px; color:#f3efe7;">Simple 1-Click Tools That Save Hours of Copy-Pasting.</h1>
-      <p id="heroSub" style="color:#b8b3aa; font-size:1.15rem; max-width:780px; line-height:1.55;">No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>30 free full-feature uses</b> so you can test it for a full month on your own workflow first.</p>
+      <p id="heroSub" style="color:#b8b3aa; font-size:1.15rem; max-width:780px; line-height:1.55;">No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>20 free full-feature uses</b> so you can test it for a full month on your own workflow first.</p>
 
       <div class="lang-bar" aria-label="Language and Voiceover Selector">
         <div>
@@ -155,6 +155,8 @@
           <button type="button" class="lang-btn" data-lang="pt">🇧🇷 Português</button>
           <button type="button" class="lang-btn" data-lang="fr">🇫🇷 Français</button>
           <button type="button" class="lang-btn" data-lang="de">🇩🇪 Deutsch</button>
+          <button type="button" class="lang-btn" data-lang="id">🇮🇩 Bahasa Indonesia</button>
+          <button type="button" class="lang-btn" data-lang="ja">🇯🇵 日本語</button>
         </div>
       </div>
 
@@ -163,7 +165,7 @@
           <p class="billing" id="fairPromiseHeading" style="color:#34d399; margin:0 0 6px;">🤝 OUR FAIR-PRICING PROMISE · MONTHLY OR DISCOUNTED ANNUAL LOCK-IN</p>
           <p style="color:#e5e0d8; font-size:14.5px; line-height:1.55; margin:0;">We believe small business owners, freelancers, and online sellers should have access to the exact same Pro features as $30–$50 USD/month corporate software—for a fair monthly price, or an even bigger discount if you lock in for the year.<span id="regionalPppNote" style="display:none;"> 🌎 <b>Regional Purchasing Power Discount (Brazil, Mexico, India &amp; Latin America):</b> Enter promo code <b style="color:#34d399;">FAIR50</b> at checkout for <b>50% off</b>!</span> If our tools save you time and money, we truly appreciate an <b>honest review on the Chrome Web Store</b>.</p>
         </div>
-        <span class="billing" id="fairPromiseBadge" style="background:#050505; border:1px solid rgba(16, 185, 129, 0.45); color:#34d399; padding:10px 14px;">SAVE UP TO 37% ON ANNUAL · 30 FREE USES</span>
+        <span class="billing" id="fairPromiseBadge" style="background:#050505; border:1px solid rgba(16, 185, 129, 0.45); color:#34d399; padding:10px 14px;">SAVE UP TO 37% ON ANNUAL · 20 FREE USES</span>
       </div>
     </section>
 
@@ -354,10 +356,10 @@
           <img src="assets/icons/ext07.png" alt="Clean Print &amp; Save Webpage to PDF Studio Icon">
           <div>
             <p class="billing" style="color:#4fe0ee;">TOOL 07 · OFFICE, LEGAL &amp; RECEIPT PRINTING (VS. $12 USD/MO PDF TOOLS)</p>
-            <h2 class="display" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Clean Print &amp; Save Webpage to PDF Studio Pro</h2>
+            <h2 class="display" data-i18n="ext07_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Clean Print &amp; Save Webpage to PDF Studio Pro</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.6;">Tired of printing an online receipt, article, or contract and getting 8 wasted pages of navigation bars, ads, and blank trailing sheets? Click any clutter block to erase it, shrink to fit on 1 page, enable Ink-Saver mode, and save a spotless PDF in 1 click.</p>
+        <p data-i18n="ext07_desc" style="color:#b8b3aa; line-height:1.6;">Tired of printing an online receipt, article, or contract and getting 8 wasted pages of navigation bars, ads, and blank trailing sheets? Click any clutter block to erase it, shrink to fit on 1 page, enable Ink-Saver mode, and save a spotless PDF in 1 click.</p>
         <ul class="plain-steps">
           <li>✓ <b>1. Interactive Click-to-Delete Eraser:</b> Hover and click any annoying banner, sidebar, or box to remove it before printing.</li>
           <li>✓ <b>2. 1-Page Shrink-to-Fit &amp; Ink Saver:</b> Scale pages to 85% or 72% and strip dark backgrounds to save up to 70% on printer ink.</li>
@@ -368,10 +370,12 @@
           <span class="billing" style="color:#4fe0ee;">$3.99 USD/MO OR $29.99 USD/YR (SAVE $18)</span>
         </div>
       </div>
-      <div class="video-box" style="padding:28px; background:#070a10; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:260px;">
-        <img src="assets/icons/ext07.png" alt="" style="width:96px; height:96px; border-radius:20px; margin-bottom:14px; border:1px solid #2a2a2a;">
-        <p class="billing" style="color:#4fe0ee; margin:0 0 6px;">MANIFEST V3 · 32 GLOBAL LANGUAGES · 100% LOCAL</p>
-        <p style="color:#b8b3aa; font-size:14px; max-width:360px; margin:0;">Zero watermarks, zero cloud uploads—clean and print any webpage or receipt directly inside Chrome.</p>
+      <div class="video-box">
+        <video id="vid-ext07" controls preload="metadata" poster="assets/video/poster_ext07.png" data-ext="ext07" src="assets/video/Ext07_Clean_Print_Promo_1080p.mp4"></video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext07">🎙️ Video Language: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext07">🔊 Play Video in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -382,10 +386,10 @@
           <img src="assets/icons/ext08.png" alt="Auto-Refresh &amp; Page Change Alert Monitor Icon">
           <div>
             <p class="billing" style="color:#10b981;">TOOL 08 · APPOINTMENTS, LOAD BOARDS &amp; RESTOCK ALERTS</p>
-            <h2 class="display" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Auto-Refresh &amp; Page Change Alert Monitor Pro</h2>
+            <h2 class="display" data-i18n="ext08_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Auto-Refresh &amp; Page Change Alert Monitor Pro</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.6;">Did your old auto-refresh extension stop working when Chrome killed Manifest V2? Built on native MV3 background alarms that never fall asleep, this monitor refreshes any tab on your schedule and rings an audio chime + desktop notification the second a slot, price, or keyword changes.</p>
+        <p data-i18n="ext08_desc" style="color:#b8b3aa; line-height:1.6;">Did your old auto-refresh extension stop working when Chrome killed Manifest V2? Built on native MV3 background alarms that never fall asleep, this monitor refreshes any tab on your schedule and rings an audio chime + desktop notification the second a slot, price, or keyword changes.</p>
         <ul class="plain-steps">
           <li>✓ <b>1. Never-Sleep MV3 Background Timer:</b> Keeps refreshing even when Chrome is minimized or you're working in another tab.</li>
           <li>✓ <b>2. Keyword Appear / Disappear Watcher:</b> Alert the instant <i>"Available"</i> appears or <i>"Sold Out / No Appointments"</i> disappears.</li>
@@ -396,10 +400,12 @@
           <span class="billing" style="color:#10b981;">$3.99 USD/MO OR $29.99 USD/YR (SAVE $18)</span>
         </div>
       </div>
-      <div class="video-box" style="padding:28px; background:#070a10; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:260px;">
-        <img src="assets/icons/ext08.png" alt="" style="width:96px; height:96px; border-radius:20px; margin-bottom:14px; border:1px solid #2a2a2a;">
-        <p class="billing" style="color:#10b981; margin:0 0 6px;">NATIVE CHROME.ALARMS ENGINE · 32 LANGUAGES</p>
-        <p style="color:#b8b3aa; font-size:14px; max-width:360px; margin:0;">Built for visa/embassy appointments, freight load boards, ticket drops, and inventory restocks.</p>
+      <div class="video-box">
+        <video id="vid-ext08" controls preload="metadata" poster="assets/video/poster_ext08.png" data-ext="ext08" src="assets/video/Ext08_Auto_Refresh_Promo_1080p.mp4"></video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext08">🎙️ Video Language: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext08">🔊 Play Video in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -410,10 +416,10 @@
           <img src="assets/icons/ext09.png" alt="Customer Support Snippet &amp; Text Expander Icon">
           <div>
             <p class="billing" style="color:#a855f7;">TOOL 09 · CUSTOMER SUPPORT, EMAIL &amp; SELLER REPLIES (VS. $15–$29 USD/MO TOOLS)</p>
-            <h2 class="display" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Support Snippet, Canned Reply &amp; Text Expander Pro</h2>
+            <h2 class="display" data-i18n="ext09_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Support Snippet, Canned Reply &amp; Text Expander Pro</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.6;">Stop typing the same 20 customer replies, shipping updates, and follow-up emails every day. Type a short trigger like <code>/shipping</code>, <code>/thanks</code>, or <code>/followup</code> inside Gmail, Etsy, WhatsApp Web, LinkedIn, or any website to expand your full template automatically.</p>
+        <p data-i18n="ext09_desc" style="color:#b8b3aa; line-height:1.6;">Stop typing the same 20 customer replies, shipping updates, and follow-up emails every day. Type a short trigger like <code>/shipping</code>, <code>/thanks</code>, or <code>/followup</code> inside Gmail, Etsy, WhatsApp Web, LinkedIn, or any website to expand your full template automatically.</p>
         <ul class="plain-steps">
           <li>✓ <b>1. Instant Shortcut Expansion Everywhere:</b> Works in Gmail, Outlook, Etsy/eBay messages, WhatsApp Web, and CRMs.</li>
           <li>✓ <b>2. Live <code>{date}</code>, <code>{time}</code> &amp; <code>{day}</code> Variables:</b> Automatically inserts today's date and time into your reply.</li>
@@ -424,10 +430,12 @@
           <span class="billing" style="color:#a855f7;">$3.99 USD/MO OR $29.99 USD/YR (SAVE $18)</span>
         </div>
       </div>
-      <div class="video-box" style="padding:28px; background:#070a10; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:260px;">
-        <img src="assets/icons/ext09.png" alt="" style="width:96px; height:96px; border-radius:20px; margin-bottom:14px; border:1px solid #2a2a2a;">
-        <p class="billing" style="color:#a855f7; margin:0 0 6px;">ZERO CLOUD LOGGING · 32 GLOBAL LANGUAGES</p>
-        <p style="color:#b8b3aa; font-size:14px; max-width:360px; margin:0;">Replaces $15–$29/mo cloud text expanders with fast, 100% private local browser shortcuts.</p>
+      <div class="video-box">
+        <video id="vid-ext09" controls preload="metadata" poster="assets/video/poster_ext09.png" data-ext="ext09" src="assets/video/Ext09_Text_Expander_Promo_1080p.mp4"></video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext09">🎙️ Video Language: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext09">🔊 Play Video in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -438,10 +446,10 @@
           <img src="assets/icons/ext10.png" alt="Social Comment, Review &amp; Giveaway Winner Exporter Icon">
           <div>
             <p class="billing" style="color:#e6b94c;">TOOL 10 · GIVEAWAYS, CREATORS &amp; PRODUCT REVIEW RESEARCH (VS. $39 USD/MO TOOLS)</p>
-            <h2 class="display" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Comment, Review &amp; Giveaway Winner Exporter to Excel</h2>
+            <h2 class="display" data-i18n="ext10_title" style="font-size:2rem; color:#f3efe7; margin-top:4px;">Comment, Review &amp; Giveaway Winner Exporter to Excel</h2>
           </div>
         </div>
-        <p style="color:#b8b3aa; line-height:1.6;">Running a social giveaway or analyzing product reviews—and tired of websites demanding $39/month when your post has over 100 comments? Auto-expand comments right inside your browser, filter by hashtag, pick a verified random winner, and export everything to Excel in 1 click.</p>
+        <p data-i18n="ext10_desc" style="color:#b8b3aa; line-height:1.6;">Running a social giveaway or analyzing product reviews—and tired of websites demanding $39/month when your post has over 100 comments? Auto-expand comments right inside your browser, filter by hashtag, pick a verified random winner, and export everything to Excel in 1 click.</p>
         <ul class="plain-steps">
           <li>✓ <b>1. 1-Click Auto-Load More Comments:</b> Scrolls and clicks <i>"View more comments"</i> automatically to capture hundreds of entries.</li>
           <li>✓ <b>2. Fair Deduplicated Giveaway Winner Picker:</b> Ensures 1 entry per unique user, filters by hashtag, and picks a random winner live.</li>
@@ -452,10 +460,12 @@
           <span class="billing" style="color:#e6b94c;">$4.99 USD/MO OR $39.99 USD/YR (SAVE $20)</span>
         </div>
       </div>
-      <div class="video-box" style="padding:28px; background:#070a10; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:260px;">
-        <img src="assets/icons/ext10.png" alt="" style="width:96px; height:96px; border-radius:20px; margin-bottom:14px; border:1px solid #2a2a2a;">
-        <p class="billing" style="color:#e6b94c; margin:0 0 6px;">VERIFIED GIVEAWAY PICKER · EXCEL CSV EXPORT</p>
-        <p style="color:#b8b3aa; font-size:14px; max-width:360px; margin:0;">Export comments and product reviews or run unlimited contests without $39/mo paywalls.</p>
+      <div class="video-box">
+        <video id="vid-ext10" controls preload="metadata" poster="assets/video/poster_ext10.png" data-ext="ext10" src="assets/video/Ext10_Comment_Giveaway_Promo_1080p.mp4"></video>
+        <div class="vo-pill-bar">
+          <span id="vo-lbl-ext10">🎙️ Video Language: English (Original)</span>
+          <button type="button" class="vo-play-btn" data-play-vo="ext10">🔊 Play Video in Selected Language</button>
+        </div>
       </div>
     </article>
 
@@ -488,87 +498,177 @@
     en: {
       label: "English (Original)",
       heroTitle: "Simple 1-Click Tools That Save Hours of Copy-Pasting.",
-      heroSub: "No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>30 free uses</b> so you can test it on your own workflow first.",
+      heroSub: "No complicated setup, no cloud accounts, and no bloated $30/month subscriptions. Every tool runs 100% locally inside your Chrome browser and includes <b>20 free full-feature uses</b> so you can test it on your own workflow first.",
       ext01_title: "Smart Table to Excel Exporter Pro",
       ext01_desc: "Tired of copying a table from a website into Excel and watching all the columns break? Click any table or repeating list on your screen—or stack dozens of pages together—and download a clean Excel (.csv) or Google Sheets file in 1 second.",
-      ext02_title: "Bulk Image & WebP-to-JPG Downloader Pro",
-      ext02_desc: "Ever try to save product photos from a website and end up with annoying .webp files that won't open? Grab every high-resolution photo on a webpage, convert them to standard JPG or PNG, and download them with clean SEO filenames in one tidy ZIP folder.",
+      ext02_title: "Bulk Image & WebP-to-JPEG Downloader Pro",
+      ext02_desc: "Ever try to save product photos from a website and end up with annoying .webp files that won't open? Grab every high-resolution photo on a webpage, convert them to standard JPEG or PNG, and download them with clean SEO filenames in one tidy ZIP folder.",
       ext03_title: "Local Business Lead & Contact Extractor Pro",
       ext03_desc: "Looking for local clients on Google Maps or online directories? Auto-scroll the map feed AND automatically visit each business's website in the background to find public emails, Instagram, Facebook, and LinkedIn links—exported straight to Excel in 1 click.",
       ext04_title: "Customer Follow-Up & Reminder Sender for WhatsApp™ Web",
       ext04_desc: "Running a local clinic, salon, or shop and tired of saving every customer's number to your phone just to send an appointment reminder? Paste customer names and numbers from Excel, run the smart-paced reminder queue, or export group contacts to CSV in 1 click.",
-      ext05_title: "Etsy, Amazon & eBay Price, Revenue & Tag Exporter Pro",
+      ext05_title: "Product Price, Revenue & Tag Exporter for Etsy, Amazon & eBay",
       ext05_desc: "Want the same competitive data as $29–$49/month seller tools for $3.99/month? Scan any Etsy, Amazon, eBay, or Shopify search page to see estimated monthly sales & revenue, extract hidden backend seller tags, and export everything to Excel in 1 click.",
       ext06_title: "Receipt, Order & Invoice Extractor to Excel Pro",
-      ext06_desc: "Dreading tax season because your Amazon orders, eBay purchases, and online receipts are scattered across dozens of pages? Stack your entire year of orders across multiple pages, auto-categorize every expense for taxes, and download an accountant-ready Excel sheet in 1 click."
+      ext06_desc: "Dreading tax season because your Amazon orders, eBay purchases, and online receipts are scattered across dozens of pages? Stack your entire year of orders across multiple pages, auto-categorize every expense for taxes, and download an accountant-ready Excel sheet in 1 click.",
+      ext07_title: "Clean Print & Save Webpage to PDF Studio Pro",
+      ext07_desc: "Tired of printing an online receipt, article, or contract and getting 8 wasted pages of navigation bars, ads, and blank trailing sheets? Click any clutter block to erase it, shrink to fit on 1 page, enable Ink-Saver mode, and save a spotless PDF in 1 click.",
+      ext08_title: "Auto-Refresh & Page Change Alert Monitor Pro",
+      ext08_desc: "Did your old auto-refresh extension stop working when Chrome killed Manifest V2? Built on native MV3 background alarms that never fall asleep, this monitor refreshes any tab on your schedule and rings an audio chime + desktop notification the second a slot, price, or keyword changes.",
+      ext09_title: "Support Snippet, Canned Reply & Text Expander Pro",
+      ext09_desc: "Stop typing the same 20 customer replies, shipping updates, and follow-up emails every day. Type a short trigger like /shipping, /thanks, or /followup inside Gmail, Etsy, WhatsApp Web, LinkedIn, or any website to expand your full template automatically.",
+      ext10_title: "Comment, Review & Giveaway Winner Exporter to Excel",
+      ext10_desc: "Running a social giveaway or analyzing product reviews—and tired of websites demanding $39/month when your post has over 100 comments? Auto-expand comments right inside your browser, filter by hashtag, pick a verified random winner, and export everything to Excel in 1 click."
     },
     es: {
       label: "Español (Voz de Adam)",
       heroTitle: "Herramientas de 1 Clic que Ahorran Horas de Trabajo.",
-      heroSub: "Sin configuraciones complicadas ni suscripciones caras de $30 al mes. Cada extensión funciona 100% localmente en tu navegador Chrome e incluye <b>30 usos gratis</b>.",
+      heroSub: "Sin configuraciones complicadas ni suscripciones caras de $30 al mes. Cada extensión funciona 100% localmente en tu navegador Chrome e incluye <b>20 usos gratis</b>.",
       ext01_title: "Exportador de Tablas Web a Excel Pro",
-      ext01_desc: "¿Cansado de copiar tablas de sitios web a Excel y que todo el formato se rompa? Haz clic en cualquier tabla en pantalla y descárgala como un archivo limpio de Excel o CSV en 1 segundo.",
-      ext02_title: "Descargador Masivo de Imágenes y WebP a JPG/PNG",
-      ext02_desc: "Encuentra todas las fotos en alta resolución de cualquier página, convierte archivos .webp a JPG o PNG automáticamente y descárgalas en una carpeta ZIP ordenada con 1 clic.",
+      ext01_desc: "¿Cansado de copiar tablas de sitios web a Excel y que todo el formato se rompa? Haz clic en cualquier tabla en pantalla, combina varias páginas y descárgala como un archivo limpio de Excel en 1 segundo.",
+      ext02_title: "Descargador Masivo de Imágenes y WebP a JPEG/PNG",
+      ext02_desc: "Encuentra todas las fotos en alta resolución de cualquier página, convierte archivos .webp a JPEG o PNG automáticamente y descárgalas en una carpeta ZIP ordenada con 1 clic.",
       ext03_title: "Extractor de Empresas y Contactos Locales a Excel",
-      ext03_desc: "¿Buscas clientes locales en Google Maps? Exporta nombres de negocios, teléfonos, sitios web, correos y reseñas directamente a una hoja de Excel en 1 solo clic.",
-      ext04_title: "Enviador de Recordatorios y Seguimiento en WhatsApp Web",
-      ext04_desc: "Pega los nombres y teléfonos de tus clientes desde Excel, elige una plantilla de cita o seguimiento y abre chats personalizados en WhatsApp Web en 1 clic sin guardar números. Solo $3.99/mes.",
-      ext05_title: "Exportador de Precios, Reseñas y Etiquetas (Etsy, Amazon, eBay)",
-      ext05_desc: "Mira qué precios y palabras clave usan las tiendas más vendidas sin pagar $30 al mes. Exporta precios, calificaciones, reseñas y etiquetas a Excel en 1 clic por solo $3.99/mes.",
+      ext03_desc: "¿Buscas clientes locales en mapas y directorios? Recorre el mapa automáticamente y extrae nombres, teléfonos, sitios web, correos y redes sociales directamente a Excel en 1 clic.",
+      ext04_title: "Enviador de Recordatorios y Seguimiento para WhatsApp™ Web",
+      ext04_desc: "Importa los nombres y teléfonos de tus clientes desde Excel, envía recordatorios personalizados con pausa inteligente de seguridad y exporta contactos de grupos a Excel en 1 clic.",
+      ext05_title: "Exportador de Precios, Ingresos y Etiquetas para Etsy, Amazon y eBay",
+      ext05_desc: "Calcula ventas mensuales estimadas, ingresos, reseñas y etiquetas ocultas de las mejores tiendas directo en Excel con 1 clic por solo $3.99 USD/mes.",
       ext06_title: "Extractor de Pedidos, Recibos y Facturas a Excel para Impuestos",
-      ext06_desc: "Convierte tu historial de pedidos de Amazon, eBay y recibos web en una hoja de gastos de Excel lista para tu contador (Fecha, Tienda, Número de Pedido y Total) en 1 clic."
+      ext06_desc: "Combina tu historial de pedidos en línea de múltiples páginas, clasifica cada gasto por categoría fiscal automáticamente y descarga una hoja de Excel lista para tu contador.",
+      ext07_title: "Estudio de Impresión Limpia y Guardado en PDF Pro",
+      ext07_desc: "Elimina anuncios y barras laterales con 1 clic antes de imprimir cualquier recibo o artículo web, ajusta todo en 1 sola página con ahorro de tinta y guarda un PDF impecable.",
+      ext08_title: "Monitor de Cambios y Auto-Actualizador de Páginas Pro",
+      ext08_desc: "Recarga cualquier pestaña en segundo plano sin dormirse, vigila palabras clave y recibe una alarma sonora al instante cuando se abra un turno, cita o producto en stock.",
+      ext09_title: "Expansor de Texto y Respuestas Rápidas de Soporte Pro",
+      ext09_desc: "Escribe atajos cortos como /shipping o /thanks en Gmail, Etsy o WhatsApp Web para insertar tus plantillas completas con la fecha de hoy al instante.",
+      ext10_title: "Exportador de Comentarios, Reseñas y Sorteos a Excel",
+      ext10_desc: "Carga todos los comentarios automáticamente, filtra por hashtag, elige un ganador al azar sin duplicados y exporta todos los comentarios a Excel en 1 clic."
     },
     pt: {
       label: "Português (Voz do Adam)",
       heroTitle: "Ferramentas de 1 Clique que Economizam Horas de Trabalho.",
-      heroSub: "Sem configurações complicadas e sem mensalidades caras de US$ 30. Cada ferramenta roda 100% localmente no seu navegador Chrome e inclui <b>30 usos grátis</b>.",
+      heroSub: "Sem configurações complicadas e sem mensalidades caras de US$ 30. Cada ferramenta roda 100% localmente no seu navegador Chrome e inclui <b>20 usos grátis</b>.",
       ext01_title: "Exportador de Tabelas da Web para Excel Pro",
-      ext01_desc: "Cansado de copiar tabelas de sites para o Excel e ver a formatação quebrar? Clique em qualquer tabela na tela e baixe uma planilha limpa de Excel ou CSV em 1 segundo.",
-      ext02_title: "Baixador de Imagens em Massa e Conversor WebP para JPG",
-      ext02_desc: "Encontre todas as fotos em alta resolução da página, converta arquivos .webp para JPG ou PNG automaticamente e baixe tudo em um arquivo ZIP organizado com 1 clique.",
+      ext01_desc: "Cansado de copiar tabelas de sites para o Excel e ver a formatação quebrar? Clique em qualquer tabela na tela, junte várias páginas e baixe uma planilha limpa de Excel em 1 segundo.",
+      ext02_title: "Baixador de Imagens em Massa e Conversor WebP para JPEG",
+      ext02_desc: "Encontre todas as fotos em alta resolução da página, converta arquivos .webp para JPEG ou PNG automaticamente e baixe tudo em um arquivo ZIP organizado com 1 clique.",
       ext03_title: "Extrator de Leads e Empresas Locais para Excel",
-      ext03_desc: "Procurando clientes locais no Google Maps? Exporte nomes de empresas, telefones, sites, e-mails e avaliações direto para o Excel em apenas 1 clique.",
-      ext04_title: "Disparador de Lembretes e Follow-Up para WhatsApp Web",
-      ext04_desc: "Cole nomes e telefones de clientes do Excel, escolha um modelo de lembrete e abra conversas personalizadas no WhatsApp Web em 1 clique sem salvar contatos. Apenas US$ 3,99/mês.",
-      ext05_title: "Exportador de Preços, Avaliações e Tags (Amazon, Etsy, eBay)",
-      ext05_desc: "Descubra quais preços e palavras-chave os líderes usam sem pagar US$ 30/mês. Exporte preços, avaliações e tags de qualquer busca direto para o Excel por apenas US$ 3,99/mês.",
+      ext03_desc: "Procurando clientes locais em mapas e diretórios? Role o mapa automaticamente e busque telefones, sites, e-mails e redes sociais direto para o Excel em 1 clique.",
+      ext04_title: "Enviador de Lembretes e Follow-Up para WhatsApp™ Web",
+      ext04_desc: "Importe sua lista de clientes do Excel, envie lembretes personalizados com intervalo seguro automático e exporte contatos de grupos para o Excel em 1 clique.",
+      ext05_title: "Exportador de Preços, Receita e Tags para Etsy, Amazon e eBay",
+      ext05_desc: "Veja vendas mensais estimadas, faturamento, avaliações e tags ocultas dos concorrentes direto no Excel em 1 clique por apenas US$ 3,99/mês.",
       ext06_title: "Extrator de Recibos, Pedidos e Faturas para Excel (Impostos)",
-      ext06_desc: "Transforme seus pedidos da Amazon e recibos online em uma planilha de despesas do Excel pronta para a contabilidade (Data, Loja, Pedido e Total) em 1 clique."
+      ext06_desc: "Combine todo o seu histórico de compras online em várias páginas, classifique cada despesa por categoria fiscal e gere uma planilha Excel pronta para o contador.",
+      ext07_title: "Estúdio de Impressão Limpa e PDF de 1 Página Pro",
+      ext07_desc: "Apague anúncios e menus com 1 clique antes de imprimir recibos ou artigos, ajuste tudo em 1 única página com economia de tinta e salve um PDF limpo.",
+      ext08_title: "Monitor de Alterações e Atualizador Automático de Páginas Pro",
+      ext08_desc: "Atualize abas em segundo plano sem travar, monitore palavras-chave e receba um alarme sonoro no segundo em que abrir uma vaga, agendamento ou estoque.",
+      ext09_title: "Expansor de Texto e Respostas Rápidas de Suporte Pro",
+      ext09_desc: "Digite atalhos curtos como /shipping ou /thanks no Gmail, Etsy ou WhatsApp Web para inserir suas respostas completas com a data de hoje instantaneamente.",
+      ext10_title: "Exportador de Comentários, Avaliações e Sorteios para Excel",
+      ext10_desc: "Carregue todos os comentários no navegador, filtre por hashtag, sorteie um vencedor único sem repetidos e exporte tudo para o Excel em 1 clique."
     },
     fr: {
       label: "Français (Voix d'Adam)",
       heroTitle: "Des Outils en 1 Clic Qui Économisent des Heures de Copier-Coller.",
-      heroSub: "Aucune configuration complexe ni abonnement à 30 $/mois. Chaque outil fonctionne 100 % localement dans Chrome et inclut <b>30 utilisations gratuites</b>.",
+      heroSub: "Aucune configuration complexe ni abonnement à 30 $/mois. Chaque outil fonctionne 100 % localement dans Chrome et inclut <b>20 utilisations gratuites</b>.",
       ext01_title: "Exportateur de Tableaux Web vers Excel Pro",
-      ext01_desc: "Fatigué de copier des tableaux web dans Excel et de voir les colonnes se casser ? Cliquez sur n'importe quel tableau et téléchargez un fichier Excel (.csv) propre en 1 seconde.",
-      ext02_title: "Téléchargeur d'Images en Masse & Convertisseur WebP en JPG",
-      ext02_desc: "Récupérez toutes les photos HD d'une page, convertissez automatiquement les fichiers .webp en JPG ou PNG et téléchargez-les dans un dossier ZIP en 1 clic.",
+      ext01_desc: "Fatigué de copier des tableaux web dans Excel et de voir les colonnes se casser ? Cliquez sur n'importe quel tableau, combinez plusieurs pages et téléchargez un fichier Excel propre en 1 seconde.",
+      ext02_title: "Téléchargeur d'Images en Masse & Convertisseur WebP en JPEG",
+      ext02_desc: "Récupérez toutes les photos HD d'une page, convertissez automatiquement les fichiers .webp en JPEG ou PNG et téléchargez-les dans un dossier ZIP en 1 clic.",
       ext03_title: "Extracteur de Contacts & Entreprises Locales vers Excel",
-      ext03_desc: "Exportez instantanément les noms d'entreprises, numéros de téléphone, sites web, e-mails et avis depuis Google Maps directement vers Excel en 1 clic.",
-      ext04_title: "Envoi de Rappels Clients & Suivi sur WhatsApp Web",
-      ext04_desc: "Collez vos noms et numéros clients depuis Excel et lancez des rappels de rendez-vous personnalisés sur WhatsApp Web en 1 clic sans enregistrer les contacts. Seulement 3,99 $/mois.",
-      ext05_title: "Exportateur de Prix, Avis & Mots-Clés (Etsy, Amazon, eBay)",
-      ext05_desc: "Découvrez les prix et mots-clés des meilleures boutiques sans payer 30 $/mois. Exportez prix, notes, avis et tags vers Excel en 1 clic pour seulement 3,99 $/mois.",
+      ext03_desc: "Faites défiler la carte automatiquement et extrayez les noms d'entreprises, téléphones, sites web, courriels et réseaux sociaux directement vers Excel en 1 clic.",
+      ext04_title: "Envoi de Rappels Clients & Suivi pour WhatsApp™ Web",
+      ext04_desc: "Importez votre liste Excel, envoyez des rappels de rendez-vous personnalisés avec une pause de sécurité automatique et exportez les contacts d'un groupe vers Excel en 1 clic.",
+      ext05_title: "Exportateur de Prix, Revenus & Tags pour Etsy, Amazon et eBay",
+      ext05_desc: "Calculez les ventes mensuelles estimées, le chiffre d'affaires, les avis et les mots-clés cachés des meilleures boutiques directement dans Excel en 1 clic.",
       ext06_title: "Extracteur de Reçus, Commandes & Factures vers Excel",
-      ext06_desc: "Transformez vos commandes Amazon et reçus en ligne en un tableau de dépenses Excel propre pour votre comptable (Date, Vendeur, N° de Commande, Total) en 1 clic."
+      ext06_desc: "Combinez votre historique d'achats sur plusieurs pages, classez automatiquement chaque dépense par catégorie fiscale et générez un fichier Excel prêt pour votre comptable.",
+      ext07_title: "Studio d'Impression Propre & Sauvegarde PDF en 1 Page",
+      ext07_desc: "Supprimez les publicités et menus d'un clic avant d'imprimer, réduisez tout sur 1 seule page en mode économie d'encre et enregistrez un PDF impeccable.",
+      ext08_title: "Moniteur de Changement de Page & Actualisation Auto Pro",
+      ext08_desc: "Rechargez vos onglets en arrière-plan sans jamais s'endormir, surveillez vos mots-clés et recevez une alerte sonore dès qu'un créneau ou produit devient disponible.",
+      ext09_title: "Extenseur de Texte & Réponses Rapides Support Client Pro",
+      ext09_desc: "Tapez un raccourci comme /shipping ou /thanks dans Gmail, Etsy ou WhatsApp Web pour insérer instantanément votre réponse complète avec la date du jour.",
+      ext10_title: "Exportateur de Commentaires, Avis & Tirage au Sort vers Excel",
+      ext10_desc: "Chargez tous les commentaires automatiquement, filtrez par hashtag, tirez au sort un gagnant unique sans doublons et exportez tout vers Excel en 1 clic."
     },
     de: {
       label: "Deutsch (Adams Stimme)",
       heroTitle: "1-Klick-Tools, die Stunden an Copy-Paste sparen.",
-      heroSub: "Keine komplizierte Einrichtung, keine teuren 30-$/Monat-Abos. Jedes Tool läuft zu 100 % lokal in Ihrem Chrome-Browser und enthält <b>30 kostenlose Nutzungen</b>.",
+      heroSub: "Keine komplizierte Einrichtung, keine teuren 30-$/Monat-Abos. Jedes Tool läuft zu 100 % lokal in Ihrem Chrome-Browser und enthält <b>20 kostenlose Nutzungen</b>.",
       ext01_title: "Smart Tabellen & Listen nach Excel Exporter Pro",
-      ext01_desc: "Klicken Sie auf eine beliebige Tabelle auf Ihrem Bildschirm und laden Sie sie in 1 Sekunde als saubere Excel- (.csv) oder Google-Sheets-Datei herunter.",
-      ext02_title: "Massen-Bilddownloader & WebP-zu-JPG/PNG-Konverter",
-      ext02_desc: "Finden Sie alle hochauflösenden Produktfotos einer Seite, wandeln Sie .webp automatisch in JPG oder PNG um und laden Sie alles als ZIP-Archiv herunter.",
+      ext01_desc: "Klicken Sie auf eine beliebige Tabelle auf Ihrem Bildschirm, verbinden Sie mehrere Seiten und laden Sie alles in 1 Sekunde als saubere Excel-Datei herunter.",
+      ext02_title: "Massen-Bilddownloader & WebP-zu-JPEG/PNG-Konverter",
+      ext02_desc: "Finden Sie alle hochauflösenden Produktfotos einer Seite, wandeln Sie .webp automatisch in JPEG oder PNG um und laden Sie alles als ZIP-Archiv herunter.",
       ext03_title: "Lokale Unternehmens-Kontakte & Leads nach Excel Exportieren",
-      ext03_desc: "Exportieren Sie Firmennamen, Telefonnummern, Websites, E-Mails und Bewertungen aus Google Maps mit nur 1 Klick direkt in eine saubere Excel-Liste.",
-      ext04_title: "WhatsApp Web Termin-Erinnerung & Kunden-Follow-Up Sender",
-      ext04_desc: "Fügen Sie Kundennamen und Telefonnummern aus Excel ein und starten Sie personalisierte WhatsApp-Web-Erinnerungen mit 1 Klick ohne Kontakte zu speichern. Nur 3,99 $/Monat.",
-      ext05_title: "Etsy, Amazon & eBay Preis-, Bewertungs- & Keyword-Exporter",
-      ext05_desc: "Sehen Sie sofort, welche Preise und Keywords erfolgreiche Shops nutzen—ohne ein 30-$/Monat-Abo. Exportieren Sie alle Daten mit 1 Klick nach Excel für nur 3,99 $/Monat.",
+      ext03_desc: "Scrollen Sie automatisch durch Online-Karten und exportieren Sie Firmennamen, Telefonnummern, Websites, E-Mails und soziale Netzwerke direkt nach Excel.",
+      ext04_title: "Termin-Erinnerung & Kunden-Follow-Up für WhatsApp™ Web",
+      ext04_desc: "Importieren Sie Ihre Kundenliste aus Excel, senden Sie persönliche Terminerinnerungen mit sicherer Zeitverzögerung und exportieren Sie Gruppenkontakte nach Excel.",
+      ext05_title: "Preis-, Umsatz- & Keyword-Exporter für Etsy, Amazon & eBay",
+      ext05_desc: "Sehen Sie geschätzte monatliche Verkäufe, Umsätze, Bewertungen und versteckte Suchbegriffe erfolgreicher Shops mit 1 Klick direkt in Excel.",
       ext06_title: "Rechnungs-, Bestell- & Beleg-Exporter nach Excel für Steuern",
-      ext06_desc: "Wandeln Sie Ihre Amazon-Bestellungen und Online-Belege mit 1 Klick in eine fertige Excel-Ausgabentabelle (Datum, Händler, Bestellnummer, Summe) für Ihre Steuer um."
+      ext06_desc: "Scannen Sie Ihre Bestellübersicht über mehrere Seiten hinweg, ordnen Sie jede Ausgabe automatisch einer Steuerkategorie zu und exportieren Sie alles nach Excel.",
+      ext07_title: "Sauberes Druck- & 1-Seiten-PDF-Studio Pro",
+      ext07_desc: "Klicken Sie störende Werbung vor dem Drucken einfach weg, passen Sie Belege und Artikel auf 1 Seite im Tinten-Sparmodus an und speichern Sie ein sauberes PDF.",
+      ext08_title: "Auto-Refresh & Seiten-Änderungs-Monitor Pro",
+      ext08_desc: "Aktualisiert jeden Tab zuverlässig im Hintergrund, überwacht gewünschte Suchbegriffe und spielt sofort einen Alarmton ab, sobald ein Termin oder Artikel frei wird.",
+      ext09_title: "Textbaustein- & Kundensupport-Kurztext-Expander Pro",
+      ext09_desc: "Tippen Sie ein kurzes Kürzel wie /shipping oder /thanks in Gmail, Etsy oder WhatsApp Web und fügen Sie komplette Vorlagen mit aktuellem Datum sofort ein.",
+      ext10_title: "Kommentar-, Bewertungs- & Gewinnspiel-Exporter nach Excel",
+      ext10_desc: "Lädt automatisch alle Kommentare, filtert nach Hashtags, zieht einen fairen Gewinner ohne Duplikate und exportiert alle Einträge mit 1 Klick nach Excel."
+    },
+    id: {
+      label: "Bahasa Indonesia (Suara Adam)",
+      heroTitle: "Alat 1-Klik yang Menghemat Berjam-jam Salin-Tempel.",
+      heroSub: "Tanpa pengaturan rumit dan tanpa langganan mahal $30/bulan. Setiap alat berjalan 100% lokal di browser Chrome Anda dan mencakup <b>20 penggunaan gratis</b>.",
+      ext01_title: "Pengekspor Tabel Web Pintar ke Excel Pro",
+      ext01_desc: "Klik tabel mana saja di layar Anda, gabungkan banyak halaman menjadi satu lembar utama, dan unduh file Excel (.csv) yang rapi dalam 1 detik.",
+      ext02_title: "Pengunduh Gambar Massal & Pengonversi WebP ke JPEG",
+      ext02_desc: "Ambil semua foto produk resolusi tinggi di halaman web, ubah file .webp menjadi JPEG atau PNG standar, dan unduh dalam satu folder ZIP rapi.",
+      ext03_title: "Pengekspor Kontak & Prospek Bisnis Lokal ke Excel",
+      ext03_desc: "Gulir peta secara otomatis dan ambil nama bisnis, nomor telepon, situs web, email publik, serta tautan media sosial langsung ke Excel dalam 1 klik.",
+      ext04_title: "Pengirim Pengingat & Tindak Lanjut Pelanggan untuk WhatsApp™ Web",
+      ext04_desc: "Impor daftar pelanggan dari Excel, kirim pengingat janji temu dengan jeda waktu aman otomatis, dan ekspor kontak grup ke Excel dalam 1 klik.",
+      ext05_title: "Pengekspor Harga, Omzet & Tag untuk Etsy, Amazon & eBay",
+      ext05_desc: "Lihat estimasi penjualan bulanan, omzet, jumlah ulasan, dan tag kata kunci tersembunyi dari toko pesaing langsung di Excel dalam 1 klik.",
+      ext06_title: "Pengekspor Nota, Pesanan & Faktur ke Excel untuk Pajak",
+      ext06_desc: "Gabungkan riwayat pesanan belanja online dari banyak halaman, kelompokkan otomatis ke kategori pajak, dan unduh laporan Excel siap pakai.",
+      ext07_title: "Studio Cetak Bersih & Simpan Halaman Web ke PDF Pro",
+      ext07_desc: "Klik iklan atau menu yang mengganggu untuk menghapusnya, paskan resi atau artikel ke dalam 1 halaman hemat tinta, dan simpan PDF bersih dalam 1 klik.",
+      ext08_title: "Monitor Perubahan Halaman & Pembaruan Otomatis Pro",
+      ext08_desc: "Muat ulang tab di latar belakang tanpa henti, pantau kata kunci, dan bunyikan alarm suara seketika saat jadwal janji temu atau stok barang tersedia.",
+      ext09_title: "Ekspander Teks & Balasan Cepat Dukungan Pelanggan Pro",
+      ext09_desc: "Ketik pintasan pendek seperti /shipping atau /thanks di Gmail, Etsy, atau WhatsApp Web untuk memunculkan balasan lengkap beserta tanggal hari ini secara instan.",
+      ext10_title: "Pengekspor Komentar, Ulasan & Pemenang Giveaway ke Excel",
+      ext10_desc: "Muat semua komentar secara otomatis, saring berdasarkan hashtag, pilih pemenang acak yang adil tanpa duplikat, dan ekspor semuanya ke Excel dalam 1 klik."
+    },
+    ja: {
+      label: "日本語 (Adamの音声)",
+      heroTitle: "コピペ作業を何時間も短縮する、ワンクリックChrome拡張機能。",
+      heroSub: "複雑な設定や月額30ドルの高額サブスクは不要。すべてのツールはお使いのChrome内で100%ローカル動作し、<b>20回の無料利用</b>でお試しいただけます。",
+      ext01_title: "スマートWeb表・リストExcelエクスポーター Pro",
+      ext01_desc: "画面上の表やリストをクリックし、複数ページを1つのシートに結合して、わずか1秒できれいなExcel（.csv）やGoogleスプレッドシートに出力します。",
+      ext02_title: "一括高画質画像ダウンローダー＆WebP・JPEG変換 Pro",
+      ext02_desc: "ページ上の高解像度写真をすべて検出し、開けない.webp画像を標準的なJPEGやPNGへ自動変換して1つのZIPフォルダにまとめて保存します。",
+      ext03_title: "ローカルビジネス・営業リスト抽出エクスポーター Pro",
+      ext03_desc: "オンライン地図を自動スクロールして店名・電話番号・評価を取得し、さらに各Webサイトから公開メールアドレスやSNSリンクを抽出してExcelに保存します。",
+      ext04_title: "WhatsApp™ Web 予約リマインダー＆顧客フォロー送信 Pro",
+      ext04_desc: "Excelの顧客リストを読み込み、安全な間隔で個別の予約リマインダーを送信。グループの連絡先もワンクリックでExcelに出力できます。",
+      ext05_title: "Etsy・Amazon・eBay 価格・推定売上・検索タグ抽出 Pro",
+      ext05_desc: "競合商品の価格、推定月間販売数・売上、レビュー数、隠れた検索タグをワンクリックでExcelに出力できるショップ分析ツールです。",
+      ext06_title: "オンライン領収書・注文履歴・請求書Excel抽出 Pro",
+      ext06_desc: "複数ページにわたるAmazonやネット通販の注文履歴を1つにまとめ、経費カテゴリへ自動分類して税理士にそのまま渡せるExcel表を作成します。",
+      ext07_title: "Webページ広告除去・1ページすっきり印刷＆PDFスタジオ Pro",
+      ext07_desc: "印刷前に邪魔な広告やサイドバーをクリックで消去し、インク節約モードで1ページに美しく収めてクリーンなPDFとして保存します。",
+      ext08_title: "自動更新＆Webページ変更・空き枠アラート監視 Pro",
+      ext08_desc: "スリープしないバックグラウンドタイマーでタブを自動更新し、予約枠の空きや在庫復活キーワードを検知した瞬間にアラーム音と通知でお知らせします。",
+      ext09_title: "顧客サポート定型文・スニペット高速テキスト展開 Pro",
+      ext09_desc: "Gmail、ネットショップ、WhatsApp Webなどで /shipping や /thanks と入力するだけで、今日の日付入りの返信テンプレートを瞬時に展開します。",
+      ext10_title: "SNSコメント・商品レビュー抽出＆公正抽選ツール Pro",
+      ext10_desc: "ブラウザ上でコメントを自動読み込みし、ハッシュタグ絞り込みや重複なしのランダム当選者抽選、Excel（.csv）出力をワンクリックで実行します。"
     }
   };
 
@@ -580,7 +680,11 @@
     3: "Ext03_Local_Lead_Promo_1080p.mp4",
     4: "Ext04_WhatsApp_Sender_Promo_1080p.mp4",
     5: "Ext05_Price_Tag_Exporter_Promo_1080p.mp4",
-    6: "Ext06_Receipt_Extractor_Promo_1080p.mp4"
+    6: "Ext06_Receipt_Extractor_Promo_1080p.mp4",
+    7: "Ext07_Clean_Print_Promo_1080p.mp4",
+    8: "Ext08_Auto_Refresh_Promo_1080p.mp4",
+    9: "Ext09_Text_Expander_Promo_1080p.mp4",
+    10: "Ext10_Comment_Giveaway_Promo_1080p.mp4"
   };
 
   function setLanguage(lang) {
@@ -596,13 +700,14 @@
       const k = el.getAttribute("data-i18n");
       if (dict[k]) el.innerHTML = dict[k];
     });
-    for (let i = 1; i <= 6; i++) {
-      const lbl = document.getElementById(`vo-lbl-ext0${i}`);
+    for (let i = 1; i <= 10; i++) {
+      const extKey = i < 10 ? `ext0${i}` : `ext${i}`;
+      const lbl = document.getElementById(`vo-lbl-${extKey}`);
       if (lbl) lbl.textContent = `🎙️ Video Language: ${dict.label}`;
-      const vid = document.getElementById(`vid-ext0${i}`);
+      const vid = document.getElementById(`vid-${extKey}`);
       if (vid) {
         const wasPlaying = !vid.paused;
-        vid.src = lang === "en" ? `assets/video/${EN_VIDEO_NAMES[i]}` : `assets/video/ext0${i}_${lang}.mp4`;
+        vid.src = lang === "en" ? `assets/video/${EN_VIDEO_NAMES[i]}` : `assets/video/${extKey}_${lang}.mp4`;
         vid.muted = false;
         vid.load();
         if (wasPlaying) vid.play().catch(() => {});
@@ -626,9 +731,9 @@
     });
   });
 
-  // Auto-detect visitor browser language (es, pt, fr, de)
+  // Auto-detect visitor browser language (es, pt, fr, de, id, ja)
   const navLang = (navigator.language || "en").slice(0, 2).toLowerCase();
-  if (["es", "pt", "fr", "de"].includes(navLang)) {
+  if (["es", "pt", "fr", "de", "id", "ja"].includes(navLang)) {
     setLanguage(navLang);
   }
 
@@ -645,7 +750,7 @@
         const badge = document.getElementById("fairPromiseBadge");
         if (note) note.style.display = "inline";
         if (heading) heading.textContent = "🤝 OUR FAIR-PRICING PROMISE · MONTHLY OR ANNUAL · PLUS 50% REGIONAL DISCOUNT";
-        if (badge) badge.textContent = "REGIONAL CODE: FAIR50 (50% OFF) · 30 FREE USES";
+        if (badge) badge.textContent = "REGIONAL CODE: FAIR50 (50% OFF) · 20 FREE USES";
       }
     } catch (e) {}
   })();
