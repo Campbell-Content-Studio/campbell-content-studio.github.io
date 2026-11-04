@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Campbell Content Studio Chrome Extensions</title>
+  <title>Privacy Policy — Campbell Content Studio Browser Utilities</title>
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -14,7 +14,7 @@
       padding: 32px 16px;
     }
     .container {
-      max-width: 880px;
+      max-width: 860px;
       margin: 0 auto;
       background: #0f172a;
       border: 1px solid #1e293b;
@@ -39,79 +39,49 @@
 </head>
 <body>
   <div class="container">
-    <h1>Privacy Policy — Campbell Content Studio Browser Extensions</h1>
+    <h1>Privacy Policy — Campbell Content Studio Browser Utilities</h1>
     <p><strong>Effective Date:</strong> November 4, 2026 &nbsp;|&nbsp; <strong>Publisher:</strong> Campbell Content Studio (<a href="mailto:campbellcontentstudio@gmail.com">campbellcontentstudio@gmail.com</a>)</p>
 
-    <p>This Privacy Policy governs all ten (10) Chrome Web Store browser extensions published by <strong>Campbell Content Studio</strong>. Our core privacy principle is simple: <strong>your page data, exported spreadsheets, images, invoice rows, contact records, drafts, and text shortcuts are processed locally in your browser and are never transmitted to Campbell Content Studio servers.</strong></p>
+    <p>This Privacy Policy governs the Chrome Web Store browser extensions published by <strong>Campbell Content Studio</strong>. Our core privacy principle is simple: <strong>your page data, exported spreadsheets, images, invoice rows, print preferences, and text shortcuts are processed locally in your browser and are never transmitted to Campbell Content Studio servers.</strong></p>
 
-    <h2>1. Summary of Data Handling Across All 10 Extensions</h2>
+    <h2>1. Summary of Data Handling</h2>
     <ul>
-      <li><strong>Local Browser Processing Only:</strong> All DOM reading, CSV/TSV/JSON formatting, image conversion, print cleanup, page monitoring, and text expansion occur locally within your Chromium browser instance.</li>
+      <li><strong>Local Browser Processing Only:</strong> All DOM reading, CSV/TSV/JSON formatting, image conversion, print cleanup, and text expansion occur locally within your Chromium browser instance.</li>
       <li><strong>Local Storage &amp; One-Click Deletion:</strong> Settings, remaining free-tier usage counters (<code>usesCount</code>), and any saved presets or session rows are stored exclusively in <code>chrome.storage.local</code> on your device. Every extension popup includes a <strong>"Clear saved data"</strong> button in the footer so you can erase stored session data at any time, or you can uninstall the extension to remove all local storage.</li>
-      <li><strong>Subscription &amp; Payment Verification (ExtensionPay &amp; Stripe):</strong> Optional Pro upgrades are processed by <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a> and <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>. When you purchase or restore a Pro subscription, ExtensionPay receives your email address and payment confirmation from Stripe to verify your entitlement token (<code>https://extensionpay.com/*</code>). Campbell Content Studio never sees or stores your credit card number.</li>
+      <li><strong>Subscription &amp; Payment Verification (ExtensionPay &amp; Stripe):</strong> Optional Pro upgrades are processed by <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a> and <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>. When you purchase or restore a Pro upgrade, ExtensionPay receives your email address and payment confirmation from Stripe to verify your entitlement token (<code>https://extensionpay.com/*</code>). Campbell Content Studio never sees or stores your credit card number.</li>
       <li><strong>No Sale of User Data &amp; No Analytics Trackers:</strong> We do not embed Google Analytics, Meta pixels, telemetry beacons, or ad networks inside any extension, and we never sell, rent, or transfer user data to third parties.</li>
     </ul>
 
     <h2>2. Tool-by-Tool Permissions &amp; Data Access Disclosures</h2>
 
     <div class="tool-box">
-      <h3>1. CCS Smart Grid &amp; Table CSV Exporter (Ext_01)</h3>
+      <h3>1. CCS Smart Grid &amp; Table CSV Exporter</h3>
       <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>clipboardWrite</code>.<br>
-      <strong>Data Handled:</strong> When you click to inspect or export a table on the active tab, the extension reads HTML <code>&lt;table&gt;</code> or ARIA grid cells on that page to generate a local CSV, TSV, or JSON file or copy TSV to your clipboard. Append-mode rows are held in <code>chrome.storage.local</code> until cleared.</p>
+      <strong>Data Handled:</strong> When you click to inspect or export a table on the active tab, the extension reads HTML <code>&lt;table&gt;</code> or ARIA grid cells on that page to generate a local CSV, TSV, or JSON file or copy TSV to your clipboard. Saved column presets and append-mode rows are held in <code>chrome.storage.local</code> until cleared.</p>
     </div>
 
     <div class="tool-box">
-      <h3>2. CCS Bulk Image &amp; WebP Converter (Ext_02)</h3>
+      <h3>2. CCS Bulk Image &amp; WebP Converter</h3>
       <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>.<br>
       <strong>Data Handled:</strong> When triggered by you on the active tab, the extension reads visible image URLs and dimensions on the current page, converts accessible images locally via HTML5 Canvas into PNG, JPEG, or WebP, and bundles them into a local ZIP download.</p>
     </div>
 
     <div class="tool-box">
-      <h3>3. CCS Structured Business Contact Exporter (Ext_03)</h3>
-      <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>clipboardWrite</code>.<br>
-      <strong>Data Handled:</strong> When you click Scan on an active web page, the extension reads publicly visible structured contact markup (Schema.org <code>LocalBusiness</code>/<code>Organization</code> JSON-LD, <code>vCard</code>/<code>h-card</code>, and visible <code>mailto:</code>/<code>tel:</code> contact blocks) on that single page and formats them into a local CSV/TSV export.</p>
-    </div>
-
-    <div class="tool-box">
-      <h3>4. CCS Template Draft Opener for WhatsApp™ Web (Ext_04)</h3>
-      <p><strong>Permissions:</strong> <code>storage</code>.<br>
-      <strong>Data Handled:</strong> Stores your message template and user-pasted or CSV-imported phone numbers and names in <code>chrome.storage.local</code>. When you click "Open Next Draft in WhatsApp™ Web", it opens a single pre-filled draft URL (<code>https://web.whatsapp.com/send?...</code>) so you can manually review and click Send inside WhatsApp™ Web. It does not scrape chat lists or automate background message sending.</p>
-    </div>
-
-    <div class="tool-box">
-      <h3>5. CCS Marketplace Listing Exporter (Ext_05)</h3>
-      <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>clipboardWrite</code>.<br>
-      <strong>Data Handled:</strong> When you click Scan on an active marketplace search or category page, the extension reads visible listing cards (title, observed price and currency, rating, review count, and link) displayed on the current page and exports them locally to CSV or TSV.</p>
-    </div>
-
-    <div class="tool-box">
-      <h3>6. CCS Invoice &amp; Receipt Line-Item Exporter (Ext_06)</h3>
+      <h3>3. CCS Invoice &amp; Receipt Line-Item Exporter</h3>
       <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>clipboardWrite</code>.<br>
       <strong>Data Handled:</strong> When you click "Scan Current Page" on an invoice or receipt page, the extension reads visible dates, invoice references, line descriptions, currency amounts, and explicitly labeled tax values on that tab, storing the session ledger in <code>chrome.storage.local</code> for local CSV/TSV export.</p>
     </div>
 
     <div class="tool-box">
-      <h3>7. CCS Clean Print &amp; PDF Declutterer (Ext_07)</h3>
+      <h3>4. CCS Clean Print &amp; PDF Declutterer</h3>
       <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>.<br>
       <strong>Data Handled:</strong> Injects reversible print and layout CSS into the active tab when you click "Clean Page Clutter", "Click-to-Hide Mode", or "Open Print / Save PDF", and stores your preferred print scale and optional header note in <code>chrome.storage.local</code>.</p>
     </div>
 
     <div class="tool-box">
-      <h3>8. CCS Page Change &amp; Keyword Monitor (Ext_08)</h3>
-      <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>alarms</code>, <code>notifications</code>.<br>
-      <strong>Data Handled:</strong> When you click "Start Monitor" on an open tab, the extension records the approved tab ID, origin URL, optional CSS selector/keyword, and a local text snapshot in <code>chrome.storage.local</code>. Using <code>chrome.alarms</code> (minimum 30-second interval), it reloads that specific tab while open on the same origin and triggers a local desktop notification if the visible text or keyword changes.</p>
-    </div>
-
-    <div class="tool-box">
-      <h3>9. CCS Smart Text Expander &amp; Shortcuts (Ext_09)</h3>
+      <h3>5. CCS Smart Text Expander &amp; Shortcuts</h3>
       <p><strong>Permissions:</strong> <code>storage</code>, <code>clipboardWrite</code>, and content script on <code>http://*/*</code> &amp; <code>https://*/*</code>.<br>
       <strong>Data Handled:</strong> Stores your custom <code>/shortcut</code> triggers and replacement text snippets in <code>chrome.storage.local</code>. While enabled, the local content script checks only whether text immediately preceding your caret in standard text inputs matches one of your saved <code>/shortcut</code> triggers and replaces that trigger in place. Password fields, payment/card inputs, OTP fields, and read-only inputs are strictly excluded. Keystrokes are never logged or transmitted anywhere.</p>
-    </div>
-
-    <div class="tool-box">
-      <h3>10. CCS Comment Exporter &amp; Giveaway Picker (Ext_10)</h3>
-      <p><strong>Permissions:</strong> <code>activeTab</code>, <code>scripting</code>, <code>storage</code>, <code>clipboardWrite</code>.<br>
-      <strong>Data Handled:</strong> When you click "Scan Visible Comments" on the active tab (or import a local CSV file), the extension reads currently loaded, visible comment author handles and comment text in a read-only pass (without clicking page buttons), stores the current list in <code>chrome.storage.local</code>, and performs a local random draw using the browser's Web Crypto API (<code>crypto.getRandomValues</code>).</p>
     </div>
 
     <h2>3. Chrome Web Store Limited Use Disclosure</h2>
