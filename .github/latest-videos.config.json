@@ -1,5 +1,5 @@
 {
-  "pages": ["index.html"],
+  "pages": ["cinema.html"],
   "rows": {
     "inside-acc": {
       "channelId": "UCZ3jf4rt3h2uroB2F4KXs4w",
@@ -9,7 +9,7 @@
       "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
       "excludeIds": ["mVTY4UQzy6A", "56ZdNRdmfQ0", "dN3Yv4xqxrA", "DEQ6ROYbeFA"],
       "includeIds": [],
-      "excludeTitlePatterns": ["\\s\\|\\s", "\\bofficial (music |lyric )?video\\b", "\\((official )?(music|lyric) video\\)", "\\bofficial (visuali[sz]er|audio|trailer|teaser)\\b", "\\s[-–—]\\s[^-–—]*\\bshort film\\b", "\\(\\s*(full )?short film\\s*\\)", "\\s[-–—]\\s*(official )?(trailer|teaser)\\b"],
+      "excludeTitlePatterns": ["\\s\\|\\s", "\\bofficial (music |lyric )?video\\b", "\\((official )?(music|lyric) video\\)", "\\bofficial (visuali[sz]er|audio|trailer|teaser)\\b", "\\s[-–—]\\s[^-–—]*\\bshort film\\b", "\\(\\s*(full )short film\\s*\\)", "\\s[-–—]\\s*(official )?(trailer|teaser)\\b"],
       "labelRules": [
         ["keyframe", "Keyframes"],
         ["voice|elevenlabs|lip.?sync|dubb", "Voice"],
