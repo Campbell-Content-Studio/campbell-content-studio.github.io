@@ -4,7 +4,7 @@
 
 Once a day, `.github/workflows/update-latest-videos.yml` refreshes the "Behind the craft" row from Adam Campbell Cinema's public YouTube RSS feed (no API key, no quota). The row shows the latest 4 long-form Inside ACC episodes.
 
-Shorts are skipped. The four featured films are hand-picked and never change automatically. Anything already shown elsewhere on the page never appears in the row, so if you place a video by hand, the row adjusts on the next run.
+Shorts are skipped. The five featured titles are hand-picked and never change automatically. Anything already shown elsewhere on the page never appears in the row, so if you place a video by hand, the row adjusts on the next run.
 
 How it works and how to adjust it:
 

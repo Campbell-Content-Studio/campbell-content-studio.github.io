@@ -122,6 +122,8 @@ h1,h2,h3,.tagline{text-wrap:balance}
   .nav-links{display:flex}
   .nav-right{display:none}
   .wm-main{font-size:2rem}
+  .wm-logo{width:42px;height:42px}
+  .wm-text{flex-direction:row;align-items:center;gap:12px}
 }
 
 /* full-screen phone menu (native <dialog>, opened with showModal) */
@@ -130,8 +132,8 @@ h1,h2,h3,.tagline{text-wrap:balance}
 .menu-panel::backdrop{background:#000}
 .mp-top{display:flex;justify-content:space-between;align-items:center;padding-block:14px;border-bottom:1px solid var(--hairline)}
 .mp-top .wordmark{flex-direction:row;align-items:center;gap:10px}
-  .wm-logo{width:38px;height:38px}
-  .wm-text{flex-direction:column;align-items:flex-start;gap:4px}
+.mp-top .wm-logo{width:38px;height:38px}
+.mp-top .wm-text{flex-direction:column;align-items:flex-start;gap:4px}
 .mp-list{padding-block:28px}
 .mp-list a{display:block;padding:10px 0;text-decoration:none;font-size:2.25rem;line-height:1.2}
 .mp-foot{margin-top:auto;padding-block:24px 32px;border-top:1px solid var(--hairline);display:flex;flex-wrap:wrap;gap:0 22px}
@@ -179,6 +181,20 @@ h1,h2,h3,.tagline{text-wrap:balance}
 @media (max-width:359px){ .ctas{flex-direction:column} }
 .hero-screen{margin-top:clamp(24px,2.2vw,32px)}
 @media (max-width:899px){ .hero-screen{order:-1;margin-top:0} .hero-frame{aspect-ratio:4 / 3} }
+/* latest content spotlight bar near top of hero */
+.fresh-bar{margin-top:clamp(18px,2vw,28px);display:grid;gap:12px}
+.fresh-card{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:var(--gate);border:1px solid var(--hairline);text-decoration:none;color:var(--screen);transition:border-color .4s var(--ease-out),background .4s var(--ease-out);min-width:0}
+.fresh-card:hover{border-color:var(--screen);background:#121212}
+.fresh-left{display:flex;align-items:center;gap:14px;flex:1 1 0;min-width:0}
+.fresh-thumb{width:96px;height:54px;flex:0 0 96px;object-fit:cover;border:1px solid #222;background:#050505}
+.fresh-meta{flex:1 1 0;min-width:0}
+.fresh-tag{display:inline-flex;align-items:center;gap:8px;color:var(--marigold);font-size:.75rem}
+.fresh-dot{width:6px;height:6px;border-radius:50%;background:var(--marigold);flex:none}
+.fresh-title{font-family:var(--sans);font-weight:500;font-size:.95rem;line-height:1.3;color:var(--screen);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fresh-arrow{color:var(--silver);flex:none}
+.fresh-card:hover .fresh-arrow{color:var(--screen)}
+@media (min-width:900px){ .fresh-bar{grid-template-columns:1fr 1fr;gap:var(--colgap)} }
+@media (max-width:599px){ .fresh-thumb{width:76px;height:43px;flex:0 0 76px} .fresh-title{white-space:normal;font-size:.875rem} }
 .hero-frame video{background:var(--gate);object-position:50% 36%}
 .sound-toggle{position:absolute;right:0;bottom:0;z-index:3;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;min-width:8.5rem;padding:0 16px 0 14px;background:#000;color:var(--screen);transition:background .5s var(--ease-out),color .5s var(--ease-out)}
 .sound-toggle[hidden]{display:none}
@@ -309,6 +325,8 @@ h1,h2,h3,.tagline{text-wrap:balance}
 
 .film--candles{--accent:var(--wish);--spill:#2e080d}
 .film--candles .film-title{font-style:italic;font-size:clamp(3.2rem,6.6vw,6.6rem)}
+.film--bandit{--accent:var(--marigold);--spill:#231305}
+.film--bandit .film-title{font-size:clamp(2.8rem,5.2vw,5.2rem)}
 .film--duel{--accent:var(--storm);--spill:#0b1324}
 .film--duel .film-title{font-size:clamp(2.6rem,4.3vw,4.3rem);letter-spacing:.18em;font-weight:500;margin-right:-.18em}
 .film--duel .sub{color:var(--storm);letter-spacing:-.005em}
@@ -340,8 +358,8 @@ h1,h2,h3,.tagline{text-wrap:balance}
 .pair .film + .film{margin-top:0}
 
 @media (min-width:900px){
-  .film--candles .head{grid-column:1 / span 7}
-  .film--candles .side{grid-column:9 / -1;align-self:end}
+  .film--candles .head,.film--bandit .head{grid-column:1 / span 7}
+  .film--candles .side,.film--bandit .side{grid-column:9 / -1;align-self:end}
   .film--duel .film-body > :first-child{grid-column:1 / span 7}
   .film--duel .film-body > :last-child{grid-column:9 / -1;align-self:end}
   /* the music-video pair: stills, heads and credit blocks share rows, so both runtimes sit level */
