@@ -62,7 +62,11 @@
     {
       "id": "0b0EKOkXlKU",
       "title": "Seedance 2.5 Flash vs Seedance 2.5 | Can You Spot The Cheaper One?",
-      "published": "2026-11-16T17:00:05+00:00"
+      "published": "2026-11-16T17:00:05+00:00",
+      "thumbs": [
+        "sddefault",
+        "maxresdefault"
+      ]
     },
     {
       "id": "r5HTFsuHrJw",
@@ -143,14 +147,9 @@
       "published": "2026-10-23T19:00:23+00:00"
     },
     {
-      "id": "56ZdNRdmfQ0",
-      "title": "THE DUEL | Mercy Is Not Strength | AI Fantasy Short Film",
-      "published": "2026-10-14T19:00:34+00:00"
-    },
-    {
       "id": "SYf9zRLCgvA",
       "title": "Claude vs ChatGPT vs Gemini on Max Settings: Who Edits a Music Video Best?",
-      "published": null,
+      "published": "2026-10-22T11:00:16-07:00",
       "thumbs": [
         "sddefault",
         "maxresdefault"
@@ -159,7 +158,7 @@
     {
       "id": "Zr8g0oSk294",
       "title": "Kling 4.0 Keyframes Hit Every Frame and Still Cheated (vs Omni Reference)",
-      "published": null,
+      "published": "2026-10-21T13:00:38-07:00",
       "thumbs": [
         "sddefault",
         "maxresdefault"
@@ -168,21 +167,34 @@
     {
       "id": "zTg4jY3faSQ",
       "title": "I Tested Kling 4.0 vs Seedance 2.5 and the Winner Surprised Me",
-      "published": null,
+      "published": "2026-10-17T08:00:36-07:00",
       "thumbs": [
         "sddefault",
         "maxresdefault"
       ]
     },
     {
+      "id": "56ZdNRdmfQ0",
+      "title": "THE DUEL | Mercy Is Not Strength | AI Fantasy Short Film",
+      "published": "2026-10-14T19:00:34+00:00"
+    },
+    {
       "id": "E3hXugWrM80",
       "title": "I Tested Nano Banana 2.1 Against 7 AI Image Models. Only 4 Could Spell",
-      "published": null
+      "published": "2026-10-12T09:00:29-07:00",
+      "thumbs": [
+        "sddefault",
+        "maxresdefault"
+      ]
     },
     {
       "id": "HjttNU6wzlM",
       "title": "I Tried Every ElevenLabs Version - So You Don't Have To",
-      "published": null
+      "published": "2026-10-08T17:30:01-07:00",
+      "thumbs": [
+        "sddefault",
+        "maxresdefault"
+      ]
     }
   ]
 }

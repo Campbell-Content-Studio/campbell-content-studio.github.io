@@ -50,7 +50,7 @@ SHORTS_TAG = re.compile(r"#shorts?\b", re.I)
 OPTIONAL_THUMBS = (("sddefault", 640), ("maxresdefault", 1280))
 UNAVAILABLE = {400, 401, 403, 404}
 HEADINGS = {"h2", "h3", "h4"}
-MAX_STORED_PER_CHANNEL = 60
+MAX_STORED_PER_CHANNEL = 120
 # Stop making network checks after this long so the job stays well inside its timeout;
 # unchecked videos are treated as "unknown" and kept.
 DEADLINE = time.monotonic() + 360
@@ -226,7 +226,8 @@ def render_item(video, index, row):
     srcset = [f"{THUMB_URL.format(vid, 'mqdefault')} 320w", f"{THUMB_URL.format(vid, 'hqdefault')} 480w"]
     widths = dict(OPTIONAL_THUMBS)
     srcset += [f"{THUMB_URL.format(vid, name)} {widths[name]}w" for name in thumb_widths(video)]
-    delay = "" if index == 0 else f' style="--d:{index * 0.08:.2f}s"'.replace(":0.", ":.")
+    step = index % 4
+    delay = "" if step == 0 else f' style="--d:{step * 0.08:.2f}s"'.replace(":0.", ":.")
     watch = WATCH_URL.format(vid)
     return [
         f'<li class="ep reveal"{delay}>',
@@ -323,6 +324,11 @@ def main():
     for path, (text, newline) in texts.items():
         for name, lines in rendered.items():
             text, _ = replace_region(text, name, lines)
+            n_items = sum(1 for l in lines if l.startswith("<li "))
+            count_pat = re.compile(
+                r'(<[^>]*data-count-for="' + re.escape(name) + r'"[^>]*>)[^<]*(</[^>]+>)'
+            )
+            text = count_pat.sub(rf'\g<1>{n_items} episodes\g<2>', text)
         if write_if_changed(path, text, newline):
             changed.append(str(path.relative_to(ROOT)))
 

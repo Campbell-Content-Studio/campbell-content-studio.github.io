@@ -63,17 +63,17 @@
     var cuts = $$('.cut'), tracks = cuts.map(function (c) { return c.querySelector('.track i'); });
     var names = cuts.map(function (c) { return c.querySelector('.cut-t').textContent; });
     var tcEl = $('.tcb .tc'), nowEl = $('.tcb .now b'), lbl = toggle.querySelector('.lbl');
-    /* contract timing (crossfade midpoints): neon [0,3.5) duel [3.5,7.5) candles [7.5,11.5) seven [11.5,15.5) neon [15.5,16) */
-    var EDGES = [3.5, 7.5, 11.5, 15.5];
+    var TOTAL = Number(video.getAttribute('data-duration')) || 24;
+    var N = cuts.length || 6;
+    var STEP = TOTAL / N;
     var loaded = false, want = false, onScreen = true, raf = 0, active = -1, failed = false, lastK = '', lastTC = '';
     var vfc = typeof video.requestVideoFrameCallback === 'function';
 
     function pad(n) { return (n < 10 ? '0' : '') + n; }
     function shotAt(t) {
-      if (t >= EDGES[3]) return [0, (t - EDGES[3]) / 4];
-      if (t < EDGES[0]) return [0, (t + 16 - EDGES[3]) / 4];
-      for (var i = 1; i < 4; i++) if (t < EDGES[i]) return [i, (t - EDGES[i - 1]) / 4];
-      return [0, 0];
+      var mod = ((t % TOTAL) + TOTAL) % TOTAL;
+      var idx = Math.min(N - 1, Math.floor(mod / STEP));
+      return [idx, (mod - idx * STEP) / STEP];
     }
     function setActive(i) {
       if (i === active) return;
@@ -157,7 +157,8 @@
         on = v;
         snd.setAttribute('data-state', v ? 'on' : 'off');
         sndLbl.textContent = v ? 'Sound off' : 'Sound on';
-        if (note) note.textContent = v ? 'Reel · 0:16 · sound on' : 'Reel · 0:16 · muted';
+        var durLabel = '0:' + pad(Math.round(TOTAL));
+        if (note) note.textContent = v ? 'Reel · ' + durLabel + ' · sound on' : 'Reel · ' + durLabel + ' · muted';
       }
       function cancelFade() { win.cancelAnimationFrame(fadeRaf); win.clearTimeout(fadeTimer); }
       /* short volume ramps so the cue never clicks (iOS ignores volume and just starts and stops).
@@ -182,7 +183,7 @@
       /* the cue runs only while the picture runs, locked to its clock for the first pass of the reel
          (after the reel loops, a longer cue simply plays out to its end) */
       function follow() {
-        var len = video.duration || 16;
+        var len = video.duration || TOTAL;
         if (score.currentTime < len - 0.25 && Math.abs(score.currentTime - video.currentTime) > 0.15) score.currentTime = video.currentTime;
         if (score.paused) { score.volume = 0; var p = score.play(); if (p && p.catch) p.catch(fail); fade(0.9, 400); }
       }
@@ -384,5 +385,80 @@
       var onWide = function () { if (wide.matches && menu.open) menu.close(); };
       if (wide.addEventListener) wide.addEventListener('change', onWide);
     }
+  })();
+
+  /* ---------- 6. inside acc: category filters & show-all toggle ---------- */
+  var epSection = $('#inside-acc');
+  if (epSection) (function () {
+    var controls = $('.ep-controls', epSection);
+    var filterBtns = $$('.ep-filter', epSection);
+    var statusEl = $('.ep-status', epSection);
+    var list = $('.eps', epSection);
+    var items = $$('.ep', list);
+    var moreWrap = $('.ep-more', epSection);
+    var toggleBtn = $('.ep-toggle', epSection);
+    if (!controls || !list || !items.length) return;
+
+    var INITIAL = 8, current = 'all', expanded = false;
+    function bucketFor(li) {
+      var catEl = $('.ep-cat', li);
+      var t = (catEl ? catEl.textContent : '').toLowerCase();
+      if (t.indexOf('voice') !== -1 || t.indexOf('music') !== -1) return 'voice';
+      if (t.indexOf('image') !== -1) return 'images';
+      if (t.indexOf('edit') !== -1) return 'editing';
+      return 'video';
+    }
+    var counts = { all: items.length, video: 0, voice: 0, images: 0, editing: 0 };
+    items.forEach(function (li) {
+      var b = bucketFor(li);
+      li.setAttribute('data-ep-cat', b);
+      counts[b] = (counts[b] || 0) + 1;
+    });
+    filterBtns.forEach(function (btn) {
+      var key = btn.getAttribute('data-ep-filter');
+      var labelEl = btn.querySelector('.f-count');
+      if (labelEl && Object.prototype.hasOwnProperty.call(counts, key)) {
+        labelEl.textContent = ' (' + counts[key] + ')';
+      }
+      if (key !== 'all' && !counts[key]) btn.hidden = true;
+    });
+
+    function apply() {
+      var matched = 0, shown = 0;
+      items.forEach(function (li) {
+        var cat = li.getAttribute('data-ep-cat');
+        var ok = (current === 'all') || (cat === current);
+        if (!ok) { li.classList.add('is-hidden'); return; }
+        matched++;
+        var vis = (current !== 'all') || expanded || (matched <= INITIAL);
+        li.classList.toggle('is-hidden', !vis);
+        if (vis) { shown++; li.classList.add('in'); }
+      });
+      if (statusEl) statusEl.textContent = 'Showing ' + shown + ' of ' + matched + (current === 'all' ? ' episodes' : '');
+      if (moreWrap && toggleBtn) {
+        var needToggle = current === 'all' && matched > INITIAL;
+        moreWrap.hidden = !needToggle;
+        if (needToggle) {
+          toggleBtn.textContent = expanded ? 'Show fewer episodes' : ('Show all ' + matched + ' episodes');
+          toggleBtn.setAttribute('aria-expanded', String(expanded));
+        }
+      }
+    }
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        current = btn.getAttribute('data-ep-filter') || 'all';
+        filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        apply();
+      });
+    });
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function () {
+        expanded = !expanded;
+        apply();
+      });
+    }
+    controls.hidden = false;
+    apply();
   })();
 })();

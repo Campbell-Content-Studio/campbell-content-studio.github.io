@@ -166,8 +166,8 @@
       <img class="wm-logo" src="assets/icons/ccs-logo-88.png" width="42" height="42" alt="Campbell Content Studio"><span class="wm-text"><span class="wm-main">Campbell</span><span class="wm-rule" aria-hidden="true"></span><span class="wm-sub billing">Content Studio</span></span>
     </a>
     <nav aria-label="Primary" class="nav-links">
-      <a class="billing" href="#films">Films</a>
       <a class="billing" href="#inside-acc">Inside ACC</a>
+      <a class="billing" href="#films">Films</a>
       <a class="billing" href="actors.html">Actors</a>
       <a class="billing" href="#studio">Studio</a>
       <a class="billing" href="#languages">Languages</a>
@@ -185,8 +185,8 @@
       <button class="menu-close menu-btn billing" type="button">Close</button>
     </div>
     <ul class="mp-list wrap">
-      <li><a class="serif-m" href="#films">Films</a></li>
       <li><a class="serif-m" href="#inside-acc">Inside ACC</a></li>
+      <li><a class="serif-m" href="#films">Films</a></li>
       <li><a class="serif-m" href="actors.html">Actors</a></li>
       <li><a class="serif-m" href="#studio">The studio</a></li>
       <li><a class="serif-m" href="#languages">Languages</a></li>
@@ -216,16 +216,6 @@
 
       <!-- NEWEST CONTENT SPOTLIGHT NEAR TOP -->
       <div class="wrap fresh-bar" aria-label="Latest releases">
-        <a class="fresh-card" href="#film-bandit">
-          <div class="fresh-left">
-            <img class="fresh-thumb" src="assets/img/films/bandit-169-800.webp" width="800" height="450" alt="Midnight Bandit stop-motion clay still">
-            <div class="fresh-meta">
-              <p class="fresh-tag billing"><span class="fresh-dot" aria-hidden="true"></span>New · Latest Short Film</p>
-              <p class="fresh-title">Midnight Bandit — The Raccoon Who Robbed a Camper (1:51)</p>
-            </div>
-          </div>
-          <span class="fresh-arrow billing" aria-hidden="true">Watch ↓</span>
-        </a>
         <a class="fresh-card" href="#inside-acc">
           <div class="fresh-left">
             <img class="fresh-thumb" src="https://i.ytimg.com/vi/zmFUZwFPdc0/mqdefault.jpg" width="320" height="180" alt="Inside ACC latest episode thumbnail">
@@ -236,25 +226,37 @@
           </div>
           <span class="fresh-arrow billing" aria-hidden="true">Episodes ↓</span>
         </a>
+        <a class="fresh-card" href="#film-bandit">
+          <div class="fresh-left">
+            <img class="fresh-thumb" src="assets/img/films/bandit-169-800.webp" width="800" height="450" alt="Midnight Bandit stop-motion clay still">
+            <div class="fresh-meta">
+              <p class="fresh-tag billing"><span class="fresh-dot" aria-hidden="true"></span>New · Latest Short Film</p>
+              <p class="fresh-title">Midnight Bandit: The Raccoon Who Robbed a Camper (1:51)</p>
+            </div>
+          </div>
+          <span class="fresh-arrow billing" aria-hidden="true">Watch ↓</span>
+        </a>
       </div>
 
       <div class="wrap hero-screen">
         <div class="frame bleed gate hero-frame">
-          <video class="reel" muted loop playsinline preload="none" poster="assets/img/reel-poster.webp" aria-hidden="true" width="1920" height="1080"></video>
+          <video class="reel" data-duration="24" muted loop playsinline preload="none" poster="assets/img/reel-poster.webp" aria-hidden="true" width="1920" height="804"></video>
           <div class="grain-in" aria-hidden="true"></div>
           <!-- Score cue: hidden until data-src names the file. See assets/audio/_README.txt. Never autoplays. -->
           <button class="sound-toggle billing" type="button" data-src="" data-state="off" hidden><svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5l4 4m0-4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6.5 6.5 0 0 1 0 9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="lbl">Sound on</span></button>
         </div>
         <div class="slate">
-          <p class="sr">Studio reel: a muted 16-second loop of shots from the studio’s flagship titles.</p>
+          <p class="sr">Studio reel: a muted 24-second loop of shots from Inside ACC and the studio's released films and music videos.</p>
           <nav class="cutlist billing" aria-label="Reel cut list">
-            <a class="cut is-on" href="#film-neon" style="--acc:var(--magenta)" data-cut="0"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Neon Run</span><span class="rt"><span class="sr">, runtime </span>2:26</span></a>
-            <a class="cut" href="#film-duel" style="--acc:var(--storm)" data-cut="1"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">The Duel</span><span class="rt"><span class="sr">, runtime </span>8:38</span></a>
+            <a class="cut is-on" href="#inside-acc" style="--acc:var(--cyan)" data-cut="0"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Inside ACC</span><span class="rt"><span class="sr">, runtime </span>19 eps</span></a>
+            <a class="cut" href="#film-bandit" style="--acc:var(--marigold)" data-cut="1"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Midnight Bandit</span><span class="rt"><span class="sr">, runtime </span>1:51</span></a>
             <a class="cut" href="#film-candles" style="--acc:var(--wish)" data-cut="2"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Blow Out The Candles</span><span class="rt"><span class="sr">, runtime </span>11:51</span></a>
-            <a class="cut" href="#film-seven" style="--acc:var(--marigold)" data-cut="3"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Seven Candles</span><span class="rt"><span class="sr">, runtime </span>3:20</span></a>
+            <a class="cut" href="#film-duel" style="--acc:var(--storm)" data-cut="3"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">The Duel</span><span class="rt"><span class="sr">, runtime </span>8:38</span></a>
+            <a class="cut" href="#film-neon" style="--acc:var(--magenta)" data-cut="4"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Neon Run</span><span class="rt"><span class="sr">, runtime </span>2:26</span></a>
+            <a class="cut" href="#film-seven" style="--acc:var(--marigold)" data-cut="5"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Seven Candles</span><span class="rt"><span class="sr">, runtime </span>3:20</span></a>
           </nav>
           <div class="slate-meta billing">
-            <p class="tcb" aria-hidden="true"><span class="reelnote">Reel · 0:16 · muted</span><span class="now">Now: <b>Neon Run</b></span><span class="tc">TC 00:00:00:00</span></p>
+            <p class="tcb" aria-hidden="true"><span class="reelnote">Reel · 0:24 · muted</span><span class="now">Now: <b>Inside ACC</b></span><span class="tc">TC 00:00:00:00</span></p>
             <button class="reel-toggle billing" type="button" data-state="paused" hidden><span class="ico" aria-hidden="true"></span><span class="lbl">Play reel</span></button>
           </div>
         </div>
@@ -270,11 +272,248 @@
       </div>
     </section>
 
-    <!-- ================= 01 FILMS ================= -->
+    <!-- ================= 01 INSIDE ACC ================= -->
+    <section id="inside-acc" class="sec" aria-labelledby="acc-title">
+      <div class="wrap">
+        <header class="sec-head grid">
+          <p class="idx billing reveal"><span>01 · Behind the craft</span><span class="count" data-count-for="inside-acc">19 episodes</span></p>
+          <h2 id="acc-title" class="display reveal">Inside ACC</h2>
+          <p class="dek reveal" style="--d:.12s">Behind-the-scenes episodes where new AI tools go head to head on real projects. The results stay in, including the surprises.</p>
+        </header>
+        <div class="ep-controls" hidden>
+          <div class="ep-filters" role="group" aria-label="Filter Inside ACC episodes">
+            <button class="ep-filter billing" type="button" data-ep-filter="all" aria-pressed="true">All<span class="f-count"></span></button>
+            <button class="ep-filter billing" type="button" data-ep-filter="video" aria-pressed="false">Video models<span class="f-count"></span></button>
+            <button class="ep-filter billing" type="button" data-ep-filter="voice" aria-pressed="false">Voice &amp; audio<span class="f-count"></span></button>
+            <button class="ep-filter billing" type="button" data-ep-filter="images" aria-pressed="false">Images<span class="f-count"></span></button>
+            <button class="ep-filter billing" type="button" data-ep-filter="editing" aria-pressed="false">Editing<span class="f-count"></span></button>
+          </div>
+          <p class="ep-status billing" aria-live="polite"></p>
+        </div>
+        <ol class="eps">
+          <!-- auto:inside-acc -->
+          <li class="ep reveal">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=zmFUZwFPdc0" data-yt="zmFUZwFPdc0" data-title="MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/zmFUZwFPdc0/mqdefault.jpg" srcset="https://i.ytimg.com/vi/zmFUZwFPdc0/mqdefault.jpg 320w, https://i.ytimg.com/vi/zmFUZwFPdc0/hqdefault.jpg 480w, https://i.ytimg.com/vi/zmFUZwFPdc0/sddefault.jpg 640w, https://i.ytimg.com/vi/zmFUZwFPdc0/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=zmFUZwFPdc0">Watch on YouTube<span class="sr">: MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.08s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=-2k6OQ5I-3E" data-yt="-2k6OQ5I-3E" data-title="Topview AI Tutorial: Everything You Need To Know About T1">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/-2k6OQ5I-3E/mqdefault.jpg" srcset="https://i.ytimg.com/vi/-2k6OQ5I-3E/mqdefault.jpg 320w, https://i.ytimg.com/vi/-2k6OQ5I-3E/hqdefault.jpg 480w, https://i.ytimg.com/vi/-2k6OQ5I-3E/sddefault.jpg 640w, https://i.ytimg.com/vi/-2k6OQ5I-3E/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>Topview AI Tutorial: Everything You Need To Know About T1</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=-2k6OQ5I-3E">Watch on YouTube<span class="sr">: Topview AI Tutorial: Everything You Need To Know About T1</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.16s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=_A-Rov6djdE" data-yt="_A-Rov6djdE" data-title="I Tried Higgsfield Mangaka So You Don&#x27;t Have To">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/_A-Rov6djdE/mqdefault.jpg" srcset="https://i.ytimg.com/vi/_A-Rov6djdE/mqdefault.jpg 320w, https://i.ytimg.com/vi/_A-Rov6djdE/hqdefault.jpg 480w, https://i.ytimg.com/vi/_A-Rov6djdE/sddefault.jpg 640w, https://i.ytimg.com/vi/_A-Rov6djdE/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Images</p>
+                <h3>I Tried Higgsfield Mangaka So You Don&#x27;t Have To</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=_A-Rov6djdE">Watch on YouTube<span class="sr">: I Tried Higgsfield Mangaka So You Don&#x27;t Have To</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.24s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=qI43qKkQGtM" data-yt="qI43qKkQGtM" data-title="I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/qI43qKkQGtM/mqdefault.jpg" srcset="https://i.ytimg.com/vi/qI43qKkQGtM/mqdefault.jpg 320w, https://i.ytimg.com/vi/qI43qKkQGtM/hqdefault.jpg 480w, https://i.ytimg.com/vi/qI43qKkQGtM/sddefault.jpg 640w, https://i.ytimg.com/vi/qI43qKkQGtM/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=qI43qKkQGtM">Watch on YouTube<span class="sr">: I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=bZgztCuTt68" data-yt="bZgztCuTt68" data-title="Kling Image 4.0 vs Seedream 5.5 vs GPT 2.6: Who&#x27;s The GOAT?">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/bZgztCuTt68/mqdefault.jpg" srcset="https://i.ytimg.com/vi/bZgztCuTt68/mqdefault.jpg 320w, https://i.ytimg.com/vi/bZgztCuTt68/hqdefault.jpg 480w, https://i.ytimg.com/vi/bZgztCuTt68/sddefault.jpg 640w, https://i.ytimg.com/vi/bZgztCuTt68/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Images</p>
+                <h3>Kling Image 4.0 vs Seedream 5.5 vs GPT 2.6: Who&#x27;s The GOAT?</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=bZgztCuTt68">Watch on YouTube<span class="sr">: Kling Image 4.0 vs Seedream 5.5 vs GPT 2.6: Who&#x27;s The GOAT?</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.08s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=EH8PS_sbK-8" data-yt="EH8PS_sbK-8" data-title="Higgsfield Short Drama: I Turned One Script Into a 4-Episode AI Series">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/EH8PS_sbK-8/mqdefault.jpg" srcset="https://i.ytimg.com/vi/EH8PS_sbK-8/mqdefault.jpg 320w, https://i.ytimg.com/vi/EH8PS_sbK-8/hqdefault.jpg 480w, https://i.ytimg.com/vi/EH8PS_sbK-8/sddefault.jpg 640w, https://i.ytimg.com/vi/EH8PS_sbK-8/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>Higgsfield Short Drama: I Turned One Script Into a 4-Episode AI Series</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=EH8PS_sbK-8">Watch on YouTube<span class="sr">: Higgsfield Short Drama: I Turned One Script Into a 4-Episode AI Series</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.16s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=0b0EKOkXlKU" data-yt="0b0EKOkXlKU" data-title="Seedance 2.5 Flash vs Seedance 2.5 | Can You Spot The Cheaper One?">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/0b0EKOkXlKU/mqdefault.jpg" srcset="https://i.ytimg.com/vi/0b0EKOkXlKU/mqdefault.jpg 320w, https://i.ytimg.com/vi/0b0EKOkXlKU/hqdefault.jpg 480w, https://i.ytimg.com/vi/0b0EKOkXlKU/sddefault.jpg 640w, https://i.ytimg.com/vi/0b0EKOkXlKU/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>Seedance 2.5 Flash vs Seedance 2.5 | Can You Spot The Cheaper One?</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=0b0EKOkXlKU">Watch on YouTube<span class="sr">: Seedance 2.5 Flash vs Seedance 2.5 | Can You Spot The Cheaper One?</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.24s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=r5HTFsuHrJw" data-yt="r5HTFsuHrJw" data-title="OmniFlash 1.2 vs Everyone: The Cheapest AI Wins?">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/r5HTFsuHrJw/mqdefault.jpg" srcset="https://i.ytimg.com/vi/r5HTFsuHrJw/mqdefault.jpg 320w, https://i.ytimg.com/vi/r5HTFsuHrJw/hqdefault.jpg 480w, https://i.ytimg.com/vi/r5HTFsuHrJw/sddefault.jpg 640w, https://i.ytimg.com/vi/r5HTFsuHrJw/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>OmniFlash 1.2 vs Everyone: The Cheapest AI Wins?</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=r5HTFsuHrJw">Watch on YouTube<span class="sr">: OmniFlash 1.2 vs Everyone: The Cheapest AI Wins?</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=R_KMALNazRQ" data-yt="R_KMALNazRQ" data-title="I Gave Gemini 4 Carbon the Same Prompt as Fable 5.2. Here&#x27;s Who Won.">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/R_KMALNazRQ/mqdefault.jpg" srcset="https://i.ytimg.com/vi/R_KMALNazRQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/R_KMALNazRQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/R_KMALNazRQ/sddefault.jpg 640w, https://i.ytimg.com/vi/R_KMALNazRQ/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>I Gave Gemini 4 Carbon the Same Prompt as Fable 5.2. Here&#x27;s Who Won.</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=R_KMALNazRQ">Watch on YouTube<span class="sr">: I Gave Gemini 4 Carbon the Same Prompt as Fable 5.2. Here&#x27;s Who Won.</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.08s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=Fx2dB7XtEZ8" data-yt="Fx2dB7XtEZ8" data-title="I Gave Fable 5.2 One Prompt and 2,000 Higgsfield Credits. Here&#x27;s the Movie It Made.">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/Fx2dB7XtEZ8/mqdefault.jpg" srcset="https://i.ytimg.com/vi/Fx2dB7XtEZ8/mqdefault.jpg 320w, https://i.ytimg.com/vi/Fx2dB7XtEZ8/hqdefault.jpg 480w, https://i.ytimg.com/vi/Fx2dB7XtEZ8/sddefault.jpg 640w, https://i.ytimg.com/vi/Fx2dB7XtEZ8/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>I Gave Fable 5.2 One Prompt and 2,000 Higgsfield Credits. Here&#x27;s the Movie It Made.</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=Fx2dB7XtEZ8">Watch on YouTube<span class="sr">: I Gave Fable 5.2 One Prompt and 2,000 Higgsfield Credits. Here&#x27;s the Movie It Made.</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.16s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=rlcNjjIeAYk" data-yt="rlcNjjIeAYk" data-title="Google Omni Flash 1.2 Nails Faces - Car Chases? Not So Much.">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/rlcNjjIeAYk/mqdefault.jpg" srcset="https://i.ytimg.com/vi/rlcNjjIeAYk/mqdefault.jpg 320w, https://i.ytimg.com/vi/rlcNjjIeAYk/hqdefault.jpg 480w, https://i.ytimg.com/vi/rlcNjjIeAYk/sddefault.jpg 640w, https://i.ytimg.com/vi/rlcNjjIeAYk/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>Google Omni Flash 1.2 Nails Faces - Car Chases? Not So Much.</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=rlcNjjIeAYk">Watch on YouTube<span class="sr">: Google Omni Flash 1.2 Nails Faces - Car Chases? Not So Much.</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.24s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=dW9QiW9clIk" data-yt="dW9QiW9clIk" data-title="ElevenLabs Sound Effects V3: One Prompt vs a Human">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/dW9QiW9clIk/mqdefault.jpg" srcset="https://i.ytimg.com/vi/dW9QiW9clIk/mqdefault.jpg 320w, https://i.ytimg.com/vi/dW9QiW9clIk/hqdefault.jpg 480w, https://i.ytimg.com/vi/dW9QiW9clIk/sddefault.jpg 640w, https://i.ytimg.com/vi/dW9QiW9clIk/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Voice</p>
+                <h3>ElevenLabs Sound Effects V3: One Prompt vs a Human</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=dW9QiW9clIk">Watch on YouTube<span class="sr">: ElevenLabs Sound Effects V3: One Prompt vs a Human</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=BrplNWbFvm0" data-yt="BrplNWbFvm0" data-title="ElevenLabs v4 Tutorial: Audio Tags That Actually Work (I Tested Them)">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/BrplNWbFvm0/mqdefault.jpg" srcset="https://i.ytimg.com/vi/BrplNWbFvm0/mqdefault.jpg 320w, https://i.ytimg.com/vi/BrplNWbFvm0/hqdefault.jpg 480w, https://i.ytimg.com/vi/BrplNWbFvm0/sddefault.jpg 640w, https://i.ytimg.com/vi/BrplNWbFvm0/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Voice</p>
+                <h3>ElevenLabs v4 Tutorial: Audio Tags That Actually Work (I Tested Them)</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=BrplNWbFvm0">Watch on YouTube<span class="sr">: ElevenLabs v4 Tutorial: Audio Tags That Actually Work (I Tested Them)</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.08s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=Xdp5HgC5vlU" data-yt="Xdp5HgC5vlU" data-title="ElevenLabs Chimera vs Seedance 2.5 - Which AI Voice Wins?">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/Xdp5HgC5vlU/mqdefault.jpg" srcset="https://i.ytimg.com/vi/Xdp5HgC5vlU/mqdefault.jpg 320w, https://i.ytimg.com/vi/Xdp5HgC5vlU/hqdefault.jpg 480w, https://i.ytimg.com/vi/Xdp5HgC5vlU/sddefault.jpg 640w, https://i.ytimg.com/vi/Xdp5HgC5vlU/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Voice</p>
+                <h3>ElevenLabs Chimera vs Seedance 2.5 - Which AI Voice Wins?</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=Xdp5HgC5vlU">Watch on YouTube<span class="sr">: ElevenLabs Chimera vs Seedance 2.5 - Which AI Voice Wins?</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.16s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=SYf9zRLCgvA" data-yt="SYf9zRLCgvA" data-title="Claude vs ChatGPT vs Gemini on Max Settings: Who Edits a Music Video Best?">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/SYf9zRLCgvA/mqdefault.jpg" srcset="https://i.ytimg.com/vi/SYf9zRLCgvA/mqdefault.jpg 320w, https://i.ytimg.com/vi/SYf9zRLCgvA/hqdefault.jpg 480w, https://i.ytimg.com/vi/SYf9zRLCgvA/sddefault.jpg 640w, https://i.ytimg.com/vi/SYf9zRLCgvA/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Editing</p>
+                <h3>Claude vs ChatGPT vs Gemini on Max Settings: Who Edits a Music Video Best?</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=SYf9zRLCgvA">Watch on YouTube<span class="sr">: Claude vs ChatGPT vs Gemini on Max Settings: Who Edits a Music Video Best?</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.24s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=Zr8g0oSk294" data-yt="Zr8g0oSk294" data-title="Kling 4.0 Keyframes Hit Every Frame and Still Cheated (vs Omni Reference)">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/Zr8g0oSk294/mqdefault.jpg" srcset="https://i.ytimg.com/vi/Zr8g0oSk294/mqdefault.jpg 320w, https://i.ytimg.com/vi/Zr8g0oSk294/hqdefault.jpg 480w, https://i.ytimg.com/vi/Zr8g0oSk294/sddefault.jpg 640w, https://i.ytimg.com/vi/Zr8g0oSk294/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Keyframes</p>
+                <h3>Kling 4.0 Keyframes Hit Every Frame and Still Cheated (vs Omni Reference)</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=Zr8g0oSk294">Watch on YouTube<span class="sr">: Kling 4.0 Keyframes Hit Every Frame and Still Cheated (vs Omni Reference)</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=zTg4jY3faSQ" data-yt="zTg4jY3faSQ" data-title="I Tested Kling 4.0 vs Seedance 2.5 and the Winner Surprised Me">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/zTg4jY3faSQ/mqdefault.jpg" srcset="https://i.ytimg.com/vi/zTg4jY3faSQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/zTg4jY3faSQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/zTg4jY3faSQ/sddefault.jpg 640w, https://i.ytimg.com/vi/zTg4jY3faSQ/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Video models</p>
+                <h3>I Tested Kling 4.0 vs Seedance 2.5 and the Winner Surprised Me</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=zTg4jY3faSQ">Watch on YouTube<span class="sr">: I Tested Kling 4.0 vs Seedance 2.5 and the Winner Surprised Me</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.08s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=E3hXugWrM80" data-yt="E3hXugWrM80" data-title="I Tested Nano Banana 2.1 Against 7 AI Image Models. Only 4 Could Spell">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/E3hXugWrM80/mqdefault.jpg" srcset="https://i.ytimg.com/vi/E3hXugWrM80/mqdefault.jpg 320w, https://i.ytimg.com/vi/E3hXugWrM80/hqdefault.jpg 480w, https://i.ytimg.com/vi/E3hXugWrM80/sddefault.jpg 640w, https://i.ytimg.com/vi/E3hXugWrM80/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Images</p>
+                <h3>I Tested Nano Banana 2.1 Against 7 AI Image Models. Only 4 Could Spell</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=E3hXugWrM80">Watch on YouTube<span class="sr">: I Tested Nano Banana 2.1 Against 7 AI Image Models. Only 4 Could Spell</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <li class="ep reveal" style="--d:.16s">
+            <a class="ep-card" href="https://www.youtube.com/watch?v=HjttNU6wzlM" data-yt="HjttNU6wzlM" data-title="I Tried Every ElevenLabs Version - So You Don&#x27;t Have To">
+              <div class="thumb"><img src="https://i.ytimg.com/vi/HjttNU6wzlM/mqdefault.jpg" srcset="https://i.ytimg.com/vi/HjttNU6wzlM/mqdefault.jpg 320w, https://i.ytimg.com/vi/HjttNU6wzlM/hqdefault.jpg 480w, https://i.ytimg.com/vi/HjttNU6wzlM/sddefault.jpg 640w, https://i.ytimg.com/vi/HjttNU6wzlM/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
+              <div class="ep-text">
+                <p class="ep-cat billing">Voice</p>
+                <h3>I Tried Every ElevenLabs Version - So You Don&#x27;t Have To</h3>
+                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
+              </div>
+            </a>
+            <a class="watch" href="https://www.youtube.com/watch?v=HjttNU6wzlM">Watch on YouTube<span class="sr">: I Tried Every ElevenLabs Version - So You Don&#x27;t Have To</span> <span class="ext" aria-hidden="true">↗</span></a>
+          </li>
+          <!-- /auto:inside-acc -->
+        </ol>
+        <div class="ep-more" hidden>
+          <button class="btn btn--line ep-toggle" type="button" aria-expanded="false">Show all episodes</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 02 FILMS ================= -->
     <section id="films" class="sec" aria-labelledby="films-title">
       <div class="wrap">
         <header class="sec-head grid">
-          <p class="idx billing reveal"><span>01 — Films</span><span class="count">5 titles</span></p>
+          <p class="idx billing reveal"><span>02 · Films</span><span class="count">5 titles</span></p>
           <h2 id="films-title" class="display reveal">Now showing</h2>
           <p class="dek reveal" style="--d:.12s">Three short films and two music videos. Each one loads from YouTube only when you press play.</p>
         </header>
@@ -306,7 +545,7 @@
                 <div class="cr"><dt>Genre</dt><dd>Supernatural horror</dd></div>
                 <div class="cr"><dt>Score</dt><dd>Original, composed in Ableton with Spitfire Audio</dd></div>
                 <div class="cr"><dt>Audio</dt><dd>Dubbed in 10 languages</dd></div>
-                <div class="cr"><dt>Recognition</dt><dd>Top 10 · Honorable Mention — Dreamina Spooktacular Event</dd></div>
+                <div class="cr"><dt>Recognition</dt><dd>Top 10 · Honorable Mention · Dreamina Spooktacular Event</dd></div>
                 <div class="cr"><dt>Channel</dt><dd>Adam Campbell Cinema</dd></div>
               </dl>
               <p class="dubs">Dubbed audio and subtitles in Spanish, Portuguese, German, Indonesian, Japanese, Turkish, Urdu, Vietnamese, Hindi and Arabic.</p>
@@ -333,7 +572,7 @@
               <p class="film-no billing">02 · New · Stop-motion clay short film</p>
               <h3 id="f-bandit" class="film-title">Midnight Bandit</h3>
               <p class="tagline">The raccoon who robbed a camper.</p>
-              <p class="logline">A determined raccoon sneaks into a moonlit campsite for a locked red cooler — and ends up fishing right over a snoring camper’s head.</p>
+              <p class="logline">A determined raccoon sneaks into a moonlit campsite for a locked red cooler, and ends up fishing right over a snoring camper’s head.</p>
               <p class="synopsis">Shot in handmade stop-motion clay on Seedance 2.5 with moonlit forest blue and warm campfire light, Midnight Bandit follows one stubborn heist from the first failed latch to an unexpected truce by the fire.</p>
             </div>
             <div class="side reveal" style="--d:.12s">
@@ -458,69 +697,10 @@
       </div>
     </section>
 
-    <!-- ================= 02 INSIDE ACC ================= -->
-    <section id="inside-acc" class="sec" aria-labelledby="acc-title">
-      <div class="wrap">
-        <header class="sec-head grid">
-          <p class="idx billing reveal"><span>02 — Behind the craft</span><span class="count">4 episodes</span></p>
-          <h2 id="acc-title" class="display reveal">Inside ACC</h2>
-          <p class="dek reveal" style="--d:.12s">Behind-the-scenes episodes where new AI tools go head to head on real projects. The results stay in, including the surprises.</p>
-        </header>
-        <ol class="eps">
-          <!-- auto:inside-acc -->
-          <li class="ep reveal">
-            <a class="ep-card" href="https://www.youtube.com/watch?v=zmFUZwFPdc0" data-yt="zmFUZwFPdc0" data-title="MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One">
-              <div class="thumb"><img src="https://i.ytimg.com/vi/zmFUZwFPdc0/mqdefault.jpg" srcset="https://i.ytimg.com/vi/zmFUZwFPdc0/mqdefault.jpg 320w, https://i.ytimg.com/vi/zmFUZwFPdc0/hqdefault.jpg 480w, https://i.ytimg.com/vi/zmFUZwFPdc0/sddefault.jpg 640w, https://i.ytimg.com/vi/zmFUZwFPdc0/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
-              <div class="ep-text">
-                <p class="ep-cat billing">Video models</p>
-                <h3>MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One</h3>
-                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
-              </div>
-            </a>
-            <a class="watch" href="https://www.youtube.com/watch?v=zmFUZwFPdc0">Watch on YouTube<span class="sr">: MAGI-2 on Higgsfield: 9 Scenes, It Only Refused One</span> <span class="ext" aria-hidden="true">↗</span></a>
-          </li>
-          <li class="ep reveal" style="--d:.08s">
-            <a class="ep-card" href="https://www.youtube.com/watch?v=-2k6OQ5I-3E" data-yt="-2k6OQ5I-3E" data-title="Topview AI Tutorial: Everything You Need To Know About T1">
-              <div class="thumb"><img src="https://i.ytimg.com/vi/-2k6OQ5I-3E/mqdefault.jpg" srcset="https://i.ytimg.com/vi/-2k6OQ5I-3E/mqdefault.jpg 320w, https://i.ytimg.com/vi/-2k6OQ5I-3E/hqdefault.jpg 480w, https://i.ytimg.com/vi/-2k6OQ5I-3E/sddefault.jpg 640w, https://i.ytimg.com/vi/-2k6OQ5I-3E/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
-              <div class="ep-text">
-                <p class="ep-cat billing">Video models</p>
-                <h3>Topview AI Tutorial: Everything You Need To Know About T1</h3>
-                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
-              </div>
-            </a>
-            <a class="watch" href="https://www.youtube.com/watch?v=-2k6OQ5I-3E">Watch on YouTube<span class="sr">: Topview AI Tutorial: Everything You Need To Know About T1</span> <span class="ext" aria-hidden="true">↗</span></a>
-          </li>
-          <li class="ep reveal" style="--d:.16s">
-            <a class="ep-card" href="https://www.youtube.com/watch?v=_A-Rov6djdE" data-yt="_A-Rov6djdE" data-title="I Tried Higgsfield Mangaka So You Don&#x27;t Have To">
-              <div class="thumb"><img src="https://i.ytimg.com/vi/_A-Rov6djdE/mqdefault.jpg" srcset="https://i.ytimg.com/vi/_A-Rov6djdE/mqdefault.jpg 320w, https://i.ytimg.com/vi/_A-Rov6djdE/hqdefault.jpg 480w, https://i.ytimg.com/vi/_A-Rov6djdE/sddefault.jpg 640w, https://i.ytimg.com/vi/_A-Rov6djdE/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
-              <div class="ep-text">
-                <p class="ep-cat billing">Inside ACC</p>
-                <h3>I Tried Higgsfield Mangaka So You Don&#x27;t Have To</h3>
-                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
-              </div>
-            </a>
-            <a class="watch" href="https://www.youtube.com/watch?v=_A-Rov6djdE">Watch on YouTube<span class="sr">: I Tried Higgsfield Mangaka So You Don&#x27;t Have To</span> <span class="ext" aria-hidden="true">↗</span></a>
-          </li>
-          <li class="ep reveal" style="--d:.24s">
-            <a class="ep-card" href="https://www.youtube.com/watch?v=qI43qKkQGtM" data-yt="qI43qKkQGtM" data-title="I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits">
-              <div class="thumb"><img src="https://i.ytimg.com/vi/qI43qKkQGtM/mqdefault.jpg" srcset="https://i.ytimg.com/vi/qI43qKkQGtM/mqdefault.jpg 320w, https://i.ytimg.com/vi/qI43qKkQGtM/hqdefault.jpg 480w, https://i.ytimg.com/vi/qI43qKkQGtM/sddefault.jpg 640w, https://i.ytimg.com/vi/qI43qKkQGtM/maxresdefault.jpg 1280w" sizes="(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw" width="1280" height="720" loading="lazy" decoding="async" alt=""></div>
-              <div class="ep-text">
-                <p class="ep-cat billing">Video models</p>
-                <h3>I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits</h3>
-                <p class="ep-cue billing" aria-hidden="true"><span class="tri"></span>Play here</p>
-              </div>
-            </a>
-            <a class="watch" href="https://www.youtube.com/watch?v=qI43qKkQGtM">Watch on YouTube<span class="sr">: I Let GPT 6.2 Astra Make a Movie Alone, and It Spent Half the Credits</span> <span class="ext" aria-hidden="true">↗</span></a>
-          </li>
-          <!-- /auto:inside-acc -->
-        </ol>
-      </div>
-    </section>
-
     <!-- ================= 03 THE STUDIO: credits roll + channel ================= -->
     <section id="studio" class="sec" aria-labelledby="studio-title">
       <div class="wrap">
-        <p class="idx billing reveal"><span>03 — The studio</span><span class="count">Adam Campbell Cinema</span></p>
+        <p class="idx billing reveal"><span>03 · The studio</span><span class="count">Adam Campbell Cinema</span></p>
         <h2 id="studio-title" class="sr">The studio</h2>
         <p class="presents billing reveal">Campbell Content Studio presents</p>
         <dl class="roll reveal">
@@ -554,7 +734,7 @@
     <!-- ================= 04 WATCH IN YOUR LANGUAGE ================= -->
     <section id="languages" class="sec" aria-labelledby="lang-title">
       <div class="wrap grid lang">
-        <p class="idx billing reveal"><span>04 — Watch in your language</span><span class="count count--long">Our own channel</span></p>
+        <p class="idx billing reveal"><span>04 · Watch in your language</span><span class="count count--long">Our own channel</span></p>
         <div class="copy reveal">
           <h2 id="lang-title" class="display"><span class="kw">W</span>atch in your language.</h2>
           <p>Our videos have translated titles and descriptions in 28 languages, and dubbed audio in 10 of them. To do that, we use a small in-house Localization Tool, built on the YouTube API Services. It adds translated titles, descriptions and subtitles to our own channels. It is not offered to the public. See the <a class="textlink inl" href="privacy.html">privacy policy</a> for exactly what it accesses.</p>
@@ -593,7 +773,7 @@
     <!-- ================= 05 WORK WITH ME ================= -->
     <section id="work" class="sec work" aria-labelledby="work-title">
       <div class="wrap">
-        <p class="idx billing reveal"><span>05 — Work with me</span><span class="count">Taking inquiries</span></p>
+        <p class="idx billing reveal"><span>05 · Work with me</span><span class="count">Taking inquiries</span></p>
         <h2 id="work-title" class="display reveal"><span class="kw">W</span>ork <em>with me.</em></h2>
         <div class="lanes">
           <article class="lane reveal" aria-labelledby="lane1">
@@ -657,7 +837,7 @@
   <footer class="foot wrap" id="site-footer">
     <p class="foot-mark display">Campbell Content Studio</p>
     <div class="foot-cols">
-      <nav class="fc-studio" aria-labelledby="fc1"><h2 id="fc1" class="billing">Studio</h2><ul><li><a href="#films">Films</a></li><li><a href="#inside-acc">Inside ACC</a></li><li><a href="actors.html">Actors</a></li><li><a href="#studio">The studio</a></li><li><a href="#languages">Watch in your language</a></li><li><a href="#work">Work with me</a></li></ul></nav>
+      <nav class="fc-studio" aria-labelledby="fc1"><h2 id="fc1" class="billing">Studio</h2><ul><li><a href="#inside-acc">Inside ACC</a></li><li><a href="#films">Films</a></li><li><a href="actors.html">Actors</a></li><li><a href="#studio">The studio</a></li><li><a href="#languages">Watch in your language</a></li><li><a href="#work">Work with me</a></li></ul></nav>
       <nav class="fc-follow" aria-labelledby="fc2"><h2 id="fc2" class="billing">Follow</h2><ul><li><a href="https://www.youtube.com/@AdamCampbellCinema">YouTube · Adam Campbell Cinema</a></li><li><a href="https://www.instagram.com/adamcampbellcinema/">Instagram @adamcampbellcinema</a></li><li><a href="https://www.tiktok.com/@adamcampbellcinema">TikTok @adamcampbellcinema</a></li><li><a href="https://x.com/ACampbellCinema">X @ACampbellCinema</a></li></ul></nav>
       <nav class="fc-contact" aria-labelledby="fc3"><h2 id="fc3" class="billing">Contact</h2><ul><li><a href="mailto:adam@campbellcontentstudio.ca?subject=Project%20inquiry%20%E2%80%94%20Campbell%20Content%20Studio">adam@campbellcontentstudio.ca</a></li></ul></nav>
       <nav class="fc-legal" aria-labelledby="fc4"><h2 id="fc4" class="billing">Legal</h2><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a></li></ul></nav>
