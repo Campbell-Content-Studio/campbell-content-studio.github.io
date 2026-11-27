@@ -1,0 +1,66 @@
+/* =====================================================================
+   CAMPBELL CONTENT STUDIO - REPERTORY ACTORS ROSTER
+   Matches site.css tokens; typography stays off portrait imagery.
+   ===================================================================== */
+
+.nav-links a[aria-current="page"]{color:var(--screen);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.mp-list a[aria-current="page"]{font-style:italic;color:var(--screen)}
+
+.actors-hero{padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(28px,4vw,48px)}
+.actors-hero .idx{margin-bottom:clamp(18px,2.4vw,30px)}
+.actors-hero h1{font-size:clamp(3rem,6.4vw,6.4rem);line-height:.94;letter-spacing:-.024em}
+.actors-hero h1 em{display:block}
+.actors-lead{margin-top:clamp(18px,2vw,26px);display:grid;gap:14px;max-width:58ch}
+.actors-lead p{color:var(--silver);font-size:1.0625rem;line-height:1.55}
+.actors-note{color:var(--ash);font-size:.9375rem;line-height:1.5;border-left:2px solid var(--hairline);padding-left:14px}
+
+@media (min-width:900px){
+  .actors-head-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:var(--colgap);align-items:end}
+  .actors-lead{margin-top:0}
+}
+
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-block:20px 28px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);margin-bottom:clamp(28px,4vw,48px)}
+.filter-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--hairline);background:var(--gate);color:var(--silver);transition:border-color .35s var(--ease-out),background .35s var(--ease-out),color .35s var(--ease-out)}
+.filter-btn:hover{border-color:var(--screen);color:var(--screen)}
+.filter-btn[aria-pressed="true"]{background:var(--screen);color:#000;border-color:var(--screen)}
+.filter-count{margin-left:auto;color:var(--ash)}
+@media (max-width:699px){ .filter-count{width:100%;margin-left:0;margin-top:4px} }
+
+.actors-grid{display:grid;grid-template-columns:1fr;align-items:start;gap:28px;padding-bottom:var(--section)}
+@media (min-width:680px){ .actors-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px var(--colgap)} }
+@media (min-width:1120px){ .actors-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px var(--colgap)} }
+
+.actor-card{display:flex;flex-direction:column;background:var(--gate);border:1px solid var(--hairline);transition:border-color .4s var(--ease-out)}
+.actor-card:hover{border-color:#444}
+.actor-card[hidden]{display:none}
+
+.actor-photo{position:relative;aspect-ratio:3 / 2;overflow:hidden;background:#111;border-bottom:1px solid var(--hairline)}
+.actor-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;transition:transform 1.8s var(--ease-out)}
+.actor-card:hover .actor-photo img{transform:scale(1.025)}
+
+.actor-body{display:flex;flex-direction:column;flex:1;padding:22px 22px 20px}
+.actor-kicker{color:var(--ash);font-size:.75rem}
+.actor-name{font-size:clamp(1.75rem,2.1vw,2rem);line-height:1.1;color:var(--screen);margin-top:8px}
+.actor-credit{color:var(--screen);font-size:.9375rem;line-height:1.45;margin-top:8px}
+.actor-short{color:var(--silver);font-size:.9375rem;line-height:1.55;margin-top:10px;flex:1}
+
+.actor-more{margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline)}
+.actor-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--screen);cursor:pointer;list-style:none;user-select:none}
+.actor-toggle::-webkit-details-marker{display:none}
+.actor-toggle::after{content:"+";font-family:var(--sans);font-size:1.1rem;font-weight:400;line-height:1;color:var(--ash);transition:transform .25s var(--ease-out)}
+.actor-more[open] .actor-toggle::after{content:"-"}
+.actor-toggle:hover{text-decoration:underline;text-underline-offset:4px}
+
+.actor-panel{padding-top:12px;display:grid;gap:14px}
+.actor-bio{display:grid;gap:10px}
+.actor-bio p{color:var(--silver);font-size:.9375rem;line-height:1.58}
+
+.actor-specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;padding-top:12px;border-top:1px solid var(--hairline)}
+.actor-spec dt{color:var(--ash);font-size:.7rem}
+.actor-spec dd{color:var(--screen);font-size:.875rem;line-height:1.4;margin-top:2px}
+.actor-spec--wide{grid-column:1 / -1}
+.actor-fictional{color:var(--ash);font-size:.8125rem}
+
+@media (prefers-reduced-motion: reduce){
+  .actor-photo img,.actor-card,.filter-btn{transition:none!important;transform:none!important}
+}
