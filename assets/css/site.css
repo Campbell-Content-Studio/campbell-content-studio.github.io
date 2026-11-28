@@ -99,7 +99,7 @@ h1,h2,h3,.tagline{text-wrap:balance}
 .wm-main{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 28;font-size:1.75rem;letter-spacing:-.01em;line-height:1}
 .wm-rule{width:1px;height:22px;background:var(--hairline)}
 .wm-sub{font-size:.75rem;letter-spacing:.22em;color:var(--silver);line-height:1.2;white-space:nowrap}
-.nav-links{display:none;gap:30px;align-items:center}
+.nav-links{display:none;gap:clamp(16px,1.9vw,30px);align-items:center}
 .nav-links a{text-decoration:none;color:var(--silver);transition:color .4s;display:inline-flex;align-items:center;min-height:44px}
 .nav-links a:hover{color:var(--screen)}
 .nav-links a.btn-sm{color:#000;margin-left:6px}

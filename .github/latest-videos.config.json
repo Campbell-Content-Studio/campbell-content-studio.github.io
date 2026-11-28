@@ -1,12 +1,34 @@
 {
-  "pages": ["index.html"],
+  "pages": ["index.html", "guides/magi-2/index.html"],
   "rows": {
     "inside-acc": {
+      "pages": ["index.html"],
       "channelId": "UCZ3jf4rt3h2uroB2F4KXs4w",
       "count": 100,
       "minCount": 3,
       "heading": "h3",
       "sizes": "(min-width: 1600px) 340px, (min-width: 900px) 22vw, 42vw",
+      "excludeIds": ["S1wV5bVqJjM", "mVTY4UQzy6A", "56ZdNRdmfQ0", "dN3Yv4xqxrA", "DEQ6ROYbeFA"],
+      "includeIds": ["0b0EKOkXlKU"],
+      "excludeTitlePatterns": ["\\bofficial (music |lyric )?video\\b", "\\((official )?(music|lyric) video\\)", "\\bofficial (visuali[sz]er|audio|trailer|teaser)\\b", "\\b(short film|ai movie)\\b", "\\s[-–—]\\s*(official )?(trailer|teaser)\\b"],
+      "labelRules": [
+        ["keyframe", "Keyframes"],
+        ["voice|elevenlabs|sound effects|lip.?sync|dubb", "Voice"],
+        ["\\bedit", "Editing"],
+        ["music|suno|udio|song", "Music"],
+        ["image|midjourney|flux|nano banana|seedream|kling image|mangaka|photo", "Images"],
+        ["kling|seedance|veo|runway|sora|hailuo|minimax|magi|omni|topview|fable|gpt|short drama|luma|pika|video model", "Video models"]
+      ],
+      "fallbackLabel": "Inside ACC",
+      "labels": {}
+    },
+    "inside-acc-recent": {
+      "pages": ["guides/magi-2/index.html"],
+      "channelId": "UCZ3jf4rt3h2uroB2F4KXs4w",
+      "count": 3,
+      "minCount": 3,
+      "heading": "h3",
+      "sizes": "(min-width: 1600px) 460px, (min-width: 900px) 30vw, 42vw",
       "excludeIds": ["S1wV5bVqJjM", "mVTY4UQzy6A", "56ZdNRdmfQ0", "dN3Yv4xqxrA", "DEQ6ROYbeFA"],
       "includeIds": ["0b0EKOkXlKU"],
       "excludeTitlePatterns": ["\\bofficial (music |lyric )?video\\b", "\\((official )?(music|lyric) video\\)", "\\bofficial (visuali[sz]er|audio|trailer|teaser)\\b", "\\b(short film|ai movie)\\b", "\\s[-–—]\\s*(official )?(trailer|teaser)\\b"],

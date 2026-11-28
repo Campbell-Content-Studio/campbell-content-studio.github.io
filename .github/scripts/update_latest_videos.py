@@ -307,13 +307,16 @@ def main():
             merge(state.setdefault(channel_id, []), fresh)
     set_output("feeds_failed", feeds_failed)
 
-    # Videos already shown elsewhere on the page (the hand-picked films) are pinned.
-    pinned = set()
-    for text, _ in texts.values():
-        pinned |= set(DATA_YT.findall(AUTO_REGION.sub("", text)))
-
+    # Videos already shown elsewhere on each row's target pages are pinned (scoped per page so a featured video on a guide page never drops from index.html).
     rendered = {}
+    row_targets = {}
     for name, row in rows.items():
+        targets = [ROOT / rel for rel in row.get("pages", config["pages"])]
+        row_targets[name] = set(targets)
+        pinned = set()
+        for path in targets:
+            if path in texts:
+                pinned |= set(DATA_YT.findall(AUTO_REGION.sub("", texts[path][0])))
         chosen = pick(state.get(row["channelId"], []), row, pinned)
         if len(chosen) < row["minCount"]:
             warn(f"Only {len(chosen)} videos for '{name}'; keeping the current row.")
@@ -323,6 +326,8 @@ def main():
     changed = []
     for path, (text, newline) in texts.items():
         for name, lines in rendered.items():
+            if path not in row_targets[name]:
+                continue
             text, _ = replace_region(text, name, lines)
             n_items = sum(1 for l in lines if l.startswith("<li "))
             count_pat = re.compile(
