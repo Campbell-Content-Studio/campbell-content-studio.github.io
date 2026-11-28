@@ -107,11 +107,11 @@
       loaded = true;
       /* AV1 files are pre-cropped to the frame they fill (4:3 on phones, 2.39:1 from 900px) */
       [
-        ['assets/video/reel-720-av1.webm', 'video/webm; codecs="av01.0.05M.08"', '(max-width: 899px)'],
-        ['assets/video/reel-720.webm', 'video/webm; codecs=vp9', '(max-width: 899px)'],
+        ['assets/video/reel-720-av1.webm', 'video/webm; codecs="av01.0.05M.08, opus"', '(max-width: 899px)'],
+        ['assets/video/reel-720.webm', 'video/webm; codecs="vp9, opus"', '(max-width: 899px)'],
         ['assets/video/reel-720.mp4', 'video/mp4', '(max-width: 899px)'],
-        ['assets/video/reel-1080-av1.webm', 'video/webm; codecs="av01.0.08M.08"'],
-        ['assets/video/reel-1080.webm', 'video/webm; codecs=vp9'],
+        ['assets/video/reel-1080-av1.webm', 'video/webm; codecs="av01.0.08M.08, opus"'],
+        ['assets/video/reel-1080.webm', 'video/webm; codecs="vp9, opus"'],
         ['assets/video/reel-1080.mp4', 'video/mp4']
       ].forEach(function (s, i, all) {
         var el = doc.createElement('source');
@@ -122,12 +122,55 @@
       });
       video.load();
     }
-    function fail() { failed = true; want = false; stopLoop(); setState(false); toggle.hidden = true; }
+    var snd = $('.sound-toggle'), sndLbl = snd && snd.querySelector('.lbl'), note = $('.tcb .reelnote');
+    var userMuted = false, fadeRaf = 0, fadeTimer = 0;
+    function setSoundUI(on) {
+      if (!snd) return;
+      snd.setAttribute('data-state', on ? 'on' : 'off');
+      snd.setAttribute('aria-pressed', String(on));
+      if (sndLbl) sndLbl.textContent = on ? 'Sound off' : 'Sound on';
+      var durLabel = '0:' + pad(Math.round(TOTAL));
+      if (note) note.textContent = on ? 'Reel · ' + durLabel + ' · sound on' : 'Reel · ' + durLabel + ' · muted';
+    }
+    function cancelFade() { win.cancelAnimationFrame(fadeRaf); win.clearTimeout(fadeTimer); }
+    function rampVolume(from, to, ms, done) {
+      cancelFade();
+      var t0 = 0;
+      try { video.volume = from; } catch (e) {}
+      function step(ts) {
+        if (!t0) t0 = ts;
+        var k = Math.min(1, (ts - t0) / ms);
+        try { video.volume = from + (to - from) * k; } catch (e) {}
+        if (k < 1) fadeRaf = win.requestAnimationFrame(step);
+      }
+      fadeRaf = win.requestAnimationFrame(step);
+      fadeTimer = win.setTimeout(function () {
+        cancelFade();
+        try { video.volume = to; } catch (e) {}
+        if (done) done();
+      }, ms + 30);
+    }
+
+    function fail() { failed = true; want = false; stopLoop(); setState(false); toggle.hidden = true; if (snd) snd.hidden = true; }
+    function playMutedFallback() {
+      cancelFade();
+      video.muted = true;
+      setSoundUI(false);
+      var p2 = video.play();
+      if (p2 && p2.catch) p2.catch(function () { if (video.paused) { want = false; setState(false); } });
+    }
     function tryPlay() {
       if (failed) return;
       load();
-      var p = video.play();
-      if (p && p.catch) p.catch(function () { if (video.paused) { want = false; setState(false); } });
+      if (!userMuted) {
+        video.muted = false;
+        try { video.volume = 0.9; } catch (e) {}
+        setSoundUI(true);
+        var p = video.play();
+        if (p && p.catch) p.catch(function () { playMutedFallback(); });
+      } else {
+        playMutedFallback();
+      }
     }
     syncReel = function () {
       if (want && onScreen && !doc.hidden && !roomOpen) { if (video.paused) tryPlay(); }
@@ -147,87 +190,37 @@
     }
     doc.addEventListener('visibilitychange', syncReel);
 
-    /* score cue: a separate audio file, off by default and only ever started by a click.
-       The button stays hidden until data-src names the file (assets/audio/_README.txt). */
-    var snd = $('.sound-toggle'), scoreSrc = snd && snd.getAttribute('data-src');
-    if (snd && scoreSrc) (function () {
-      var score = null, on = false, fadeRaf = 0, fadeTimer = 0, quiet = 0, reelWasOff = false;
-      var sndLbl = snd.querySelector('.lbl'), note = $('.tcb .reelnote');
-      function setSound(v) {
-        on = v;
-        snd.setAttribute('data-state', v ? 'on' : 'off');
-        sndLbl.textContent = v ? 'Sound off' : 'Sound on';
-        var durLabel = '0:' + pad(Math.round(TOTAL));
-        if (note) note.textContent = v ? 'Reel · ' + durLabel + ' · sound on' : 'Reel · ' + durLabel + ' · muted';
-      }
-      function cancelFade() { win.cancelAnimationFrame(fadeRaf); win.clearTimeout(fadeTimer); }
-      /* short volume ramps so the cue never clicks (iOS ignores volume and just starts and stops).
-         rAF drives the ramp; a timer guarantees the end state, because rAF stops in hidden tabs. */
-      function fade(to, ms, done) {
-        cancelFade();
-        var from = score.volume, t0 = 0;
-        function step(ts) {
-          if (!t0) t0 = ts;
-          var k = Math.min(1, (ts - t0) / ms);
-          score.volume = from + (to - from) * k;
-          if (k < 1) fadeRaf = win.requestAnimationFrame(step);
+    if (snd) (function () {
+      function toggleSound() {
+        if (failed) return;
+        if (!video.muted && !video.paused) {
+          userMuted = true;
+          setSoundUI(false);
+          rampVolume(video.volume || 0.9, 0, 160, function () { video.muted = true; });
+        } else {
+          userMuted = false;
+          want = true;
+          onScreen = true;
+          load();
+          video.muted = false;
+          setSoundUI(true);
+          if (video.paused) {
+            try { video.volume = 0; } catch (e) {}
+            var p = video.play();
+            if (p && p.catch) p.catch(function () { playMutedFallback(); });
+          }
+          rampVolume(0, 0.9, 200);
         }
-        fadeRaf = win.requestAnimationFrame(step);
-        fadeTimer = win.setTimeout(function () { cancelFade(); score.volume = to; if (done) done(); }, ms + 40);
       }
-      /* pauses the page makes itself; their 'pause' events arrive later, so they are counted */
-      function quietPause() { if (score.paused) return; quiet++; score.pause(); }
-      function running() { return !video.paused && video.readyState >= 3; }
-      function fail(e) { if (!e || e.name !== 'AbortError') setSound(false); }
-      function restoreReel() { if (reelWasOff) { reelWasOff = false; want = false; video.pause(); } }
-      /* the cue runs only while the picture runs, locked to its clock for the first pass of the reel
-         (after the reel loops, a longer cue simply plays out to its end) */
-      function follow() {
-        var len = video.duration || TOTAL;
-        if (score.currentTime < len - 0.25 && Math.abs(score.currentTime - video.currentTime) > 0.15) score.currentTime = video.currentTime;
-        if (score.paused) { score.volume = 0; var p = score.play(); if (p && p.catch) p.catch(fail); fade(0.9, 400); }
+      snd.addEventListener('click', function (e) { e.stopPropagation(); toggleSound(); });
+      if (video.parentNode) {
+        video.parentNode.addEventListener('click', function (e) {
+          if (e.target.closest && e.target.closest('button,a')) return;
+          toggleSound();
+        });
       }
-      function stop() {
-        setSound(false);
-        if (score && !score.paused) fade(0, 300, quietPause);
-        restoreReel();
-      }
-      function start() {
-        if (!score) {
-          score = new Audio(scoreSrc);
-          score.preload = 'auto';
-          score.addEventListener('ended', function () { setSound(false); restoreReel(); });
-          score.addEventListener('error', function () {
-            setSound(false);
-            if (doc.activeElement === snd) toggle.focus({ preventScroll: true });
-            snd.hidden = true;
-          });
-          /* paused from outside the page (media keys, OS controls, headphones unplugged): that is a Sound off */
-          score.addEventListener('pause', function () { if (quiet) { quiet--; return; } if (on && !score.ended) { cancelFade(); setSound(false); } });
-          /* played from outside the page while the picture is not running: keep it with the picture */
-          score.addEventListener('play', function () { if (!on || video.paused) quietPause(); });
-        }
-        reelWasOff = !want;
-        setSound(true);
-        /* picture and music start together from the top of the reel */
-        video.currentTime = 0;
-        want = true; onScreen = true;
-        tryPlay();
-        score.currentTime = 0;
-        score.volume = 0;
-        var p = score.play();              /* inside the click, which unlocks audio on iOS */
-        if (p && p.catch) p.catch(fail);
-        if (!running()) quietPause();      /* picture not ready yet: 'playing'/'seeked' start the cue in sync */
-        else fade(0.9, 400);
-      }
-      snd.addEventListener('click', function () { if (on) stop(); else start(); });
-      /* the cue follows the picture: it pauses with the reel (button, off screen, hidden tab, a film playing) and resumes with it */
-      video.addEventListener('pause', function () { if (score && !score.paused) { cancelFade(); quietPause(); } });
-      function maybeFollow() { if (on && score && !score.ended && running()) follow(); }
-      video.addEventListener('playing', maybeFollow);
-      video.addEventListener('seeked', maybeFollow);
-      video.addEventListener('canplay', maybeFollow);
       snd.hidden = false;
+      setSoundUI(false);
     })();
 
     toggle.hidden = false;

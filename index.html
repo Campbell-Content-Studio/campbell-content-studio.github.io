@@ -242,11 +242,10 @@
         <div class="frame bleed gate hero-frame">
           <video class="reel" data-duration="24" muted loop playsinline preload="none" poster="assets/img/reel-poster.webp" aria-hidden="true" width="1920" height="804"></video>
           <div class="grain-in" aria-hidden="true"></div>
-          <!-- Score cue: hidden until data-src names the file. See assets/audio/_README.txt. Never autoplays. -->
-          <button class="sound-toggle billing" type="button" data-src="" data-state="off" hidden><svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5l4 4m0-4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6.5 6.5 0 0 1 0 9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="lbl">Sound on</span></button>
+          <button class="sound-toggle billing" type="button" data-state="off" aria-pressed="false" hidden><svg class="ico-off" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5l4 4m0-4l-4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><svg class="ico-on" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6.5 6.5 0 0 1 0 9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="lbl">Sound on</span></button>
         </div>
         <div class="slate">
-          <p class="sr">Studio reel: a muted 24-second loop of shots from Inside ACC and the studio's released films and music videos.</p>
+          <p class="sr">Studio reel: a 24-second loop of clips with audio from Inside ACC and the studio's released films and music videos.</p>
           <nav class="cutlist billing" aria-label="Reel cut list">
             <a class="cut is-on" href="#inside-acc" style="--acc:var(--cyan)" data-cut="0"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Inside ACC</span><span class="rt"><span class="sr">, runtime </span>19 eps</span></a>
             <a class="cut" href="#film-bandit" style="--acc:var(--marigold)" data-cut="1"><span class="track" aria-hidden="true"><i></i></span><span class="cut-t">Midnight Bandit</span><span class="rt"><span class="sr">, runtime </span>1:51</span></a>

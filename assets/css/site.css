@@ -195,11 +195,13 @@ h1,h2,h3,.tagline{text-wrap:balance}
 .fresh-card:hover .fresh-arrow{color:var(--screen)}
 @media (min-width:900px){ .fresh-bar{grid-template-columns:1fr 1fr;gap:var(--colgap)} }
 @media (max-width:599px){ .fresh-thumb{width:76px;height:43px;flex:0 0 76px} .fresh-title{white-space:normal;font-size:.875rem} }
+.js .hero-frame{cursor:pointer}
 .hero-frame video{background:var(--gate);object-position:50% 36%}
-.sound-toggle{position:absolute;right:0;bottom:0;z-index:3;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;min-width:8.5rem;padding:0 16px 0 14px;background:#000;color:var(--screen);transition:background .5s var(--ease-out),color .5s var(--ease-out)}
+.sound-toggle{position:absolute;right:0;bottom:0;z-index:3;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;min-width:8.5rem;padding:0 16px 0 14px;background:#000;color:var(--screen);border:1px solid var(--hairline);transition:background .4s var(--ease-out),color .4s var(--ease-out),border-color .4s var(--ease-out)}
+.sound-toggle[data-state="off"]{background:var(--screen);color:#000;border-color:var(--screen)}
 .sound-toggle[hidden]{display:none}
 .sound-toggle:focus-visible{background:var(--screen);color:#000;outline:2px solid #000;outline-offset:-5px}
-@media (hover:hover){ .sound-toggle:hover{background:var(--screen);color:#000} }
+@media (hover:hover){ .sound-toggle:hover,.sound-toggle[data-state="on"]:hover{background:var(--screen);color:#000;border-color:var(--screen)} .sound-toggle[data-state="off"]:hover{background:#000;color:var(--screen);border-color:var(--screen)} }
 .sound-toggle svg{width:16px;height:16px;flex:none}
 .sound-toggle[data-state="off"] .ico-on,.sound-toggle[data-state="on"] .ico-off{display:none}
 .hero-frame .grain-in{animation:grain 1s steps(6) infinite}
